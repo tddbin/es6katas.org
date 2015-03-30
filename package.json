@@ -4,7 +4,10 @@
   "description": "es6katas.org site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rm -Rf dist && mkdir dist && cp src/index.html dist",
+    "build": "browserify src/index.js --outfile=dist/index.js --transform=babelify",
+    "watch": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/tddbin/es6katas.org/issues"
   },
-  "homepage": "https://github.com/tddbin/es6katas.org"
+  "homepage": "https://github.com/tddbin/es6katas.org",
+  "devDependencies": {
+    "atomic": "0.0.2",
+    "browserify": "^9.0.3",
+    "babelify": "^5.0.4"
+  }
 }
