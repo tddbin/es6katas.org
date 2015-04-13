@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "0.10"
+
+after_success:
+  - chmod +x ./scripts/*.sh
+  - chmod +x ./scripts/for-travis/*.sh
+  - ./scripts/for-travis/build-and-deploy.sh
+
+env:
+ global:
+ - KATAS_SERVICE_DOMAIN: es6katas.org
+ - GH_REF: github.com/tddbin/es6katas.org.git
+ - secure: SV07QpnkPHHYMz/kw/UAlMRK7TIPe++k5r/UzLTnGsyiQoX3CozgkGvCuL9RpQmJqymM0viNxmXKWaObP1WKX7kk8PVsAzhG8DDuQ4dM/rggd9fcRXR2mlwThDTUg0otrcZR9bfhQhCWuLGl32FgJx+9sog4G5A3sBW/3oY+Pnc=
+
