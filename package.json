@@ -4,7 +4,7 @@
   "description": "es6katas.org site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register src/**/**/*spec.js",
     "build": "./scripts/build/build.sh",
     "build-app": "browserify src/index.js --outfile=dist/index.js --transform=babelify",
     "start": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v"
@@ -27,6 +27,8 @@
     "atomic": "git+https://github.com/toddmotto/atomic.git",
     "browserify": "^9.0.3",
     "babelify": "^5.0.4",
-    "watchify": "^3.0.0"
+    "watchify": "^3.0.0",
+    "babel-core": "^5.1.2",
+    "mocha": "^2.2.4"
   }
 }
