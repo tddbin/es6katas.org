@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rm -Rf dist && mkdir dist && cp src/index.html dist",
     "build": "browserify src/index.js --outfile=dist/index.js --transform=babelify",
-    "watch": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v"
+    "start": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,9 @@
   },
   "homepage": "https://github.com/tddbin/es6katas.org",
   "devDependencies": {
-    "atomic": "0.0.2",
+    "atomic": "git+https://github.com/toddmotto/atomic.git",
     "browserify": "^9.0.3",
-    "babelify": "^5.0.4"
+    "babelify": "^5.0.4",
+    "watchify": "^3.0.0"
   }
 }
