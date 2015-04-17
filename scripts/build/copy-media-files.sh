@@ -5,7 +5,7 @@
 ORIGIN_ROOT=".";
 MEDIA_FILES_ORIGIN_DIR="$ORIGIN_ROOT/src";
 DIST_ROOT="$ORIGIN_ROOT/dist";
-MEDIA_DIST_ROOT="$DIST_ROOT/media";
+MEDIA_DIST_ROOT="$DIST_ROOT";
 
 # find all media files, under `src`
 cd "$MEDIA_FILES_ORIGIN_DIR";

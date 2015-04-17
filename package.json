@@ -7,6 +7,7 @@
     "test": "mocha --compilers js:babel-core/register src/**/**/*spec.js",
     "build": "./scripts/build/build.sh",
     "build-app": "browserify src/index.js --outfile=dist/index.js --transform=babelify",
+    "build-media": "./scripts/build/copy-media-files.sh",
     "start": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v"
   },
   "repository": {
