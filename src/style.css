@@ -1,3 +1,37 @@
 body {
-  font-family: 'Wire One', sans-serif;
+  font-family: 'Josefin Slab', serif;
+  font-size: large;
+  background-color: #020202;
+  color: #fac93e;
+}
+
+a {
+  color: #E88551;
+  text-decoration: none;
+}
+.group a {
+  display: block;
+}
+a:visited {
+  color: #DAA91E;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.group {
+  float: left;
+  margin: 0 1em 1em 1em;
+  border: 1px solid grey;
+  padding: 0 1em 1em 1em;
+}
+
+footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #111111;
+  padding: 0.2em;
 }
