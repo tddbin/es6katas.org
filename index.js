@@ -19798,6 +19798,8 @@ module.exports = require('./lib/React');
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _slicedToArray = function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) { _arr.push(_step.value); if (i && _arr.length === i) break; } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } };
+
 var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
@@ -19834,18 +19836,42 @@ var MainComponent = (function (_React$Component) {
   _createClass(MainComponent, {
     render: {
       value: function render() {
-        var paths = this.props.paths;
+        var groups = this.props.groups;
 
+        var ret = [];
+        for (var groupName in groups) {
+          ret.push(kataGroup(groupName, groups[groupName]));
+        }
         return React.createElement(
-          "ol",
+          "body",
           null,
-          paths.map(function (path) {
-            return React.createElement(
-              "li",
-              null,
-              tddbinKataLink(path)
-            );
-          })
+          React.createElement(
+            "h1",
+            null,
+            "ES6 Katas"
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Just learn a bit of ES6 daily, take one kata a day and fix it away."
+          ),
+          ret,
+          React.createElement(
+            "footer",
+            null,
+            "an ",
+            React.createElement(
+              "a",
+              { href: "http://uxebu.com" },
+              "uxebu"
+            ),
+            " project, using ",
+            React.createElement(
+              "a",
+              { href: "http://tddbin.com" },
+              "tddbin"
+            )
+          )
         );
       }
     }
@@ -19856,18 +19882,47 @@ var MainComponent = (function (_React$Component) {
 
 module.exports = MainComponent;
 
+var kataGroup = function (groupName, group) {
+  return React.createElement(
+    "div",
+    { className: "group" },
+    React.createElement(
+      "h2",
+      null,
+      groupName
+    ),
+    group.map(tddbinKataLink)
+  );
+};
+
 var tddbinKataLink = function (path) {
-  var readable = path.replace("katas/es6/language/", "");
+  var _path$replace$split = path.replace("katas/es6/language/", "").split("/");
+
+  var _path$replace$split2 = _slicedToArray(_path$replace$split, 2);
+
+  var group = _path$replace$split2[0];
+  var sub = _path$replace$split2[1];
+
   var link = "http://tddbin.com/#?kata=" + path.replace("katas/", "").replace(/\.js$/, "");
   return React.createElement(
     "a",
     { href: link, target: "_blank" },
-    readable
+    sub
   );
 };
 
+var groupedPaths = function (paths) {
+  var groups = {};
+  paths.forEach(function (path) {
+    var groupName = path.split("/").reverse()[1];
+    if (!groups[groupName]) groups[groupName] = [];
+    groups[groupName].push(path);
+  });
+  return groups;
+};
+
 var render = function (paths) {
-  React.render(React.createElement(MainComponent, { paths: paths }), document.querySelector("#katas"));
+  React.render(React.createElement(MainComponent, { groups: groupedPaths(paths) }), document.querySelector("body"));
 };
 
 },{"atomic":1,"react":157}]},{},[158]);
