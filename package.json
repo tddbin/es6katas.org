@@ -8,7 +8,8 @@
     "build": "./scripts/build/build.sh",
     "build-app": "browserify src/index.js --outfile=dist/index.js --transform=babelify",
     "build-media": "./scripts/build/copy-media-files.sh",
-    "start": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v"
+    "start": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v",
+    "render-on-server": "cd src; babel index-server-side.js | node"
   },
   "repository": {
     "type": "git",
