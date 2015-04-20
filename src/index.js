@@ -23,12 +23,12 @@ export default class MainComponent extends React.Component {
       ret.push(kataGroup(groupName, groups[groupName]));
     }
     return (
-      <body>
+      <div id="page-wrapper-only-for-react">
         <h1>ES6 Katas</h1>
         <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
         {ret}
         <footer>an <a href="http://uxebu.com">uxebu</a> project, using <a href="http://tddbin.com">tddbin</a></footer>
-      </body>
+      </div>
     );
   }
 }
@@ -59,5 +59,5 @@ const groupedPaths = (paths) => {
 };
 
 const render = (paths) => {
-  React.render(<MainComponent groups={groupedPaths(paths)}/>, document.querySelector('body'));
+  React.render(<MainComponent groups={groupedPaths(paths)}/>, document.body);
 };
