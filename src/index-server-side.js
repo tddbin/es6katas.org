@@ -6,7 +6,8 @@ const render = (err, paths) => {
   if (err) {
     console.log(err);
   } else {
-    React.renderToString(<Page paths={paths}/>);
+    const preRendered = React.renderToString(<Page paths={paths}/>);
+    console.log(preRendered);
   }
 };
 
