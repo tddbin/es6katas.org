@@ -1,22 +1,28 @@
 import React from 'react';
 
-export default class MainComponent extends React.Component {
+export default class Page extends React.Component {
 
   render() {
     let {paths} = this.props;
-    const groups = groupedPaths(paths);
-    let ret = [];
-    for (let groupName in groups) {
-      ret.push(kataGroup(groupName, groups[groupName]));
-    }
     return (
       <div id="page-wrapper-only-for-react">
         <h1>ES6 Katas</h1>
         <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
-        {ret}
+        <KataGroups groups={groupedPaths(paths)} />
         <footer>an <a href="http://uxebu.com">uxebu</a> project, using <a href="http://tddbin.com">tddbin</a></footer>
       </div>
     );
+  }
+}
+
+class KataGroups extends React.Component {
+  render() {
+    const {groups} = this.props;
+    let ret = [];
+    for (let groupName in groups) {
+      ret.push(kataGroup(groupName, groups[groupName]));
+    }
+    return (<div>{ret}</div>);    
   }
 }
 
