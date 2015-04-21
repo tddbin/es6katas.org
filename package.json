@@ -9,7 +9,7 @@
     "build-app": "browserify src/index.js --outfile=dist/index.js --transform=babelify",
     "build-media": "./scripts/build/copy-media-files.sh",
     "start": "watchify src/index.js --outfile=dist/index.js --transform=babelify -v",
-    "render-on-server": "cd src; babel-node index-server-side.js"
+    "render-on-server": "./scripts/render-html.sh"
   },
   "repository": {
     "type": "git",

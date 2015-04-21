@@ -12,8 +12,10 @@ rm -Rf $DIST_ROOT;
 mkdir -p $DIST_ROOT;
 
 # copy html assets
-cp $ORIGIN_ROOT/src/index.html $DIST_ROOT;
+#cp $ORIGIN_ROOT/src/index.html $DIST_ROOT;
 #cp $ORIGIN_ROOT/src/favicon.ico $DIST_ROOT;
+
+./scripts/render-html.sh
 
 # run all build scripts, `&&` ensures to stop on any fail
 (
