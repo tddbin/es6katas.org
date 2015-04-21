@@ -6,7 +6,7 @@ const render = (err, paths) => {
   if (err) {
     console.log(err);
   } else {
-    React.render(<MainComponent paths={paths}/>, document.body);
+    React.renderToString(<MainComponent paths={paths}/>);
   }
 };
 
