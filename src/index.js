@@ -1,12 +1,12 @@
 import React from 'react';
 import {loadViaAjax} from './katas.js';
-import MainComponent from './page.js';
+import Page from './components/page.js';
 
 const render = (err, paths) => {
   if (err) {
     console.log(err);
   } else {
-    React.render(<MainComponent paths={paths}/>, document.body);
+    React.render(<Page paths={paths}/>, document.body);
   }
 };
 
