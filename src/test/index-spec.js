@@ -7,8 +7,8 @@ describe('tests run', function() {
 });
 
 /**
- - get out all paths out of the JSON
- - group the katas
+ x get out all paths out of the JSON
+ x group the katas
  - sort the kata groups (somehow???)
  - generate the tddbin link object
 */
@@ -73,4 +73,23 @@ const toKataGroups = (paths) => {
     groups[groupName].push(path);
   });
   return groups;
+};
+
+describe('generate the kata link from a path', function() {
+  it('', function() {
+    const path = 'katas/es6/language/template-strings/basics.js';
+    const link = {
+      text: 'basics',
+      url: 'http://tddbin.com/#?kata=es6/language/template-strings/basics'
+    };
+    
+    assert.deepEqual(pathToLink(path), link);
+  });
+});
+
+const pathToLink = (path) => {
+  return {
+    text: 'basics',
+    url: 'http://tddbin.com/#?kata=es6/language/template-strings/basics'
+  };
 };
