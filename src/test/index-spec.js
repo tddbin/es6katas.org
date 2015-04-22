@@ -46,6 +46,19 @@ describe('kata groups, from a list of paths', function() {
         assert.deepEqual(toKataGroups([inGroup1, alsoInGroup1]), expected)
       });
     });
+    describe('for two groups', function() {
+      it('two paths each', () => {
+        const group1Name = 'group1';
+        const group2Name = 'group2';
+        const paths1 = [`dir/${group1Name}/file.js`, `dir/${group1Name}/file1.js`];
+        const paths2 = [`dir/${group2Name}/file2.js`, `dir/${group2Name}/file3.js`];
+        const expected = {
+          [group1Name]: paths1,
+          [group2Name]: paths2
+        };
+        assert.deepEqual(toKataGroups([...paths1, ...paths2]), expected)
+      });
+    });
   });
 });
 
