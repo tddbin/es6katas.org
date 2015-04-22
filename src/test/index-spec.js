@@ -30,3 +30,16 @@ describe('convert github data', function() {
 const getPathList = (githubJson) => {
   return githubJson.items.map((item) => item.path);
 };
+
+describe('kata groups, from a list of paths', function() {
+  it('use the last directory as the group name', function() {
+    const path = 'sub/dir/file.js';
+    const paths = [path];
+    
+    assert.deepEqual(toKataGroups(paths), {dir: [path]});
+  });
+});
+
+const toKataGroups = (paths) => {
+  return {dir: paths};
+};
