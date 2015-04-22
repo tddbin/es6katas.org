@@ -76,7 +76,7 @@ const toKataGroups = (paths) => {
 };
 
 describe('generate the kata link from a path', function() {
-  it('', function() {
+  it('do it', function() {
     const path = 'katas/es6/language/template-strings/basics.js';
     const link = {
       text: 'basics',
@@ -88,8 +88,10 @@ describe('generate the kata link from a path', function() {
 });
 
 const pathToLink = (path) => {
+  const kata = path.replace(/^katas\//, '').replace(/\.js$/, '');
+  const text = kata.split('/').reverse()[0];
   return {
-    text: 'basics',
-    url: 'http://tddbin.com/#?kata=es6/language/template-strings/basics'
+    text: text,
+    url: `http://tddbin.com/#?kata=${kata}`
   };
 };
