@@ -32,14 +32,24 @@ const getPathList = (githubJson) => {
 };
 
 describe('kata groups, from a list of paths', function() {
-  it('use the last directory as the group name', function() {
-    const path = 'sub/dir/file.js';
-    const paths = [path];
-    
-    assert.deepEqual(toKataGroups(paths), {dir: [path]});
+  describe('use the last directory as the group name', function() {
+    describe('for one group', function() {
+      var groupName = 'group1';
+      const inGroup1 = `dir/${groupName}/file.js`;
+      const alsoInGroup1 = `dir/${groupName}/file1.js`;
+      it('one path', () => {
+        const expected = {[groupName]: [inGroup1]};
+        assert.deepEqual(toKataGroups([inGroup1]), expected)
+      });
+      it('for two paths', () => {
+        const expected = {[groupName]: [inGroup1, alsoInGroup1]};
+        assert.deepEqual(toKataGroups([inGroup1, alsoInGroup1]), expected)
+      });
+    });
   });
 });
 
 const toKataGroups = (paths) => {
-  return {dir: paths};
+  const groupName = paths[0].split('/').reverse()[1];
+  return {[groupName]: paths};
 };
