@@ -1,16 +1,10 @@
 import assert from 'assert';
 
-describe('tests run', function() {
-  it('should', function() {
-    assert.equal(1, 1);
-  });
-});
-
 /**
  x get out all paths out of the JSON
  x group the katas
  - sort the kata groups (somehow???)
- - generate the tddbin link object
+ x generate the tddbin link object
 */
 
 describe('convert github data', function() {
