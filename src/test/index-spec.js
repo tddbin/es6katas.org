@@ -48,10 +48,11 @@ describe('kata groups, from a list of paths', function() {
     });
     describe('for two groups', function() {
       it('two paths each', () => {
-        const group1Name = 'group1';
-        const group2Name = 'group2';
+        const group1Name = 'groupA';
+        const group2Name = 'groupB';
         const paths1 = [`dir/${group1Name}/file.js`, `dir/${group1Name}/file1.js`];
         const paths2 = [`dir/${group2Name}/file2.js`, `dir/${group2Name}/file3.js`];
+        
         const expected = {
           [group1Name]: paths1,
           [group2Name]: paths2
@@ -63,6 +64,13 @@ describe('kata groups, from a list of paths', function() {
 });
 
 const toKataGroups = (paths) => {
-  const groupName = paths[0].split('/').reverse()[1];
-  return {[groupName]: paths};
+  let groups = {};
+  paths.forEach((path) => {
+    const groupName = path.split('/').reverse()[1];
+    if (!groups[groupName]) {
+      groups[groupName] = [];
+    }
+    groups[groupName].push(path);
+  });
+  return groups;
 };
