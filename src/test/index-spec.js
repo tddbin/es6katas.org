@@ -28,5 +28,5 @@ describe('convert github data', function() {
 });
 
 const getPathList = (githubJson) => {
-  return ['path1', 'path2', 'path3'];
+  return githubJson.items.map((item) => item.path);
 };
