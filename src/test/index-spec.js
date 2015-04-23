@@ -1,4 +1,5 @@
 import assert from 'assert';
+import {getPathList, toKataGroups, pathToLink} from '../index.js';
 
 /**
  x get out all paths out of the JSON
@@ -20,10 +21,6 @@ describe('convert github data', function() {
     assert.deepEqual(getPathList(githubJson), ['path1', 'path2', 'path3']);
   });
 });
-
-const getPathList = (githubJson) => {
-  return githubJson.items.map((item) => item.path);
-};
 
 describe('kata groups, from a list of paths', function() {
   describe('use the last directory as the group name', function() {
@@ -57,18 +54,6 @@ describe('kata groups, from a list of paths', function() {
   });
 });
 
-const toKataGroups = (paths) => {
-  let groups = {};
-  paths.forEach((path) => {
-    const groupName = path.split('/').reverse()[1];
-    if (!groups[groupName]) {
-      groups[groupName] = [];
-    }
-    groups[groupName].push(path);
-  });
-  return groups;
-};
-
 describe('generate the kata link from a path', function() {
   it('do it', function() {
     const path = 'katas/es6/language/template-strings/basics.js';
@@ -80,12 +65,3 @@ describe('generate the kata link from a path', function() {
     assert.deepEqual(pathToLink(path), link);
   });
 });
-
-const pathToLink = (path) => {
-  const kata = path.replace(/^katas\//, '').replace(/\.js$/, '');
-  const text = kata.split('/').reverse()[0];
-  return {
-    text: text,
-    url: `http://tddbin.com/#?kata=${kata}`
-  };
-};
