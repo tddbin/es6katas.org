@@ -28,15 +28,6 @@ export const toKataGroups = (paths) => {
   return groups;
 };
 
-export const pathToLink = (path) => {
-  const kata = path.replace(/^katas\//, '').replace(/\.js$/, '');
-  const text = kata.split('/').reverse()[0];
-  return {
-    text: text,
-    url: `http://tddbin.com/#?kata=${kata}`
-  };
-};
-
 import data from './for-offline/data.json';
 const loadFromFile = (onLoaded) => {
   const pathList = getPathList(data);

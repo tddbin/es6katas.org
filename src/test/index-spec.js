@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {getPathList, toKataGroups, pathToLink} from '../index.js';
+import {getPathList, toKataGroups} from '../index.js';
 
 /**
  x get out all paths out of the JSON
@@ -51,17 +51,5 @@ describe('kata groups, from a list of paths', function() {
         assert.deepEqual(toKataGroups([...paths1, ...paths2]), expected)
       });
     });
-  });
-});
-
-describe('generate the kata link from a path', function() {
-  it('do it', function() {
-    const path = 'katas/es6/language/template-strings/basics.js';
-    const link = {
-      text: 'basics',
-      url: 'http://tddbin.com/#?kata=es6/language/template-strings/basics'
-    };
-    
-    assert.deepEqual(pathToLink(path), link);
   });
 });
