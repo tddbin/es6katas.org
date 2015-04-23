@@ -3,12 +3,12 @@ import React from 'react';
 export default class Page extends React.Component {
 
   render() {
-    let {paths} = this.props;
+    let {kataGroups} = this.props;
     return (
       <div id="page-wrapper-only-for-react">
         <h1>ES6 Katas</h1>
         <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
-        <KataGroups groups={groupedPaths(paths)} />
+        <KataGroups groups={kataGroups} />
         <footer>an <a href="http://uxebu.com">uxebu</a> project, using <a href="http://tddbin.com">tddbin</a></footer>
       </div>
     );
@@ -18,36 +18,29 @@ export default class Page extends React.Component {
 class KataGroups extends React.Component {
   render() {
     const {groups} = this.props;
-    let ret = [];
-    for (let groupName in groups) {
-      ret.push(kataGroup(groupName, groups[groupName]));
-    }
-    return (<div>{ret}</div>);    
+    return (
+      <div>
+        {groups.map((group) => <KataGroup {...group}/>)}
+      </div>
+    );
   }
 }
 
-const kataGroup = (groupName, group) => {
-  return (
-    <div className="group">
-      <h2>{groupName}</h2>
-      {group.map(tddbinKataLink)}
-    </div>
-  );
-};
+class KataGroup extends React.Component {
+  render() {
+    const {name, kataLinks} = this.props;
+    return (
+      <div className="group">
+        <h2>{name}</h2>
+        {kataLinks.map((link) => <KataLink {...link}/>)}
+      </div>
+    );
+  }
+}
 
-const tddbinKataLink = (path) => {
-  const [group, sub] = path.replace('katas/es6/language/', '').split('/');
-  const link = `http://tddbin.com/#?kata=${path.replace('katas/', '').replace(/\.js$/, '')}`;
-  return <a href={link} target="_blank">{sub}</a>;
-};
-
-const groupedPaths = (paths) => {
-  let groups = {};
-  paths.forEach((path) => {
-    const groupName = path.split('/').reverse()[1];
-    if (!groups[groupName]) groups[groupName] = [];
-    groups[groupName].push(path);
-  });
-  return groups;
-};
-
+class KataLink extends React.Component {
+  render() {
+    const {url, text} = this.props;
+    return <a href={url}>{text}</a>;
+  }
+}
