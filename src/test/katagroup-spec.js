@@ -12,6 +12,6 @@ describe('kata group', function() {
     const kataLinks = [];
     const group = KataGroup.withLinks('', kataLinks);
     
-    assert.equal(group.kataLinks, kataLinks);
+    assert.deepEqual(group+'', kataLinks+'');
   });
 });
