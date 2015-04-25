@@ -1,6 +1,7 @@
 import React from 'react';
 //import {loadViaAjax} from './katas.js';
 import Page from './components/page.js';
+import KataLink from './katalink.js';
 
 const render = (err, kataGroups) => {
   if (err) {
@@ -36,10 +37,10 @@ const loadFromFile = (onLoaded) => {
   for (let group in groups) {
     sortedGroups.push({
       name: group,
-      kataLinks: groups[group].map((path) => pathToLink(path))
+      kataLinks: groups[group].map((path) => KataLink.fromPath(path))
     });
   }
   onLoaded(null, sortedGroups);
 };
-//loadFromFile(render);
+loadFromFile(render);
 
