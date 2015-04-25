@@ -2,7 +2,7 @@ import assert from 'assert';
 import GithubSearchResult from '../github-search-result.js';
 
 describe('create kata groups from the github search result', function() {
-  it('', function() {
+  xit('', function() {
     const githubJson = {
       items: [
         {path: "kata/group/file.js"},
