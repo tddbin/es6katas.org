@@ -1,14 +1,17 @@
 import React from 'react';
 import {loadViaNode} from './katas.js';
 import Page from './components/page.js';
+import GithubSearchResult from './github-search-result.js';
 
-const render = (err, paths) => {
+const render = (err, kataGroups) => {
   if (err) {
     console.log(err);
   } else {
-    const preRendered = React.renderToString(<Page paths={paths}/>);
+    const preRendered = React.renderToString(<Page kataGroups={kataGroups}/>);
     console.log(preRendered);
   }
 };
 
-loadViaNode(render);
+loadViaNode((err, data) => {
+  render(null, GithubSearchResult.fromJson(data).toKataGroups());
+});
