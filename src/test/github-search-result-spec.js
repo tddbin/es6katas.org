@@ -14,6 +14,6 @@ describe('create kata groups from the github search result', function() {
     const searchResult = GithubSearchResult.fromJson(githubJson);
     const kataGroups = searchResult.toKataGroups();
     
-    //assert.equal(kataGroups, '???');
+    assert.equal(kataGroups, '???');
   });
 });
