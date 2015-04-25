@@ -6,7 +6,7 @@ const githubUrl = `https://api.github.com/search/code?q=repo%3Atddbin%2Fkatas+la
 export const loadViaAjax = (onLoaded) => {
   ajax.get(githubUrl)
     .success((data) => {
-      onLoaded(null, extractPathOnly(data));
+      onLoaded(null, data);
     })
     .error((e, xhr) => {
       onLoaded(e);
@@ -22,10 +22,8 @@ export const loadViaNode = (cb) => {
   options.headers = {'User-Agent': ''}; // github wants a user agent header
   var request = https.request(options, function(res) {
     res.on('data', function(chunk) {data += chunk;});
-    res.on('end', function() {cb(null, extractPathOnly(JSON.parse(data)));})
+    res.on('end', function() {cb(null, JSON.parse(data));})
   });
   request.on('error', function(e) { cb(e); });
   request.end();
 };
-
-const extractPathOnly = (data) => data.items.map((item) => item.path);

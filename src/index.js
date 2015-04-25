@@ -1,5 +1,5 @@
 import React from 'react';
-//import {loadViaAjax} from './katas.js';
+import {loadViaAjax} from './katas.js';
 import Page from './components/page.js';
 import KataLink from './katalink.js';
 import KataGroup from './katagroup.js';
@@ -13,11 +13,13 @@ const render = (err, kataGroups) => {
   }
 };
 
-//loadViaAjax(render);
+loadViaAjax((err, data) => {
+  render(null, GithubSearchResult.fromJson(data).toKataGroups());
+});
 
-import data from './for-offline/data.json';
-const loadFromFile = (onLoaded) => {
-  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
-};
-loadFromFile(render);
+//import data from './for-offline/data.json';
+//const loadFromFile = (onLoaded) => {
+//  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
+//};
+//loadFromFile(render);
 
