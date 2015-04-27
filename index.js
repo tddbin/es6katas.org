@@ -186,7 +186,7 @@ function fromString (that, string, encoding) {
   var length = byteLength(string, encoding) | 0
   that = allocate(that, length)
 
-  that.write(string, encoding) | 0
+  that.write(string, encoding)
   return that
 }
 
@@ -287,7 +287,7 @@ function checked (length) {
     throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
                          'size: 0x' + kMaxLength.toString(16) + ' bytes')
   }
-  return length >>> 0
+  return length | 0
 }
 
 function SlowBuffer (subject, encoding) {
@@ -311,11 +311,20 @@ Buffer.compare = function compare (a, b) {
 
   var x = a.length
   var y = b.length
-  for (var i = 0, len = Math.min(x, y); i < len && a[i] === b[i]; i++) {}
+
+  var i = 0
+  var len = Math.min(x, y)
+  while (i < len) {
+    if (a[i] !== b[i]) break
+
+    ++i
+  }
+
   if (i !== len) {
     x = a[i]
     y = b[i]
   }
+
   if (x < y) return -1
   if (y < x) return 1
   return 0
@@ -403,8 +412,8 @@ Buffer.prototype.parent = undefined
 Buffer.prototype.toString = function toString (encoding, start, end) {
   var loweredCase = false
 
-  start = start >>> 0
-  end = end === undefined || end === Infinity ? this.length : end >>> 0
+  start = start | 0
+  end = end === undefined || end === Infinity ? this.length : end | 0
 
   if (!encoding) encoding = 'utf8'
   if (start < 0) start = 0
@@ -578,9 +587,9 @@ Buffer.prototype.write = function write (string, offset, length, encoding) {
     offset = 0
   // Buffer#write(string, offset[, length][, encoding])
   } else if (isFinite(offset)) {
-    offset = offset >>> 0
+    offset = offset | 0
     if (isFinite(length)) {
-      length = length >>> 0
+      length = length | 0
       if (encoding === undefined) encoding = 'utf8'
     } else {
       encoding = length
@@ -590,7 +599,7 @@ Buffer.prototype.write = function write (string, offset, length, encoding) {
   } else {
     var swap = encoding
     encoding = offset
-    offset = length >>> 0
+    offset = length | 0
     length = swap
   }
 
@@ -757,8 +766,8 @@ function checkOffset (offset, ext, length) {
 }
 
 Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
+  offset = offset | 0
+  byteLength = byteLength | 0
   if (!noAssert) checkOffset(offset, byteLength, this.length)
 
   var val = this[offset]
@@ -772,8 +781,8 @@ Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert)
 }
 
 Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
+  offset = offset | 0
+  byteLength = byteLength | 0
   if (!noAssert) {
     checkOffset(offset, byteLength, this.length)
   }
@@ -821,8 +830,8 @@ Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
 }
 
 Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
+  offset = offset | 0
+  byteLength = byteLength | 0
   if (!noAssert) checkOffset(offset, byteLength, this.length)
 
   var val = this[offset]
@@ -839,8 +848,8 @@ Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
 }
 
 Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
+  offset = offset | 0
+  byteLength = byteLength | 0
   if (!noAssert) checkOffset(offset, byteLength, this.length)
 
   var i = byteLength
@@ -920,15 +929,15 @@ function checkInt (buf, value, offset, ext, max, min) {
 
 Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
+  offset = offset | 0
+  byteLength = byteLength | 0
   if (!noAssert) checkInt(this, value, offset, byteLength, Math.pow(2, 8 * byteLength), 0)
 
   var mul = 1
   var i = 0
   this[offset] = value & 0xFF
   while (++i < byteLength && (mul *= 0x100)) {
-    this[offset + i] = (value / mul) >>> 0 & 0xFF
+    this[offset + i] = (value / mul) & 0xFF
   }
 
   return offset + byteLength
@@ -936,15 +945,15 @@ Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, 
 
 Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
+  offset = offset | 0
+  byteLength = byteLength | 0
   if (!noAssert) checkInt(this, value, offset, byteLength, Math.pow(2, 8 * byteLength), 0)
 
   var i = byteLength - 1
   var mul = 1
   this[offset + i] = value & 0xFF
   while (--i >= 0 && (mul *= 0x100)) {
-    this[offset + i] = (value / mul) >>> 0 & 0xFF
+    this[offset + i] = (value / mul) & 0xFF
   }
 
   return offset + byteLength
@@ -952,7 +961,7 @@ Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, 
 
 Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
   if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
   this[offset] = value
@@ -969,7 +978,7 @@ function objectWriteUInt16 (buf, value, offset, littleEndian) {
 
 Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = value
@@ -982,7 +991,7 @@ Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert
 
 Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = (value >>> 8)
@@ -1002,7 +1011,7 @@ function objectWriteUInt32 (buf, value, offset, littleEndian) {
 
 Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset + 3] = (value >>> 24)
@@ -1017,7 +1026,7 @@ Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert
 
 Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = (value >>> 24)
@@ -1032,13 +1041,11 @@ Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert
 
 Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) {
-    checkInt(
-      this, value, offset, byteLength,
-      Math.pow(2, 8 * byteLength - 1) - 1,
-      -Math.pow(2, 8 * byteLength - 1)
-    )
+    var limit = Math.pow(2, 8 * byteLength - 1)
+
+    checkInt(this, value, offset, byteLength, limit - 1, -limit)
   }
 
   var i = 0
@@ -1054,13 +1061,11 @@ Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, no
 
 Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) {
-    checkInt(
-      this, value, offset, byteLength,
-      Math.pow(2, 8 * byteLength - 1) - 1,
-      -Math.pow(2, 8 * byteLength - 1)
-    )
+    var limit = Math.pow(2, 8 * byteLength - 1)
+
+    checkInt(this, value, offset, byteLength, limit - 1, -limit)
   }
 
   var i = byteLength - 1
@@ -1076,7 +1081,7 @@ Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, no
 
 Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
   if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
   if (value < 0) value = 0xff + value + 1
@@ -1086,7 +1091,7 @@ Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
 
 Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = value
@@ -1099,7 +1104,7 @@ Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) 
 
 Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = (value >>> 8)
@@ -1112,7 +1117,7 @@ Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) 
 
 Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = value
@@ -1127,7 +1132,7 @@ Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) 
 
 Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {
   value = +value
-  offset = offset >>> 0
+  offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
   if (value < 0) value = 0xffffffff + value + 1
   if (Buffer.TYPED_ARRAY_SUPPORT) {
@@ -1180,11 +1185,11 @@ Buffer.prototype.writeDoubleBE = function writeDoubleBE (value, offset, noAssert
 }
 
 // copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)
-Buffer.prototype.copy = function copy (target, target_start, start, end) {
+Buffer.prototype.copy = function copy (target, targetStart, start, end) {
   if (!start) start = 0
   if (!end && end !== 0) end = this.length
-  if (target_start >= target.length) target_start = target.length
-  if (!target_start) target_start = 0
+  if (targetStart >= target.length) targetStart = target.length
+  if (!targetStart) targetStart = 0
   if (end > 0 && end < start) end = start
 
   // Copy 0 bytes; we're done
@@ -1192,7 +1197,7 @@ Buffer.prototype.copy = function copy (target, target_start, start, end) {
   if (target.length === 0 || this.length === 0) return 0
 
   // Fatal error conditions
-  if (target_start < 0) {
+  if (targetStart < 0) {
     throw new RangeError('targetStart out of bounds')
   }
   if (start < 0 || start >= this.length) throw new RangeError('sourceStart out of bounds')
@@ -1200,18 +1205,18 @@ Buffer.prototype.copy = function copy (target, target_start, start, end) {
 
   // Are we oob?
   if (end > this.length) end = this.length
-  if (target.length - target_start < end - start) {
-    end = target.length - target_start + start
+  if (target.length - targetStart < end - start) {
+    end = target.length - targetStart + start
   }
 
   var len = end - start
 
   if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
     for (var i = 0; i < len; i++) {
-      target[i + target_start] = this[i + start]
+      target[i + targetStart] = this[i + start]
     }
   } else {
-    target._set(this.subarray(start, start + len), target_start)
+    target._set(this.subarray(start, start + len), targetStart)
   }
 
   return len
@@ -26635,8 +26640,6 @@ module.exports = require('./lib/React');
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _slicedToArray = function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) { _arr.push(_step.value); if (i && _arr.length === i) break; } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } };
-
 var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
@@ -26659,11 +26662,11 @@ var Page = (function (_React$Component) {
   _createClass(Page, {
     render: {
       value: function render() {
-        var paths = this.props.paths;
+        var kataGroups = this.props.kataGroups;
 
         return React.createElement(
-          "div",
-          { id: "page-wrapper-only-for-react" },
+          "body",
+          null,
           React.createElement(
             "h1",
             null,
@@ -26674,7 +26677,7 @@ var Page = (function (_React$Component) {
             null,
             "Just learn a bit of ES6 daily, take one kata a day and fix it away."
           ),
-          React.createElement(KataGroups, { groups: groupedPaths(paths) }),
+          React.createElement(KataGroups, { groups: kataGroups }),
           React.createElement(
             "footer",
             null,
@@ -26690,7 +26693,8 @@ var Page = (function (_React$Component) {
               { href: "http://tddbin.com" },
               "tddbin"
             )
-          )
+          ),
+          React.createElement("script", { src: "./index.js", type: "application/javascript" })
         );
       }
     }
@@ -26717,14 +26721,12 @@ var KataGroups = (function (_React$Component2) {
       value: function render() {
         var groups = this.props.groups;
 
-        var ret = [];
-        for (var groupName in groups) {
-          ret.push(kataGroup(groupName, groups[groupName]));
-        }
         return React.createElement(
           "div",
           null,
-          ret
+          groups.map(function (group) {
+            return React.createElement(KataGroup, { group: group });
+          })
         );
       }
     }
@@ -26733,67 +26735,2445 @@ var KataGroups = (function (_React$Component2) {
   return KataGroups;
 })(React.Component);
 
-var kataGroup = function (groupName, group) {
-  return React.createElement(
-    "div",
-    { className: "group" },
-    React.createElement(
-      "h2",
-      null,
-      groupName
-    ),
-    group.map(tddbinKataLink)
-  );
-};
+var KataGroup = (function (_React$Component3) {
+  function KataGroup() {
+    _classCallCheck(this, KataGroup);
 
-var tddbinKataLink = function (path) {
-  var _path$replace$split = path.replace("katas/es6/language/", "").split("/");
+    if (_React$Component3 != null) {
+      _React$Component3.apply(this, arguments);
+    }
+  }
 
-  var _path$replace$split2 = _slicedToArray(_path$replace$split, 2);
+  _inherits(KataGroup, _React$Component3);
 
-  var group = _path$replace$split2[0];
-  var sub = _path$replace$split2[1];
-
-  var link = "http://tddbin.com/#?kata=" + path.replace("katas/", "").replace(/\.js$/, "");
-  return React.createElement(
-    "a",
-    { href: link, target: "_blank" },
-    sub
-  );
-};
-
-var groupedPaths = function (paths) {
-  var groups = {};
-  paths.forEach(function (path) {
-    var groupName = path.split("/").reverse()[1];
-    if (!groups[groupName]) groups[groupName] = [];
-    groups[groupName].push(path);
+  _createClass(KataGroup, {
+    render: {
+      value: function render() {
+        var name = this.props.group.name;
+        var group = this.props.group;
+        return React.createElement(
+          "div",
+          { className: "group" },
+          React.createElement(
+            "h2",
+            null,
+            name
+          ),
+          group.map(function (link) {
+            return React.createElement(KataLink, link);
+          })
+        );
+      }
+    }
   });
-  return groups;
-};
+
+  return KataGroup;
+})(React.Component);
+
+var KataLink = (function (_React$Component4) {
+  function KataLink() {
+    _classCallCheck(this, KataLink);
+
+    if (_React$Component4 != null) {
+      _React$Component4.apply(this, arguments);
+    }
+  }
+
+  _inherits(KataLink, _React$Component4);
+
+  _createClass(KataLink, {
+    render: {
+      value: function render() {
+        var _props = this.props;
+        var url = _props.url;
+        var text = _props.text;
+
+        return React.createElement(
+          "a",
+          { href: url },
+          text
+        );
+      }
+    }
+  });
+
+  return KataLink;
+})(React.Component);
 
 },{"react":190}],192:[function(require,module,exports){
+module.exports={
+  "total_count": 31,
+  "incomplete_results": false,
+  "items": [
+    {
+      "name": "basics.js",
+      "path": "katas/es6/language/object-literal/basics.js",
+      "sha": "8b30d97fb571de45b429c83bf81d3ac8351b5b5f",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/object-literal/basics.js?ref=188807637e68ef929cad92030e5905519b97d064",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/8b30d97fb571de45b429c83bf81d3ac8351b5b5f",
+      "html_url": "https://github.com/tddbin/katas/blob/188807637e68ef929cad92030e5905519b97d064/katas/es6/language/object-literal/basics.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "array.js",
+      "path": "katas/es6/language/destructuring/array.js",
+      "sha": "9277bb741a709eefe1c63570bf0cf727d5e4c435",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/destructuring/array.js?ref=c040926b92b868f0842be200d325e58533bccee7",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/9277bb741a709eefe1c63570bf0cf727d5e4c435",
+      "html_url": "https://github.com/tddbin/katas/blob/c040926b92b868f0842be200d325e58533bccee7/katas/es6/language/destructuring/array.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "basics.js",
+      "path": "katas/es6/language/arrow-functions/basics.js",
+      "sha": "972dea37a110f8c5ae010eb03cf94b5ab3884476",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/arrow-functions/basics.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/972dea37a110f8c5ae010eb03cf94b5ab3884476",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/arrow-functions/basics.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "binding.js",
+      "path": "katas/es6/language/arrow-functions/binding.js",
+      "sha": "424eefee74e1bf504a9ba124785e9f23d998786e",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/arrow-functions/binding.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/424eefee74e1bf504a9ba124785e9f23d998786e",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/arrow-functions/binding.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "const.js",
+      "path": "katas/es6/language/block-scoping/const.js",
+      "sha": "99e37f579cd6520143cc2c2dc06ac68b863d6264",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/block-scoping/const.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/99e37f579cd6520143cc2c2dc06ac68b863d6264",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/block-scoping/const.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "let.js",
+      "path": "katas/es6/language/block-scoping/let.js",
+      "sha": "5c113be4c17ba44a39a8df449b42d3fee48d155a",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/block-scoping/let.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/5c113be4c17ba44a39a8df449b42d3fee48d155a",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/block-scoping/let.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "basics.js",
+      "path": "katas/es6/language/template-strings/basics.js",
+      "sha": "a8c0226acbe8846cf519db30e44932c46e5d7846",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/template-strings/basics.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/a8c0226acbe8846cf519db30e44932c46e5d7846",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/template-strings/basics.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "multiline.js",
+      "path": "katas/es6/language/template-strings/multiline.js",
+      "sha": "8911b7bf55ffd80c8ae282a1d5c31a231dcbdc08",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/template-strings/multiline.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/8911b7bf55ffd80c8ae282a1d5c31a231dcbdc08",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/template-strings/multiline.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "raw.js",
+      "path": "katas/es6/language/template-strings/raw.js",
+      "sha": "465c9be3b02ea403481047c079e308f93e783048",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/template-strings/raw.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/465c9be3b02ea403481047c079e308f93e783048",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/template-strings/raw.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "tagged.js",
+      "path": "katas/es6/language/template-strings/tagged.js",
+      "sha": "712c133c90c913a9db412bcf4598d09f198eb116",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/template-strings/tagged.js?ref=05f6fa727cd27c835b5fbe1036772079220ac740",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/712c133c90c913a9db412bcf4598d09f198eb116",
+      "html_url": "https://github.com/tddbin/katas/blob/05f6fa727cd27c835b5fbe1036772079220ac740/katas/es6/language/template-strings/tagged.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "object.js",
+      "path": "katas/es6/language/destructuring/object.js",
+      "sha": "9bfabe0b0019d3ac48ff692aa7de1a9a135e7dee",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/destructuring/object.js?ref=d0c08ec3d1bd509086c322d0b53847e637074fdc",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/9bfabe0b0019d3ac48ff692aa7de1a9a135e7dee",
+      "html_url": "https://github.com/tddbin/katas/blob/d0c08ec3d1bd509086c322d0b53847e637074fdc/katas/es6/language/destructuring/object.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "super-in-constructor.js",
+      "path": "katas/es6/language/class/super-in-constructor.js",
+      "sha": "f90ab988b501449f86e160eb258a3ef507ef2f51",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/super-in-constructor.js?ref=89e1f046808060f980adf0bbb0454c021c42d391",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/f90ab988b501449f86e160eb258a3ef507ef2f51",
+      "html_url": "https://github.com/tddbin/katas/blob/89e1f046808060f980adf0bbb0454c021c42d391/katas/es6/language/class/super-in-constructor.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "super-in-method.js",
+      "path": "katas/es6/language/class/super-in-method.js",
+      "sha": "821ed19324a28196e5bea8a34538beb56d9baa12",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/super-in-method.js?ref=89e1f046808060f980adf0bbb0454c021c42d391",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/821ed19324a28196e5bea8a34538beb56d9baa12",
+      "html_url": "https://github.com/tddbin/katas/blob/89e1f046808060f980adf0bbb0454c021c42d391/katas/es6/language/class/super-in-method.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "computed-properties.js",
+      "path": "katas/es6/language/object-literal/computed-properties.js",
+      "sha": "b58eb9ef7b0e79e0d897fc1870b3f59f4f87616f",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/object-literal/computed-properties.js?ref=644787bd757ed6b47f17e721b624a9d5ff484f30",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/b58eb9ef7b0e79e0d897fc1870b3f59f4f87616f",
+      "html_url": "https://github.com/tddbin/katas/blob/644787bd757ed6b47f17e721b624a9d5ff484f30/katas/es6/language/object-literal/computed-properties.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "defaults.js",
+      "path": "katas/es6/language/destructuring/defaults.js",
+      "sha": "099fe9660b4ec71b78e9cd983717ae5b160e1671",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/destructuring/defaults.js?ref=097225a59403347c2b49dac2020b2cad63758019",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/099fe9660b4ec71b78e9cd983717ae5b160e1671",
+      "html_url": "https://github.com/tddbin/katas/blob/097225a59403347c2b49dac2020b2cad63758019/katas/es6/language/destructuring/defaults.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "as-parameter.js",
+      "path": "katas/es6/language/rest/as-parameter.js",
+      "sha": "57f608e0d111138c78a23e7f68e2170d4b0145e2",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/rest/as-parameter.js?ref=178e4a3b0b6a42fbefe9e1dea4d6dbbf290c6d96",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/57f608e0d111138c78a23e7f68e2170d4b0145e2",
+      "html_url": "https://github.com/tddbin/katas/blob/178e4a3b0b6a42fbefe9e1dea4d6dbbf290c6d96/katas/es6/language/rest/as-parameter.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "in-strings.js",
+      "path": "katas/es6/language/unicode/in-strings.js",
+      "sha": "a86f61d6d5c29cab7bc82c898b74c28fd3f431ba",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/unicode/in-strings.js?ref=42831f5ea19bea62bd1ecee837befc9e82f67401",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/a86f61d6d5c29cab7bc82c898b74c28fd3f431ba",
+      "html_url": "https://github.com/tddbin/katas/blob/42831f5ea19bea62bd1ecee837befc9e82f67401/katas/es6/language/unicode/in-strings.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "with-strings.js",
+      "path": "katas/es6/language/spread/with-strings.js",
+      "sha": "5b86189ed12419e865e53e2a18e9dab2e264db2b",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/spread/with-strings.js?ref=13063a7b1d6c20edf27f8217ae42851fabbf30f2",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/5b86189ed12419e865e53e2a18e9dab2e264db2b",
+      "html_url": "https://github.com/tddbin/katas/blob/13063a7b1d6c20edf27f8217ae42851fabbf30f2/katas/es6/language/spread/with-strings.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "parameters.js",
+      "path": "katas/es6/language/destructuring/parameters.js",
+      "sha": "acc63edae510fecc6cc1fc2bd4189775a3838246",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/destructuring/parameters.js?ref=9d5f81da25189aca41cb0ca554a220ab3b07e718",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/acc63edae510fecc6cc1fc2bd4189775a3838246",
+      "html_url": "https://github.com/tddbin/katas/blob/9d5f81da25189aca41cb0ca554a220ab3b07e718/katas/es6/language/destructuring/parameters.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "rename.js",
+      "path": "katas/es6/language/destructuring/rename.js",
+      "sha": "f7e188650dcc82e0fbe39ae51cbf15d60866c5f8",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/destructuring/rename.js?ref=cb012beb761317502377a4d2fdb673c9d0f9ddd9",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/f7e188650dcc82e0fbe39ae51cbf15d60866c5f8",
+      "html_url": "https://github.com/tddbin/katas/blob/cb012beb761317502377a4d2fdb673c9d0f9ddd9/katas/es6/language/destructuring/rename.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "string.js",
+      "path": "katas/es6/language/destructuring/string.js",
+      "sha": "84ddcebfa4b9e632bd01e2142e048cbda6fa3d3c",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/destructuring/string.js?ref=169824100f88f017d1793b70a69198a8f9047fe3",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/84ddcebfa4b9e632bd01e2142e048cbda6fa3d3c",
+      "html_url": "https://github.com/tddbin/katas/blob/169824100f88f017d1793b70a69198a8f9047fe3/katas/es6/language/destructuring/string.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "with-destructuring.js",
+      "path": "katas/es6/language/rest/with-destructuring.js",
+      "sha": "ff2e3119a2856192f9b32cefa34d964e340c9602",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/rest/with-destructuring.js?ref=e4874af75ad0ebbf03653f81075c9fdf2e219352",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/ff2e3119a2856192f9b32cefa34d964e340c9602",
+      "html_url": "https://github.com/tddbin/katas/blob/e4874af75ad0ebbf03653f81075c9fdf2e219352/katas/es6/language/rest/with-destructuring.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "with-arrays.js",
+      "path": "katas/es6/language/spread/with-arrays.js",
+      "sha": "b7a9a1990d24561d5effb3e762787b9bbc5bb210",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/spread/with-arrays.js?ref=e4874af75ad0ebbf03653f81075c9fdf2e219352",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/b7a9a1990d24561d5effb3e762787b9bbc5bb210",
+      "html_url": "https://github.com/tddbin/katas/blob/e4874af75ad0ebbf03653f81075c9fdf2e219352/katas/es6/language/spread/with-arrays.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "static.js",
+      "path": "katas/es6/language/class/static.js",
+      "sha": "191be84a2886501513de06f9789620618933ada6",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/static.js?ref=b36064a2077f7f5faa5d649fc28e376c1f56bbda",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/191be84a2886501513de06f9789620618933ada6",
+      "html_url": "https://github.com/tddbin/katas/blob/b36064a2077f7f5faa5d649fc28e376c1f56bbda/katas/es6/language/class/static.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "extends.js",
+      "path": "katas/es6/language/class/extends.js",
+      "sha": "ee43722796e6fddd6d806692f6b9d104fbee8655",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/extends.js?ref=65259cbc89a319d09dcc653834e3e5d6ed0cf958",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/ee43722796e6fddd6d806692f6b9d104fbee8655",
+      "html_url": "https://github.com/tddbin/katas/blob/65259cbc89a319d09dcc653834e3e5d6ed0cf958/katas/es6/language/class/extends.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "more-extends.js",
+      "path": "katas/es6/language/class/more-extends.js",
+      "sha": "0ac894efd7332950c210ac7ab616247ddfd56ca3",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/more-extends.js?ref=7cdd68841da54c36028d679d94905386ef886d71",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/0ac894efd7332950c210ac7ab616247ddfd56ca3",
+      "html_url": "https://github.com/tddbin/katas/blob/7cdd68841da54c36028d679d94905386ef886d71/katas/es6/language/class/more-extends.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "creation.js",
+      "path": "katas/es6/language/class/creation.js",
+      "sha": "97a81ad27ca630b277be17720bbd95ea07721525",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/creation.js?ref=e583d4ebd5433dade0185b96debff5dc7531bc56",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/97a81ad27ca630b277be17720bbd95ea07721525",
+      "html_url": "https://github.com/tddbin/katas/blob/e583d4ebd5433dade0185b96debff5dc7531bc56/katas/es6/language/class/creation.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "accessors.js",
+      "path": "katas/es6/language/class/accessors.js",
+      "sha": "1729cc40d6150598487c7cea87e2e21ae9bd0c1a",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/class/accessors.js?ref=64b8a9f2cbe285b3eaf83ef4739f8d1c938c325f",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/1729cc40d6150598487c7cea87e2e21ae9bd0c1a",
+      "html_url": "https://github.com/tddbin/katas/blob/64b8a9f2cbe285b3eaf83ef4739f8d1c938c325f/katas/es6/language/class/accessors.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "from.js",
+      "path": "katas/es6/language/array-api/from.js",
+      "sha": "1b456bda0aab9e8bf2c62a08309da4fbb0938810",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/array-api/from.js?ref=e46bc3d8e93d4abc4ac60e331b435ab03e86c0c7",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/1b456bda0aab9e8bf2c62a08309da4fbb0938810",
+      "html_url": "https://github.com/tddbin/katas/blob/e46bc3d8e93d4abc4ac60e331b435ab03e86c0c7/katas/es6/language/array-api/from.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    },
+    {
+      "name": "of.js",
+      "path": "katas/es6/language/array-api/of.js",
+      "sha": "ba2dc220df455f1034a2b4c35c7fc4cabfd6f04e",
+      "url": "https://api.github.com/repositories/31563726/contents/katas/es6/language/array-api/of.js?ref=565f92b0d46f88e1049b07af3533d9999937e0fe",
+      "git_url": "https://api.github.com/repositories/31563726/git/blobs/ba2dc220df455f1034a2b4c35c7fc4cabfd6f04e",
+      "html_url": "https://github.com/tddbin/katas/blob/565f92b0d46f88e1049b07af3533d9999937e0fe/katas/es6/language/array-api/of.js",
+      "repository": {
+        "id": 31563726,
+        "name": "katas",
+        "full_name": "tddbin/katas",
+        "owner": {
+          "login": "tddbin",
+          "id": 11061816,
+          "avatar_url": "https://avatars.githubusercontent.com/u/11061816?v=3",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/tddbin",
+          "html_url": "https://github.com/tddbin",
+          "followers_url": "https://api.github.com/users/tddbin/followers",
+          "following_url": "https://api.github.com/users/tddbin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/tddbin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/tddbin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/tddbin/subscriptions",
+          "organizations_url": "https://api.github.com/users/tddbin/orgs",
+          "repos_url": "https://api.github.com/users/tddbin/repos",
+          "events_url": "https://api.github.com/users/tddbin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/tddbin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "private": false,
+        "html_url": "https://github.com/tddbin/katas",
+        "description": "Service providing katas that can be loaded into tddbin.com.",
+        "fork": false,
+        "url": "https://api.github.com/repos/tddbin/katas",
+        "forks_url": "https://api.github.com/repos/tddbin/katas/forks",
+        "keys_url": "https://api.github.com/repos/tddbin/katas/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/tddbin/katas/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/tddbin/katas/teams",
+        "hooks_url": "https://api.github.com/repos/tddbin/katas/hooks",
+        "issue_events_url": "https://api.github.com/repos/tddbin/katas/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/tddbin/katas/events",
+        "assignees_url": "https://api.github.com/repos/tddbin/katas/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/tddbin/katas/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/tddbin/katas/tags",
+        "blobs_url": "https://api.github.com/repos/tddbin/katas/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/tddbin/katas/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/tddbin/katas/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/tddbin/katas/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/tddbin/katas/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/tddbin/katas/languages",
+        "stargazers_url": "https://api.github.com/repos/tddbin/katas/stargazers",
+        "contributors_url": "https://api.github.com/repos/tddbin/katas/contributors",
+        "subscribers_url": "https://api.github.com/repos/tddbin/katas/subscribers",
+        "subscription_url": "https://api.github.com/repos/tddbin/katas/subscription",
+        "commits_url": "https://api.github.com/repos/tddbin/katas/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/tddbin/katas/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/tddbin/katas/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/tddbin/katas/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/tddbin/katas/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/tddbin/katas/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/tddbin/katas/merges",
+        "archive_url": "https://api.github.com/repos/tddbin/katas/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/tddbin/katas/downloads",
+        "issues_url": "https://api.github.com/repos/tddbin/katas/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/tddbin/katas/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/tddbin/katas/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/tddbin/katas/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/tddbin/katas/labels{/name}",
+        "releases_url": "https://api.github.com/repos/tddbin/katas/releases{/id}"
+      },
+      "score": 1.0
+    }
+  ]
+}
+
+},{}],193:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var React = _interopRequire(require("react"));
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-var loadViaAjax = require("./katas.js").loadViaAjax;
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var Page = _interopRequire(require("./components/page.js"));
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var render = function (err, paths) {
-  if (err) {
-    console.log(err);
-  } else {
-    React.render(React.createElement(Page, { paths: paths }), document.body);
+var KataGroup = _interopRequire(require("./katagroup.js"));
+
+var KataLink = _interopRequire(require("./katalink.js"));
+
+var GithubSearchResult = (function () {
+  function GithubSearchResult() {
+    _classCallCheck(this, GithubSearchResult);
   }
+
+  _createClass(GithubSearchResult, null, {
+    toKataGroups: {
+      value: function toKataGroups(githubJson) {
+        return KataGroups.fromObject(fromGithubJsonToKataGroups(githubJson));
+      }
+    }
+  });
+
+  return GithubSearchResult;
+})();
+
+module.exports = GithubSearchResult;
+
+var KataGroups = (function (_Array) {
+  function KataGroups() {
+    _classCallCheck(this, KataGroups);
+
+    if (_Array != null) {
+      _Array.apply(this, arguments);
+    }
+  }
+
+  _inherits(KataGroups, _Array);
+
+  _createClass(KataGroups, null, {
+    fromObject: {
+      value: function fromObject(obj) {
+        var groups = new KataGroups();
+        for (var key in obj) {
+          groups.push(obj[key]);
+        }
+        return groups;
+      }
+    }
+  });
+
+  return KataGroups;
+})(Array);
+
+function getPathListFromGithubJson(githubJson) {
+  return githubJson.items.map(function (item) {
+    return item.path;
+  });
+}
+
+function fromGithubJsonToKataGroups(githubJson) {
+  var paths = getPathListFromGithubJson(githubJson);
+  return paths.map(parsePath).reduce(createGroups, {});
+}
+
+function parsePath(path) {
+  var groupName = path.split("/").reverse()[1];
+  return {
+    groupName: groupName,
+    path: path
+  };
+}
+
+function createGroups(obj, path) {
+  var groupName = path.groupName;
+  if (!(groupName in obj)) {
+    obj[groupName] = KataGroup.withLinks(groupName);
+  }
+  obj[groupName].push(KataLink.fromPath(path.path));
+  return obj;
+}
+
+},{"./katagroup.js":195,"./katalink.js":196}],194:[function(require,module,exports){
+"use strict";
+
+var renderInBrowser = require("./render.js").renderInBrowser;
+
+renderInBrowser();
+
+},{"./render.js":198}],195:[function(require,module,exports){
+"use strict";
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var KataGroup = (function (_Array) {
+  function KataGroup() {
+    _classCallCheck(this, KataGroup);
+
+    if (_Array != null) {
+      _Array.apply(this, arguments);
+    }
+  }
+
+  _inherits(KataGroup, _Array);
+
+  _createClass(KataGroup, null, {
+    withLinks: {
+      value: function withLinks(name) {
+        var kataLinks = arguments[1] === undefined ? [] : arguments[1];
+
+        var group = new KataGroup();
+        group.name = name;
+        kataLinks.forEach(group.push);
+        return group;
+      }
+    }
+  });
+
+  return KataGroup;
+})(Array);
+
+module.exports = KataGroup;
+
+},{}],196:[function(require,module,exports){
+"use strict";
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var pathToLink = function (path) {
+  var kata = path.replace(/^katas\//, "").replace(/\.js$/, "");
+  var text = kata.split("/").reverse()[0];
+  return {
+    text: text,
+    url: "http://tddbin.com/#?kata=" + kata
+  };
 };
 
-loadViaAjax(render);
+var KataLink = (function () {
+  function KataLink() {
+    _classCallCheck(this, KataLink);
+  }
 
-},{"./components/page.js":191,"./katas.js":193,"react":190}],193:[function(require,module,exports){
+  _createClass(KataLink, null, {
+    fromPath: {
+      value: function fromPath(path) {
+        var link = new KataLink();
+
+        var _pathToLink = pathToLink(path);
+
+        var text = _pathToLink.text;
+        var url = _pathToLink.url;
+
+        link.text = text;
+        link.url = url;
+        return link;
+      }
+    }
+  });
+
+  return KataLink;
+})();
+
+module.exports = KataLink;
+
+},{}],197:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -26810,7 +29190,7 @@ var githubUrl = "https://api.github.com/search/code?q=repo%3Atddbin%2Fkatas+lang
 
 var loadViaAjax = function (onLoaded) {
   ajax.get(githubUrl).success(function (data) {
-    onLoaded(null, extractPathOnly(data));
+    onLoaded(null, data);
   }).error(function (e, xhr) {
     onLoaded(e);
   });
@@ -26822,7 +29202,7 @@ var https = _interopRequire(require("https"));
 
 var url = _interopRequire(require("url"));
 
-var loadViaNode = function (cb) {
+var loadViaNode = function (onLoaded) {
   var data = "";
   var options = url.parse(githubUrl);
   options.headers = { "User-Agent": "" }; // github wants a user agent header
@@ -26831,20 +29211,71 @@ var loadViaNode = function (cb) {
       data += chunk;
     });
     res.on("end", function () {
-      cb(null, extractPathOnly(JSON.parse(data)));
+      onLoaded(null, JSON.parse(data));
     });
   });
   request.on("error", function (e) {
-    cb(e);
+    onLoaded(e);
   });
   request.end();
 };
-
 exports.loadViaNode = loadViaNode;
-var extractPathOnly = function (data) {
-  return data.items.map(function (item) {
-    return item.path;
-  });
+
+},{"atomic":1,"https":12,"url":33}],198:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+exports.renderInBrowser = renderInBrowser;
+exports.renderOnServer = renderOnServer;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = _interopRequire(require("react"));
+
+var _katasJs = require("./katas.js");
+
+var loadViaAjax = _katasJs.loadViaAjax;
+var loadViaNode = _katasJs.loadViaNode;
+
+var Page = _interopRequire(require("./components/page.js"));
+
+var GithubSearchResult = _interopRequire(require("./github-search-result.js"));
+
+function githubJsonToKataGroups(githubJson) {
+  return GithubSearchResult.fromJson(githubJson).toKataGroups();
+}
+
+var _renderInBrowser = function (err, githubJson) {
+  if (err) {
+    console.log(err);
+  } else {
+    React.render(React.createElement(Page, { kataGroups: githubJsonToKataGroups(githubJson) }), document.querySelector("body"));
+  }
 };
 
-},{"atomic":1,"https":12,"url":33}]},{},[192]);
+var _renderOnServer = function (err, githubJson) {
+  if (err) {
+    console.log(err);
+  } else {
+    var preRendered = React.renderToStaticMarkup(React.createElement(Page, { kataGroups: githubJsonToKataGroups(githubJson) }));
+    console.log(preRendered);
+  }
+};
+
+var data = _interopRequire(require("./for-offline/data.json"));
+
+function loadFromFile(onLoaded) {
+  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
+}
+
+function renderInBrowser() {
+  loadViaAjax(_renderInBrowser);
+}
+
+function renderOnServer() {
+  loadViaNode(_renderOnServer);
+}
+
+},{"./components/page.js":191,"./for-offline/data.json":192,"./github-search-result.js":193,"./katas.js":197,"react":190}]},{},[194]);
