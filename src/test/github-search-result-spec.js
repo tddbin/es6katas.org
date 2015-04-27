@@ -2,8 +2,7 @@ import assert from 'assert';
 import GithubSearchResult from '../github-search-result.js';
 
 const fromGithubJsonToKataGroups = (githubJson) => {
-  const searchResult = GithubSearchResult.fromJson(githubJson);
-  return searchResult.toKataGroups();
+  return GithubSearchResult.toKataGroups(githubJson);
 };
 
 describe('create kata groups from the github search result', function() {
