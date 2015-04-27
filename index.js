@@ -29126,14 +29126,23 @@ var KataGroup = (function (_Array) {
 
   _inherits(KataGroup, _Array);
 
-  _createClass(KataGroup, null, {
+  _createClass(KataGroup, {
+    sortByText: {
+      value: function sortByText() {
+        this.sort();
+      }
+    }
+  }, {
     withLinks: {
       value: function withLinks(name) {
         var kataLinks = arguments[1] === undefined ? [] : arguments[1];
 
         var group = new KataGroup();
         group.name = name;
-        kataLinks.forEach(group.push);
+        kataLinks.forEach(function (g) {
+          group.push(g);
+        });
+        group.sortByText();
         return group;
       }
     }
