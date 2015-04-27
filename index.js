@@ -29244,7 +29244,7 @@ var Page = _interopRequire(require("./components/page.js"));
 var GithubSearchResult = _interopRequire(require("./github-search-result.js"));
 
 function githubJsonToKataGroups(githubJson) {
-  return GithubSearchResult.fromJson(githubJson).toKataGroups();
+  return GithubSearchResult.toKataGroups(githubJson);
 }
 
 var _renderInBrowser = function (err, githubJson) {
@@ -29267,7 +29267,7 @@ var _renderOnServer = function (err, githubJson) {
 var data = _interopRequire(require("./for-offline/data.json"));
 
 function loadFromFile(onLoaded) {
-  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
+  onLoaded(null, githubJsonToKataGroups(data));
 }
 
 function renderInBrowser() {
