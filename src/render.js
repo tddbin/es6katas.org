@@ -1,41 +1,39 @@
 import React from 'react';
-import {loadViaAjax} from './katas.js';
+import {loadViaAjax, loadViaNode} from './katas.js';
 import Page from './components/page.js';
 import GithubSearchResult from './github-search-result.js';
 
-const render = (err, kataGroups) => {
+function githubJsonToKataGroups(githubJson) {
+  return GithubSearchResult.fromJson(githubJson).toKataGroups();
+}
+
+const _renderInBrowser = (err, githubJson) => {
   if (err) {
     console.log(err);
   } else {
-    React.render(<Page kataGroups={kataGroups}/>, document.querySelector('body'));
+    React.render(<Page kataGroups={githubJsonToKataGroups(githubJson)}/>, document.querySelector('body'));
   }
 };
 
-//loadViaAjax((err, data) => {
-//  render(null, GithubSearchResult.fromJson(data).toKataGroups());
-//});
-
-const renderOnServer = (err, kataGroups) => {
+const _renderOnServer = (err, githubJson) => {
   if (err) {
     console.log(err);
   } else {
-    const preRendered = React.renderToStaticMarkup(<Page kataGroups={kataGroups}/>);
+    const preRendered = React.renderToStaticMarkup(<Page kataGroups={githubJsonToKataGroups(githubJson)}/>);
     console.log(preRendered);
   }
 };
 
-//loadViaNode((err, data) => {
-//  render(null, GithubSearchResult.fromJson(data).toKataGroups());
-//});
 
 import data from './for-offline/data.json';
-const loadFromFile = (onLoaded) => {
+function loadFromFile(onLoaded) {
   onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
-};
+}
+
 export function renderInBrowser() {
-  loadFromFile(render);
+  loadViaAjax(_renderInBrowser);
 }
 
 export function renderOnServer() {
-  loadFromFile(renderOnServer);
+  loadViaNode(_renderOnServer);
 }
