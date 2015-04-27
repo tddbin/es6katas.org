@@ -5,14 +5,6 @@ export default class Page extends React.Component {
   render() {
     let {kataGroups} = this.props;
     return (
-      <html lang="en">
-      <head>
-        <title>ES6 katas</title>
-        <meta charSet="utf-8"/>
-        <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'/>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
-      </head>
       <body>
         <h1>ES6 Katas</h1>
         <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
@@ -20,7 +12,6 @@ export default class Page extends React.Component {
         <footer>an <a href="http://uxebu.com">uxebu</a> project, using <a href="http://tddbin.com">tddbin</a></footer>
         <script src="./index.js" type="application/javascript"></script>
       </body>
-      </html>
     );
   }
 }

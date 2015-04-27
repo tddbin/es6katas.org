@@ -7,7 +7,7 @@ const render = (err, kataGroups) => {
   if (err) {
     console.log(err);
   } else {
-    React.render(<Page kataGroups={kataGroups}/>, document.querySelector('html'));
+    React.render(<Page kataGroups={kataGroups}/>, document.querySelector('body'));
   }
 };
 
