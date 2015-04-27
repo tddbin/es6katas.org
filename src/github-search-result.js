@@ -15,7 +15,12 @@ class KataGroups extends Array {
     for (let key in obj) {
       groups.push(obj[key]);
     }
+    groups.sortByNumberOfLinks();
     return groups;
+  }
+  
+  sortByNumberOfLinks() {
+    this.sort((group, group1) => group1.length - group.length);
   }
   
 }

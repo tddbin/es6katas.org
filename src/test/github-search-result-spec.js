@@ -44,3 +44,19 @@ describe('create kata groups from the github search result', function() {
     assert.equal(kataGroups, 2);
   });
 });
+
+describe('sort kata groups', function() {
+  it('by number of files inside group', function() {
+    const githubJson = {
+      items: [
+        {path: "kata/group/file.js"},
+        {path: "kata/group1/file1.js"},
+        {path: "kata/group1/file2.js"}
+      ]
+    };
+  
+    var kataGroups = fromGithubJsonToKataGroups(githubJson);
+    assert.equal(kataGroups[0].name, 'group1');
+  });
+
+});
