@@ -16,14 +16,14 @@ export const loadViaAjax = (onLoaded) => {
 
 import https from 'https';
 import url from 'url';
-export const loadViaNode = (cb) => {
+export const loadViaNode = (onLoaded) => {
   let data = '';
   let options = url.parse(githubUrl);
   options.headers = {'User-Agent': ''}; // github wants a user agent header
   var request = https.request(options, function(res) {
     res.on('data', function(chunk) {data += chunk;});
-    res.on('end', function() {cb(null, JSON.parse(data));})
+    res.on('end', function() {onLoaded(null, JSON.parse(data));})
   });
-  request.on('error', function(e) { cb(e); });
+  request.on('error', function(e) { onLoaded(e); });
   request.end();
 };
