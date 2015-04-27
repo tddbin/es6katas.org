@@ -7,17 +7,16 @@ const render = (err, kataGroups) => {
   if (err) {
     console.log(err);
   } else {
-    React.render(<Page kataGroups={kataGroups}/>, document.body);
+    React.render(<Page kataGroups={kataGroups}/>, document.querySelector('html'));
   }
 };
 
-loadViaAjax((err, data) => {
-  render(null, GithubSearchResult.fromJson(data).toKataGroups());
-});
+//loadViaAjax((err, data) => {
+//  render(null, GithubSearchResult.fromJson(data).toKataGroups());
+//});
 
-//import data from './for-offline/data.json';
-//const loadFromFile = (onLoaded) => {
-//  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
-//};
-//loadFromFile(render);
-
+import data from './for-offline/data.json';
+const loadFromFile = (onLoaded) => {
+  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
+};
+loadFromFile(render);
