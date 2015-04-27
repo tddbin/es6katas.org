@@ -20,7 +20,14 @@ class KataGroups extends Array {
   }
   
   sortByNumberOfLinks() {
-    this.sort((group, group1) => group1.length - group.length);
+    this.sort(function(group, group1) {
+      var l = group.length;
+      var l1 = group1.length;
+      if (l === l1) {
+        return group1.name < group.name ? 1 : -1;
+      }
+      return l1 - l;
+    });
   }
   
 }

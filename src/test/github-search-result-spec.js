@@ -59,4 +59,15 @@ describe('sort kata groups', function() {
     assert.equal(kataGroups[0].name, 'group1');
   });
 
+  it('by name when number of files is the same', function() {
+    const githubJson = {
+      items: [
+        {path: "kata/ab/file.js"},
+        {path: "kata/aa/file.js"}
+      ]
+    };
+  
+    var kataGroups = fromGithubJsonToKataGroups(githubJson);
+    assert.equal(kataGroups[0].name, 'aa');
+  });
 });
