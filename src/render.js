@@ -15,8 +15,27 @@ const render = (err, kataGroups) => {
 //  render(null, GithubSearchResult.fromJson(data).toKataGroups());
 //});
 
+const renderOnServer = (err, kataGroups) => {
+  if (err) {
+    console.log(err);
+  } else {
+    const preRendered = React.renderToStaticMarkup(<Page kataGroups={kataGroups}/>);
+    console.log(preRendered);
+  }
+};
+
+//loadViaNode((err, data) => {
+//  render(null, GithubSearchResult.fromJson(data).toKataGroups());
+//});
+
 import data from './for-offline/data.json';
 const loadFromFile = (onLoaded) => {
   onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
 };
-loadFromFile(render);
+export function renderInBrowser() {
+  loadFromFile(render);
+}
+
+export function renderOnServer() {
+  loadFromFile(renderOnServer);
+}
