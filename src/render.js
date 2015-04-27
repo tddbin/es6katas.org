@@ -4,7 +4,7 @@ import Page from './components/page.js';
 import GithubSearchResult from './github-search-result.js';
 
 function githubJsonToKataGroups(githubJson) {
-  return GithubSearchResult.fromJson(githubJson).toKataGroups();
+  return GithubSearchResult.toKataGroups(githubJson);
 }
 
 const _renderInBrowser = (err, githubJson) => {
@@ -27,7 +27,7 @@ const _renderOnServer = (err, githubJson) => {
 
 import data from './for-offline/data.json';
 function loadFromFile(onLoaded) {
-  onLoaded(null, GithubSearchResult.fromJson(data).toKataGroups());
+  onLoaded(null, githubJsonToKataGroups(data));
 }
 
 export function renderInBrowser() {
