@@ -29042,13 +29042,27 @@ var KataGroups = (function (_Array) {
 
   _inherits(KataGroups, _Array);
 
-  _createClass(KataGroups, null, {
+  _createClass(KataGroups, {
+    sortByNumberOfLinks: {
+      value: function sortByNumberOfLinks() {
+        this.sort(function (group, group1) {
+          var l = group.length;
+          var l1 = group1.length;
+          if (l === l1) {
+            return group1.name < group.name ? 1 : -1;
+          }
+          return l1 - l;
+        });
+      }
+    }
+  }, {
     fromObject: {
       value: function fromObject(obj) {
         var groups = new KataGroups();
         for (var key in obj) {
           groups.push(obj[key]);
         }
+        groups.sortByNumberOfLinks();
         return groups;
       }
     }
