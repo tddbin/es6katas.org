@@ -21,7 +21,7 @@ class KataGroups extends React.Component {
     const {groups} = this.props;
     return (
       <div>
-        {groups.map((group) => <KataGroup group={group}/>)}
+        {groups.map((group) => <KataGroup group={group} key={group.name}/>)}
       </div>
     );
   }
@@ -34,7 +34,7 @@ class KataGroup extends React.Component {
     return (
       <div className="group">
         <h2>{name}</h2>
-        {kataLinks.map((link) => <KataLink {...link}/>)}
+        {kataLinks.map((link) => <KataLink {...link} key={link.text}/>)}
       </div>
     );
   }
