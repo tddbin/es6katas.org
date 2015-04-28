@@ -30,11 +30,11 @@ class KataGroups extends React.Component {
 class KataGroup extends React.Component {
   render() {
     const name = this.props.group.name;
-    const group = this.props.group;
+    const kataLinks = this.props.group.kataLinks;
     return (
       <div className="group">
         <h2>{name}</h2>
-        {group.map((link) => <KataLink {...link}/>)}
+        {kataLinks.map((link) => <KataLink {...link}/>)}
       </div>
     );
   }

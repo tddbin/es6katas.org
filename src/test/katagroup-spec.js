@@ -13,17 +13,16 @@ describe('kata group', function() {
     const kataLinks = [];
     const group = KataGroup.withLinks('', kataLinks);
     
-    assert.deepEqual(group+'', kataLinks+'');
+    assert.deepEqual(group.kataLinks, kataLinks);
   });
   
   it('sort the links by name', function() {
     const kataLinks = [
-      KataLink.fromPath('path/class/create'),  
-      KataLink.fromPath('path/class/accessor')  
+      KataLink.fromPath('path/class/create.js'),  
+      KataLink.fromPath('path/class/accessor.js')  
     ];
     const group = KataGroup.withLinks('', kataLinks);
 
-    var expected = JSON.stringify([kataLinks[1], kataLinks[0]]);
-    assert.deepEqual(JSON.stringify(group), expected);
+    assert.deepEqual(group.kataLinks[0], kataLinks[1]);
   });
 });

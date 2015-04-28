@@ -1,15 +1,15 @@
-export default class KataGroup extends Array {
+export default class KataGroup {
  
   static withLinks(name, kataLinks=[]) {
     var group = new KataGroup();
     group.name = name;
-    kataLinks.forEach(function(g) { group.push(g); });
+    group.kataLinks = kataLinks;
     group.sortByText();
     return group;
   }
   
   sortByText() {
-    this.sort(function(link, link1) {
+    this.kataLinks.sort(function(link, link1) {
       return link.text < link1.text ? -1 : 1;
     });
   }
