@@ -27,7 +27,7 @@ const _renderOnServer = (err, githubJson) => {
 
 import data from './for-offline/data.json';
 function loadFromFile(onLoaded) {
-  onLoaded(null, githubJsonToKataGroups(data));
+  onLoaded(null, data);
 }
 
 export function renderInBrowser() {
