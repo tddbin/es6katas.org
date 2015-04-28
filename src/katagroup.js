@@ -9,7 +9,9 @@ export default class KataGroup extends Array {
   }
   
   sortByText() {
-    this.sort();
+    this.sort(function(link, link1) {
+      return link.text < link1.text ? -1 : 1;
+    });
   }
   
 }

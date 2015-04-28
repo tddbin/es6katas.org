@@ -38,9 +38,15 @@ function getPathListFromGithubJson(githubJson) {
 
 function fromGithubJsonToKataGroups(githubJson) {
   const paths = getPathListFromGithubJson(githubJson);
-  return paths
+  const grouped = paths
     .map(parsePath)
     .reduce(createGroups, {});
+  
+  let groups = [];
+  for (let groupName in grouped) {
+    groups.push(KataGroup.withLinks(groupName, grouped[groupName]));
+  }
+  return groups;
 }
 
 function parsePath(path) {
@@ -54,7 +60,7 @@ function parsePath(path) {
 function createGroups(obj, path){
   const groupName = path.groupName;
   if (!(groupName in obj)) {
-    obj[groupName] = KataGroup.withLinks(groupName);
+    obj[groupName] = [];
   }
   obj[groupName].push(KataLink.fromPath(path.path));
   return obj;
