@@ -29882,6 +29882,8 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== "fun
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var React = _interopRequire(require("react"));
 
 var Page = (function (_React$Component) {
@@ -29900,6 +29902,10 @@ var Page = (function (_React$Component) {
       value: function render() {
         var kataGroups = this.props.kataGroups;
 
+        var numKatas = kataGroups.reduce(function (old, _ref) {
+          var length = _ref.kataLinks.length;
+          return old + length;
+        }, 0);
         return React.createElement(
           "body",
           null,
@@ -29917,17 +29923,30 @@ var Page = (function (_React$Component) {
           React.createElement(
             "footer",
             null,
-            "an ",
             React.createElement(
               "a",
               { href: "http://uxebu.com" },
               "uxebu"
             ),
-            " project, using ",
+            " project --- using ",
             React.createElement(
               "a",
               { href: "http://tddbin.com" },
               "tddbin"
+            ),
+            " --- on ",
+            React.createElement(
+              "a",
+              { href: "http://github.com/tddbin/es6katas.org" },
+              "github"
+            ),
+            " ---",
+            numKatas,
+            " katas --- follow ",
+            React.createElement(
+              "a",
+              { href: "https://twitter.com/es6katas" },
+              "@es6katas"
             )
           ),
           React.createElement("script", { src: "./index.js", type: "application/javascript" })
@@ -29961,7 +29980,7 @@ var KataGroups = (function (_React$Component2) {
           "div",
           null,
           groups.map(function (group) {
-            return React.createElement(KataGroup, { group: group });
+            return React.createElement(KataGroup, { group: group, key: group.name });
           })
         );
       }
@@ -29996,7 +30015,7 @@ var KataGroup = (function (_React$Component3) {
             name
           ),
           kataLinks.map(function (link) {
-            return React.createElement(KataLink, link);
+            return React.createElement(KataLink, _extends({}, link, { key: link.text }));
           })
         );
       }
@@ -32526,7 +32545,7 @@ var _renderOnServer = function (err, githubJson) {
 var data = _interopRequire(require("./for-offline/data.json"));
 
 function loadFromFile(onLoaded) {
-  onLoaded(null, githubJsonToKataGroups(data));
+  onLoaded(null, data);
 }
 
 function renderInBrowser() {
