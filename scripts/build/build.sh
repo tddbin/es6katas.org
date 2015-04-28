@@ -19,7 +19,7 @@ cp $ORIGIN_ROOT/src/favicon.ico $DIST_ROOT;
 
 # run all build scripts, `&&` ensures to stop on any fail
 (
-  npm run build-app &&
-  npm run build-media
+  npm run build:app &&
+  npm run build:media
 )
 cp $ORIGIN_ROOT/CNAME $DIST_ROOT/CNAME;

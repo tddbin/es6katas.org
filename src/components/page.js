@@ -17,7 +17,7 @@ export default class Page extends React.Component {
           {numKatas} katas --- 
           follow <a href="https://twitter.com/es6katas">@es6katas</a>
         </footer>
-        <script src="./index.js" type="application/javascript"></script>
+        <script src="./index.min.js" type="application/javascript"></script>
       </body>
     );
   }
