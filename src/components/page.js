@@ -11,7 +11,7 @@ export default class Page extends React.Component {
         <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
         <KataGroups groups={kataGroups} />
         <footer>
-          <a href="http://uxebu.com">uxebu</a> project --- 
+          by <a href="http://uxebu.com">uxebu</a> --- 
           using <a href="http://tddbin.com">tddbin</a> ---  
           on <a href="http://github.com/tddbin/es6katas.org">github</a> ---  
           {numKatas} katas --- 
