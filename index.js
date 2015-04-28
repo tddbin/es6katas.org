@@ -26750,7 +26750,7 @@ var KataGroup = (function (_React$Component3) {
     render: {
       value: function render() {
         var name = this.props.group.name;
-        var group = this.props.group;
+        var kataLinks = this.props.group.kataLinks;
         return React.createElement(
           "div",
           { className: "group" },
@@ -26759,7 +26759,7 @@ var KataGroup = (function (_React$Component3) {
             null,
             name
           ),
-          group.map(function (link) {
+          kataLinks.map(function (link) {
             return React.createElement(KataLink, link);
           })
         );
@@ -29079,7 +29079,13 @@ function getPathListFromGithubJson(githubJson) {
 
 function fromGithubJsonToKataGroups(githubJson) {
   var paths = getPathListFromGithubJson(githubJson);
-  return paths.map(parsePath).reduce(createGroups, {});
+  var grouped = paths.map(parsePath).reduce(createGroups, {});
+
+  var groups = [];
+  for (var groupName in grouped) {
+    groups.push(KataGroup.withLinks(groupName, grouped[groupName]));
+  }
+  return groups;
 }
 
 function parsePath(path) {
@@ -29093,7 +29099,7 @@ function parsePath(path) {
 function createGroups(obj, path) {
   var groupName = path.groupName;
   if (!(groupName in obj)) {
-    obj[groupName] = KataGroup.withLinks(groupName);
+    obj[groupName] = [];
   }
   obj[groupName].push(KataLink.fromPath(path.path));
   return obj;
@@ -29111,25 +29117,19 @@ renderInBrowser();
 
 var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
-
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var KataGroup = (function (_Array) {
+var KataGroup = (function () {
   function KataGroup() {
     _classCallCheck(this, KataGroup);
-
-    if (_Array != null) {
-      _Array.apply(this, arguments);
-    }
   }
-
-  _inherits(KataGroup, _Array);
 
   _createClass(KataGroup, {
     sortByText: {
       value: function sortByText() {
-        this.sort();
+        this.kataLinks.sort(function (link, link1) {
+          return link.text < link1.text ? -1 : 1;
+        });
       }
     }
   }, {
@@ -29139,9 +29139,7 @@ var KataGroup = (function (_Array) {
 
         var group = new KataGroup();
         group.name = name;
-        kataLinks.forEach(function (g) {
-          group.push(g);
-        });
+        group.kataLinks = Array.from(kataLinks); // copy the data!
         group.sortByText();
         return group;
       }
@@ -29149,7 +29147,7 @@ var KataGroup = (function (_Array) {
   });
 
   return KataGroup;
-})(Array);
+})();
 
 module.exports = KataGroup;
 
