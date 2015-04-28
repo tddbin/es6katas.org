@@ -23,6 +23,7 @@ describe('kata group', function() {
     ];
     const group = KataGroup.withLinks('', kataLinks);
 
-    assert.deepEqual(group.kataLinks[0], kataLinks[1]);
+    var expected = kataLinks[1].text;
+    assert.equal(group.kataLinks[0].text, expected);
   });
 });

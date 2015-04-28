@@ -3,7 +3,7 @@ export default class KataGroup {
   static withLinks(name, kataLinks=[]) {
     var group = new KataGroup();
     group.name = name;
-    group.kataLinks = kataLinks;
+    group.kataLinks = Array.from(kataLinks); // copy the data!
     group.sortByText();
     return group;
   }
