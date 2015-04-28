@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "es6katas.org site",
   "main": "index.js",
+  "browser": {
+    "react": "./src/shim/react.js"
+  },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register src/**/**/*spec.js",
     "build": "./scripts/build/build.sh",
