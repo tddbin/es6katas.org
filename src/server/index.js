@@ -1,4 +1,3 @@
-//import 'babel-core/lib/babel/polyfill';
 import React from 'react';
 import {loadViaNode} from './http-get.js';
 import Page from '../components/page.js';
