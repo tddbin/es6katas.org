@@ -32,8 +32,10 @@ function loadFromFile(onLoaded) {
 
 export function renderInBrowser() {
   loadViaAjax(_renderInBrowser);
+  //loadFromFile(_renderInBrowser);
 }
 
 export function renderOnServer() {
   loadViaNode(_renderOnServer);
+  //loadFromFile(_renderOnServer);
 }
