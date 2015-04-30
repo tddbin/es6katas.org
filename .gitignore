@@ -1,3 +1,4 @@
 dist
 src/npm-debug.log
 tmp
+node_modules
