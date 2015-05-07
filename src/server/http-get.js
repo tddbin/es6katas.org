@@ -1,5 +1,6 @@
 import https from 'https';
 import url from 'url';
+import fs from 'fs';
 
 export const loadViaNode = (fileUrl, onLoaded) => {
   let data = '';
@@ -7,7 +8,14 @@ export const loadViaNode = (fileUrl, onLoaded) => {
   options.headers = {'User-Agent': ''}; // github wants a user agent header
   var request = https.request(options, function(res) {
     res.on('data', function(chunk) {data += chunk;});
-    res.on('end', function() {onLoaded(null, JSON.parse(data));})
+    res.on('end', function() {
+      const parsed = JSON.parse(data);
+      if (!parsed.items) {
+        onLoaded(null, JSON.parse(fs.readFileSync('../for-offline/data.json')));
+      } else {
+        onLoaded(null, parsed);
+      }
+    })
   });
   request.on('error', function(e) { onLoaded(e); });
   request.end();
