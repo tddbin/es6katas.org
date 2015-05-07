@@ -18,6 +18,7 @@ export default class Page extends React.Component {
           follow <a href="https://twitter.com/es6katas">@es6katas</a>
         </footer>
         <script src="./index.min.js" type="application/javascript"></script>
+        <Analytics />
       </body>
     );
   }
@@ -51,5 +52,18 @@ class KataLink extends React.Component {
   render() {
     const {url, text} = this.props;
     return <a href={url}>{text}</a>;
+  }
+}
+
+class Analytics extends React.Component {
+  render() {
+    const jsCode = `(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-62726232-1', 'es6katas.org');
+          ga('send', 'pageview');
+    `;
+    return <script dangerouslySetInnerHTML={{__html: jsCode}}></script>
   }
 }
