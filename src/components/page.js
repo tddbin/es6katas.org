@@ -51,7 +51,7 @@ class KataGroup extends React.Component {
 class KataLink extends React.Component {
   render() {
     const {url, text} = this.props;
-    return <a href={url}>{text}</a>;
+    return <a href={url} target="_blank">{text}</a>;
   }
 }
 
