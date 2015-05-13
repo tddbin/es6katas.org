@@ -8,7 +8,7 @@ function _renderOnServer(err, githubJson) {
   if (err) {
     console.log(err);
   } else {
-    const preRendered = React.renderToStaticMarkup(<Page kataGroups={GithubSearchResult.toKataGroups(githubJson)}/>);
+    const preRendered = React.renderToString(<Page kataGroups={GithubSearchResult.toKataGroups(githubJson)}/>);
     console.log(preRendered);
   }
 }
