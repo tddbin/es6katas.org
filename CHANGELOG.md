@@ -4,3 +4,4 @@
   will be applied to the DOM once the page was rendered on the client
 - separate server- and client-side rendering better, improve code
 - add analytics to the page
+- open tddbin in a new tab
