@@ -12,7 +12,7 @@
     "build:app": "browserify src/browser/index.js --outfile=dist/index.js --transform=babelify",
     "postbuild:app": "uglifyjs dist/index.js -m -c > dist/index.min.js && rm dist/index.js",
     "build:media": "./scripts/build/copy-media-files.sh",
-    "start": "watchify src/browser/index.js --outfile=dist/index.js --transform=babelify -v",
+    "start": "watchify src/browser/index.js --outfile=dist/index.min.js --transform=babelify -v",
     "render-on-server": "./scripts/render-html.sh"
   },
   "repository": {
