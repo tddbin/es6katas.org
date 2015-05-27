@@ -33,7 +33,10 @@ class KataGroups extends Array {
 }
 
 function getPathListFromGithubJson(githubJson) {
-  return githubJson.items.map((item) => item.path);
+  return githubJson.items
+    .filter((item) => !item.path.endsWith('__all__.js'))
+    .map((item) => item.path)
+  ;
 }
 
 function fromGithubJsonToKataGroups(githubJson) {

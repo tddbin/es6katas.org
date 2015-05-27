@@ -43,6 +43,18 @@ describe('create kata groups from the github search result', function() {
     var kataGroups = fromGithubJsonToKataGroups(githubJson).length;
     assert.equal(kataGroups, 2);
   });
+
+  it('ignore filenames `__all__.js`', function() {
+    const githubJson = {
+      items: [
+        {path: "kata/group/file.js"},
+        {path: "kata/group/__all__.js"}
+      ]
+    };
+
+    var kataGroups = fromGithubJsonToKataGroups(githubJson);
+    assert.equal(kataGroups[0].kataLinks.length, 1);
+  });
 });
 
 describe('sort kata groups', function() {
