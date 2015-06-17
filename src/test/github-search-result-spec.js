@@ -44,11 +44,11 @@ describe('create kata groups from the github search result', function() {
     assert.equal(kataGroups, 2);
   });
 
-  it('ignore filenames `__all__.js`', function() {
+  it('ignore filenames starting with `__`', function() {
     const githubJson = {
       items: [
         {path: "kata/group/file.js"},
-        {path: "kata/group/__all__.js"}
+        {path: "kata/group/__somestuff__.js"}
       ]
     };
 

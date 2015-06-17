@@ -34,7 +34,7 @@ class KataGroups extends Array {
 
 function getPathListFromGithubJson(githubJson) {
   return githubJson.items
-    .filter((item) => !item.path.endsWith('__all__.js'))
+    .filter((item) => !item.path.split('/').reverse()[0].startsWith('__'))
     .map((item) => item.path)
   ;
 }
