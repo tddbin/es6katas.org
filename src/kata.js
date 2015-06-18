@@ -1,7 +1,7 @@
 export default class Kata {
   static fromRawItem(rawItem) {
     let kata = new Kata();
-    kata.name = rawItem.name;
+    Object.keys(rawItem).forEach(key => kata[key] = rawItem[key]);
     return kata;
   }
 }
