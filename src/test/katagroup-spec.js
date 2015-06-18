@@ -23,18 +23,18 @@ describe('kata group', function() {
     assert.deepEqual(group.katas[0] instanceof Kata, true);
   });
   
-  describe('sort the katas by name', function() {
+  describe('sort the katas by id, so the difficulty goes up', function() {
     let group;
     beforeEach(function() {
       const katas = [
-        Kata.fromRawItem({name: 'a'}),  
-        Kata.fromRawItem({name: 'c'}),  
-        Kata.fromRawItem({name: 'b'})  
+        Kata.fromRawItem({id: 2}),  
+        Kata.fromRawItem({id: 3}),  
+        Kata.fromRawItem({id: 1})  
       ];
       group = KataGroup.withKatas('', katas);
     });
-    it('first value must be `a`', () => assert.equal(group.katas[0].name, 'a'));
-    it('first value must be `b`', () => assert.equal(group.katas[1].name, 'b'));
-    it('first value must be `c`', () => assert.equal(group.katas[2].name, 'c'));
+    it('first value must be `1`', () => assert.equal(group.katas[0].id, 1));
+    it('first value must be `2`', () => assert.equal(group.katas[1].id, 2));
+    it('first value must be `3`', () => assert.equal(group.katas[2].id, 3));
   });
 });

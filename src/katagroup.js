@@ -12,7 +12,7 @@ export default class KataGroup {
   
   sortByName() {
     this.katas.sort(function(link, link1) {
-      return link.name < link1.name ? -1 : 1;
+      return link.id < link1.id ? -1 : 1;
     });
   }
   
