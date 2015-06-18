@@ -1,22 +1,22 @@
 import React from 'react';
 import {loadViaNode} from './http-get.js';
 import Page from '../components/page.js';
-import GithubSearchResult from '../github-search-result.js';
-import {GITHUB_URL} from '../config.js';
+import Metadata from '../metadata.js';
+import {METADATA_URL} from '../config.js';
 
-function _renderOnServer(err, githubJson) {
+function _renderOnServer(err, metadataJson) {
   if (err) {
     console.log(err);
   } else {
-    const preRendered = React.renderToString(<Page kataGroups={GithubSearchResult.toKataGroups(githubJson)}/>);
+    const preRendered = React.renderToString(<Page kataGroups={Metadata.toKataGroups(metadataJson)}/>);
     console.log(preRendered);
   }
 }
 
-//import data from '../for-offline/data.json';
+//import data from '../for-offline/grouped-metadata.json';
 //function loadFromFile(onLoaded) {
 //  onLoaded(null, data);
 //}
 
-loadViaNode(GITHUB_URL, _renderOnServer);
+loadViaNode(METADATA_URL, _renderOnServer);
 //loadFromFile(_renderOnServer);
