@@ -1,8 +1,5 @@
 const pathToLink = (path) => {
-  const kata = path
-    .replace(/^katas\//, '')
-    .replace(/\.js$/, '');
-  return `http://tddbin.com/#?kata=${kata}`;
+  return `http://tddbin.com/#?kata=es6/language/${path}`;
 };
 
 export default class Kata {

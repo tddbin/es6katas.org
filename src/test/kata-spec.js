@@ -15,10 +15,10 @@ describe('kata', function() {
   });
 
   it('generate the kata link from a path', function() {
-    const path = 'katas/es6/language/template-strings/basics.js';
+    const path = 'template-strings/multiline';
     let kata = Kata.fromRawItem({path});
 
-    const expectedUrl = 'http://tddbin.com/#?kata=es6/language/template-strings/basics';
+    const expectedUrl = 'http://tddbin.com/#?kata=es6/language/template-strings/multiline';
     
     assert.deepEqual(kata.url, expectedUrl);
   });
