@@ -6,12 +6,13 @@ export default class KataGroup {
     var group = new KataGroup();
     group.name = groupName;
     group.katas = rawKataItems.map(item => Kata.fromRawItem(item));
+    group.sortByName();
     return group;
   }
   
-  sortByText() {
-    this.kataLinks.sort(function(link, link1) {
-      return link.text < link1.text ? -1 : 1;
+  sortByName() {
+    this.katas.sort(function(link, link1) {
+      return link.name < link1.name ? -1 : 1;
     });
   }
   

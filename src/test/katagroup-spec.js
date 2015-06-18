@@ -16,14 +16,6 @@ describe('kata group', function() {
     assert.deepEqual(group.katas, rawKataItems);
   });
 
-  it('the katas are cloned', function() {
-    const rawKataItems = [];
-    const group = KataGroup.withKatas('', rawKataItems);
-    
-    rawKataItems.push(1);
-    assert.deepEqual(group.katas.length, 0);
-  });
-
   it('each kata is a Kata instance', function() {
     const rawKataItems = [{}];
     const group = KataGroup.withKatas('', rawKataItems);
@@ -31,14 +23,18 @@ describe('kata group', function() {
     assert.deepEqual(group.katas[0] instanceof Kata, true);
   });
   
-  //it('sort the links by name', function() {
-  //  const kataLinks = [
-  //    KataLink.fromPath('path/class/create.js'),  
-  //    KataLink.fromPath('path/class/accessor.js')  
-  //  ];
-  //  const group = KataGroup.withLinks('', kataLinks);
-  //
-  //  var expected = kataLinks[1].text;
-  //  assert.equal(group.kataLinks[0].text, expected);
-  //});
+  describe('sort the katas by name', function() {
+    let group;
+    beforeEach(function() {
+      const katas = [
+        Kata.fromRawItem({name: 'a'}),  
+        Kata.fromRawItem({name: 'c'}),  
+        Kata.fromRawItem({name: 'b'})  
+      ];
+      group = KataGroup.withKatas('', katas);
+    });
+    it('first value must be `a`', () => assert.equal(group.katas[0].name, 'a'));
+    it('first value must be `b`', () => assert.equal(group.katas[1].name, 'b'));
+    it('first value must be `c`', () => assert.equal(group.katas[2].name, 'c'));
+  });
 });
