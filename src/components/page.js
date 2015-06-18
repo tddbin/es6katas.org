@@ -49,8 +49,11 @@ class KataGroup extends React.Component {
 
 class Kata extends React.Component {
   render() {
-    const {url, name, description} = this.props.kata;
-    return <a href={url} target="_blank" title={description}>{name}</a>;
+    const {url, name, description, level} = this.props.kata;
+    return <div className="kata">
+      <a href={url} target="_blank">{name}</a>
+      <span className="details">{description}<br/>Difficulty: {level.toLowerCase()}</span>
+    </div>;
   }
 }
 
