@@ -1,0 +1,622 @@
+{
+  "groups": {
+    "Template strings": {
+      "items": [
+        {
+          "name": "Basics",
+          "description": "A template string, is wrapped in backticks.",
+          "path": "template-strings/basics",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Template strings",
+          "id": "1"
+        },
+        {
+          "name": "Multiline",
+          "description": "Template strings, can be multiline.",
+          "path": "template-strings/multiline",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            1
+          ],
+          "groupName": "Template strings",
+          "id": "2"
+        },
+        {
+          "name": "tagged",
+          "description": "Tagged template strings are preceeded by an expression.",
+          "path": "template-strings/tagged",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            1
+          ],
+          "groupName": "Template strings",
+          "id": "3"
+        },
+        {
+          "name": "`raw` property",
+          "description": "The `raw` property accesses the string as it was entered.",
+          "path": "template-strings/raw",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            1,
+            3
+          ],
+          "groupName": "Template strings",
+          "id": "4"
+        }
+      ]
+    },
+    "Arrow functions": {
+      "items": [
+        {
+          "name": "Basics",
+          "description": "Arrow functions are a more convinient and shorter way to write a function.",
+          "path": "arrow-functions/basics",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Arrow functions",
+          "id": "5"
+        },
+        {
+          "name": "Function binding",
+          "description": "Arrow functions have lexical `this`, no dynamic `this`.",
+          "path": "arrow-functions/binding",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            5,
+            22
+          ],
+          "groupName": "Arrow functions",
+          "id": "6"
+        }
+      ]
+    },
+    "Block scope": {
+      "items": [
+        {
+          "name": "`let` declaration",
+          "description": "`let` restricts the scope of the variable to the current block.",
+          "path": "block-scope/let",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Block scope",
+          "id": "7"
+        },
+        {
+          "name": "`const` declaration",
+          "description": "`const` is like `let` plus read-only.",
+          "path": "block-scope/const",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            7
+          ],
+          "groupName": "Block scope",
+          "id": "8"
+        }
+      ]
+    },
+    "Object literal": {
+      "items": [
+        {
+          "name": "Basics",
+          "description": "ES6 has new shorthands for objects.",
+          "path": "object-literal/basics",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            5,
+            8
+          ],
+          "groupName": "Object literal",
+          "id": "9"
+        },
+        {
+          "name": "Computed properties",
+          "description": "Object literal properties may be computed values.",
+          "path": "object-literal/computed-properties",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            9,
+            8
+          ],
+          "groupName": "Object literal",
+          "id": "16"
+        }
+      ]
+    },
+    "Destructuring": {
+      "items": [
+        {
+          "name": "Array",
+          "description": "Destructuring arrays allows for more concise.",
+          "path": "destructuring/array",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            7,
+            8,
+            1
+          ],
+          "groupName": "Destructuring",
+          "id": "10"
+        },
+        {
+          "name": "String",
+          "description": "Destructuring can also be done on strings.",
+          "path": "destructuring/string",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            8,
+            17
+          ],
+          "groupName": "Destructuring",
+          "id": "11"
+        },
+        {
+          "name": "Object",
+          "description": "Destructuring objects is a core concepts for modules and more.",
+          "path": "destructuring/object",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            8,
+            9
+          ],
+          "groupName": "Destructuring",
+          "id": "12"
+        },
+        {
+          "name": "Defaults",
+          "description": "When destructuring you can also use default values.",
+          "path": "destructuring/defaults",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            8,
+            10,
+            12
+          ],
+          "groupName": "Destructuring",
+          "id": "13"
+        },
+        {
+          "name": "Parameters",
+          "description": "Destructuring function parameters.",
+          "path": "destructuring/parameters",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            10,
+            12,
+            5
+          ],
+          "groupName": "Destructuring",
+          "id": "14"
+        },
+        {
+          "name": "Rename",
+          "description": "Rename variables while destructuring.",
+          "path": "destructuring/rename",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            10,
+            12,
+            13,
+            8,
+            5
+          ],
+          "groupName": "Destructuring",
+          "id": "15"
+        }
+      ]
+    },
+    "Unicode": {
+      "items": [
+        {
+          "name": "In strings",
+          "description": "How to use unicode in strings.",
+          "path": "unicode/in-strings",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            8,
+            1
+          ],
+          "groupName": "Unicode",
+          "id": "17"
+        }
+      ]
+    },
+    "Rest operator": {
+      "items": [
+        {
+          "name": "as parameter",
+          "description": "Use the rest operator as parameter.",
+          "path": "rest/as-parameter",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Rest operator",
+          "id": "18"
+        },
+        {
+          "name": "with destructuring",
+          "description": "Use the rest operator with destructuring.",
+          "path": "rest/with-destructuring",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Rest operator",
+          "id": "19"
+        }
+      ]
+    },
+    "Spread operator": {
+      "items": [
+        {
+          "name": "with arrays",
+          "description": "Spread operator in use with arrays.",
+          "path": "spread/with-arrays",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Spread operator",
+          "id": "20"
+        },
+        {
+          "name": "with strings",
+          "description": "Apply spread operator on strings.",
+          "path": "spread/with-strings",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Spread operator",
+          "id": "21"
+        }
+      ]
+    },
+    "Class": {
+      "items": [
+        {
+          "name": "creation",
+          "description": "Create a class.",
+          "path": "class/creation",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "22"
+        },
+        {
+          "name": "accessors",
+          "description": "Getter+setters as class properties.",
+          "path": "class/accessors",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "23"
+        },
+        {
+          "name": "static",
+          "description": "",
+          "path": "class/static",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "24"
+        },
+        {
+          "name": "extends",
+          "description": "",
+          "path": "class/extends",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "25"
+        },
+        {
+          "name": "more extends",
+          "description": "",
+          "path": "class/more-extends",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "26"
+        },
+        {
+          "name": "super in method",
+          "description": "",
+          "path": "class/super-in-method",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "27"
+        },
+        {
+          "name": "super in constructor",
+          "description": "",
+          "path": "class/super-in-constructor",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Class",
+          "id": "28"
+        }
+      ]
+    },
+    "Array API": {
+      "items": [
+        {
+          "name": "`Array.from()`",
+          "description": "",
+          "path": "array-api/from",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Array API",
+          "id": "29"
+        },
+        {
+          "name": "`Array.of()`",
+          "description": "",
+          "path": "array-api/of",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Array API",
+          "id": "30"
+        },
+        {
+          "name": "`[].fill()`",
+          "description": "",
+          "path": "array-api/fill",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Array API",
+          "id": "31"
+        },
+        {
+          "name": "`[].find()`",
+          "description": "",
+          "path": "array-api/find",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Array API",
+          "id": "32"
+        },
+        {
+          "name": "`[].findIndex()`",
+          "description": "",
+          "path": "array-api/findIndex",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Array API",
+          "id": "33"
+        },
+        {
+          "name": "`[].entries()`",
+          "description": "",
+          "path": "array-api/entries",
+          "level": "INTERMEDIATE",
+          "requiresKnowledgeFrom": [
+            8,
+            29,
+            39
+          ],
+          "groupName": "Array API",
+          "id": "41"
+        },
+        {
+          "name": "`[].keys()`",
+          "description": "",
+          "path": "array-api/keys",
+          "level": "INTERMEDIATE",
+          "requiresKnowledgeFrom": [
+            8,
+            10,
+            29,
+            39
+          ],
+          "groupName": "Array API",
+          "id": "42"
+        },
+        {
+          "name": "`[].values()`",
+          "description": "",
+          "path": "array-api/values",
+          "level": "INTERMEDIATE",
+          "requiresKnowledgeFrom": [
+            8,
+            10,
+            39
+          ],
+          "groupName": "Array API",
+          "id": "43"
+        }
+      ]
+    },
+    "Symbol": {
+      "items": [
+        {
+          "name": "Basics",
+          "description": "",
+          "path": "symbol/basics",
+          "level": "INTERMEDIATE",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Symbol",
+          "id": "34"
+        },
+        {
+          "name": "`Symbol.for()`",
+          "description": "",
+          "path": "symbol/for",
+          "level": "INTERMEDIATE",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Symbol",
+          "id": "35"
+        },
+        {
+          "name": "`Symbol.keyFor()`",
+          "description": "",
+          "path": "symbol/keyFor",
+          "level": "INTERMEDIATE",
+          "requiresKnowledgeFrom": [
+            35
+          ],
+          "groupName": "Symbol",
+          "id": "36"
+        }
+      ]
+    },
+    "Iterator": {
+      "items": [
+        {
+          "name": "array",
+          "description": "",
+          "path": "iterator/array",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Iterator",
+          "id": "37"
+        },
+        {
+          "name": "string",
+          "description": "",
+          "path": "iterator/string",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            34,
+            37
+          ],
+          "groupName": "Iterator",
+          "id": "38"
+        },
+        {
+          "name": "protocol",
+          "description": "",
+          "path": "iterator/protocol",
+          "level": "EXPERT",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Iterator",
+          "id": "39"
+        },
+        {
+          "name": "usage",
+          "description": "",
+          "path": "iterator/usages",
+          "level": "EXPERT",
+          "requiresKnowledgeFrom": [
+            7,
+            10,
+            12,
+            34,
+            39,
+            20
+          ],
+          "groupName": "Iterator",
+          "id": "40"
+        }
+      ]
+    },
+    "Map": {
+      "items": [
+        {
+          "name": "Basics",
+          "description": "",
+          "path": "map/basics",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Map",
+          "id": "44"
+        },
+        {
+          "name": "`map.get()`",
+          "description": "",
+          "path": "map/get",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            37
+          ],
+          "groupName": "Map",
+          "id": "45"
+        },
+        {
+          "name": "`map.set()`",
+          "description": "",
+          "path": "map/set",
+          "level": "EXPERT",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Map",
+          "id": "46"
+        }
+      ]
+    },
+    "Set": {
+      "items": [
+        {
+          "name": "Basics",
+          "description": "",
+          "path": "set/basics",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [],
+          "groupName": "Set",
+          "id": "47"
+        },
+        {
+          "name": "`set.add()`",
+          "description": "Appends a new element to the end of a Set object.",
+          "path": "set/add",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            47
+          ],
+          "groupName": "Set",
+          "id": "48"
+        }
+      ]
+    },
+    "Generator": {
+      "items": [
+        {
+          "name": "Creation",
+          "description": "There are many ways to create a generator",
+          "path": "generator/creation",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            7,
+            8,
+            16,
+            22
+          ],
+          "groupName": "Generator",
+          "id": "49"
+        },
+        {
+          "name": "Iterator",
+          "description": "Generators return iterable objects",
+          "path": "generator/iterator",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            49
+          ],
+          "groupName": "Generator",
+          "id": "50"
+        },
+        {
+          "name": "Yield Expressions",
+          "description": "The yield keyword is used to pause and resume a generator function",
+          "path": "generator/yield",
+          "level": "TBD",
+          "requiresKnowledgeFrom": [
+            7,
+            49,
+            50
+          ],
+          "groupName": "Generator",
+          "id": "51"
+        },
+        {
+          "name": "Send value to a generator",
+          "description": "By calling next() with a parameter, you can pass a value to a generator.",
+          "path": "generator/send-value",
+          "level": "ADVANCED",
+          "requiresKnowledgeFrom": [
+            7,
+            49,
+            50,
+            51
+          ],
+          "groupName": "Generator",
+          "id": "52"
+        }
+      ]
+    }
+  }
+}

@@ -4,7 +4,7 @@ export default class Page extends React.Component {
 
   render() {
     let {kataGroups} = this.props;
-    const numKatas = kataGroups.reduce((old, {kataLinks: {length}}) => old + length, 0);
+    const numKatas = kataGroups.reduce((old, {katas: {length}}) => old + length, 0);
     return (
       <body>
         <h1>ES6 Katas</h1>
@@ -37,21 +37,20 @@ class KataGroups extends React.Component {
 
 class KataGroup extends React.Component {
   render() {
-    const name = this.props.group.name;
-    const kataLinks = this.props.group.kataLinks;
+    const group = this.props.group;
     return (
       <div className="group">
-        <h2>{name}</h2>
-        {kataLinks.map((link) => <KataLink {...link} key={link.text}/>)}
+        <h2>{group.name}</h2>
+        {group.katas.map((kata) => <Kata kata={kata} key={kata.id} />)}
       </div>
     );
   }
 }
 
-class KataLink extends React.Component {
+class Kata extends React.Component {
   render() {
-    const {url, text} = this.props;
-    return <a href={url} target="_blank">{text}</a>;
+    const {url, name, description} = this.props.kata;
+    return <a href={url} target="_blank" title={description}>{name}</a>;
   }
 }
 
