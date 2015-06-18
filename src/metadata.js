@@ -1,5 +1,4 @@
 import KataGroup from './katagroup.js';
-import KataLink from './katalink.js';
 
 export default class Metadata {
   

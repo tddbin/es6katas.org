@@ -2,12 +2,25 @@ import assert from 'assert';
 import Kata from '../kata.js';
 
 describe('kata', function() {
-  it('provides all values passed to it as properties', function() {
+  describe('provides all values passed to it as properties', function() {
+    
     let name = 'moi';
     let desc = 'description';
-    let kata = Kata.fromRawItem({name, desc});
-
-    const expected = [['name','moi'], ['desc','description']];
-    assert.deepEqual(Object.entries(kata), expected);
+    let kata;
+    beforeEach(function() {
+      kata = Kata.fromRawItem({name, desc});
+    });
+    it('property `name`', () => assert.equal(kata.name, name));
+    it('property `name`', () => assert.equal(kata.desc, desc));
   });
+
+  it('generate the kata link from a path', function() {
+    const path = 'katas/es6/language/template-strings/basics.js';
+    let kata = Kata.fromRawItem({path});
+
+    const expectedUrl = 'http://tddbin.com/#?kata=es6/language/template-strings/basics';
+    
+    assert.deepEqual(kata.url, expectedUrl);
+  });
+
 });
