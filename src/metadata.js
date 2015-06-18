@@ -15,7 +15,7 @@ class KataGroups extends Array {
     for (let key in obj) {
       groups.push(obj[key]);
     }
-    groups.sortByNumberOfLinks();
+    //groups.sortByNumberOfLinks();
     return groups;
   }
   
@@ -35,9 +35,10 @@ class KataGroups extends Array {
 function fromMetadataJsonToKataGroups(groupedMetadataJson) {
   const groups = groupedMetadataJson.groups;
   const groupNames = Object.keys(groups);
-  const groupName = groupNames[0];
-  let rawKataItems = groups[groupName].items;
-  return [KataGroup.withKatas(groupName, rawKataItems)]
+  return groupNames.map((groupName) => {
+    let rawKataItems = groups[groupName].items;
+    return KataGroup.withKatas(groupName, rawKataItems);
+  });
 }
 
 //function getPathListFromGithubJson(githubJson) {

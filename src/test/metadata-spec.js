@@ -18,18 +18,18 @@ describe('create KataGroups from the metadata', function() {
     assert.equal(kataGroups.length, 1);
   });
   
-//  it('two groups are created for the two group names', function() {
-//    const githubJson = {
-//      items: [
-//        {path: "kata/group/file.js"},
-//        {path: "kata/group1/file2.js"}
-//      ]
-//    };
-//
-//    var kataGroups = fromMetadataJsonToKataGroups(githubJson).length;
-//    assert.equal(kataGroups, 2);
-//  });
-//
+  it('two groups two KataGroups are created', function() {
+    const githubJson = {
+      groups: {
+        'group name': {items: []},
+        'group name1': {items: []}
+      }
+    };
+
+    var kataGroups = fromMetadataJsonToKataGroups(githubJson);
+    assert.equal(kataGroups.length, 2);
+  });
+
 //  it('ignore filenames starting with `__`', function() {
 //    const githubJson = {
 //      items: [
