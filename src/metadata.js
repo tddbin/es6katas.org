@@ -15,14 +15,14 @@ class KataGroups extends Array {
     for (let key in obj) {
       groups.push(obj[key]);
     }
-    //groups.sortByNumberOfLinks();
+    groups.sortByNumberOfLinks();
     return groups;
   }
   
   sortByNumberOfLinks() {
     this.sort(function(group, group1) {
-      var l = group.kataLinks.length;
-      var l1 = group1.kataLinks.length;
+      var l = group.katas.length;
+      var l1 = group1.katas.length;
       if (l === l1) {
         return group1.name < group.name ? 1 : -1;
       }

@@ -8,8 +8,10 @@ export default class KataGroup {
     return group;
   }
   
-  static withKatas() {
+  static withKatas(groupName, rawKataItems) {
     var group = new KataGroup();
+    group.name = groupName;
+    group.katas = rawKataItems;
     return group;
   }
   

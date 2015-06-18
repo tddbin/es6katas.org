@@ -8,64 +8,57 @@ const fromMetadataJsonToKataGroups = (metadataJson) => {
 describe('create KataGroups from the metadata', function() {
 
   it('for one group only one KataGroup is created', function() {
-    const metadataJson = {
+    const groupedMetadataJson = {
       groups: {
         'group name': {items: []}
       }
     };
     
-    var kataGroups = fromMetadataJsonToKataGroups(metadataJson);
+    var kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
     assert.equal(kataGroups.length, 1);
   });
   
   it('two groups two KataGroups are created', function() {
-    const githubJson = {
+    const groupedMetadataJson = {
       groups: {
         'group name': {items: []},
         'group name1': {items: []}
       }
     };
 
-    var kataGroups = fromMetadataJsonToKataGroups(githubJson);
+    var kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
     assert.equal(kataGroups.length, 2);
   });
 
-//  it('ignore filenames starting with `__`', function() {
-//    const githubJson = {
-//      items: [
-//        {path: "kata/group/file.js"},
-//        {path: "kata/group/__somestuff__.js"}
-//      ]
-//    };
-//
-//    var kataGroups = fromMetadataJsonToKataGroups(githubJson);
-//    assert.equal(kataGroups[0].kataLinks.length, 1);
-//  });
-//});
-//
-//describe('sort kata groups', function() {
-//  it('by number of files inside group', function() {
-//    const githubJson = {
-//      items: [
-//        {path: "kata/group/file.js"},
-//        {path: "kata/group1/file1.js"},
-//        {path: "kata/group1/file2.js"}
-//      ]
-//    };
-//  
-//    var kataGroups = fromMetadataJsonToKataGroups(githubJson);
-//    assert.equal(kataGroups[0].name, 'group1');
-//  });
-//
-//  it('by name when number of files is the same', function() {
-//    const githubJson = {
-//      items: [
-//        {path: "kata/ab/file.js"},
-//        {path: "kata/aa/file.js"}
-//      ]
-//    };
-//  
-//    var kataGroups = fromMetadataJsonToKataGroups(githubJson);
-//    assert.equal(kataGroups[0].name, 'aa');
-//  });
+  describe('sort kata groups', function() {
+    let kataGroups;
+    beforeEach(function() {
+      const groupedMetadataJson = {
+        groups: {
+          'group with 1 kata': {items: [{}]},
+          'group with 2 katas': {items: [{}, {}]}
+        }
+      };
+    
+      kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
+    });
+    it('first is the one with most katas', function() {
+      assert.equal(kataGroups[0].name, 'group with 2 katas');
+    });
+    it('second the one with less katas', function() {
+      assert.equal(kataGroups[1].name, 'group with 1 kata');
+    });
+  
+    it('by name when number of files is the same', function() {
+      const groupedMetadataJson = {
+        groups: {
+          'group b': {items: [{}]},
+          'group a': {items: [{}]}
+        }
+      };
+    
+      var kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
+      assert.equal(kataGroups[0].name, 'group a');
+    });
+  });
 });
