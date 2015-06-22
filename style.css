@@ -48,3 +48,14 @@ footer {
   .group .kata:hover .details {
     display: block;
   }
+
+.notification-bubble {
+  position: absolute;
+  margin-left: -2.6em;
+  padding: 0 0.3em;
+  background-color: red;
+  color: white;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
+  
