@@ -29,7 +29,7 @@ class KataGroups extends React.Component {
     const {groups} = this.props;
     return (
       <div>
-        {groups.map((group) => <KataGroup group={group} key={group.name}/>)}
+        {groups.map((group) => <KataGroup group={group} isNewestCheck={groups.isNewest.bind(groups)} key={group.name}/>)}
       </div>
     );
   }
@@ -38,10 +38,11 @@ class KataGroups extends React.Component {
 class KataGroup extends React.Component {
   render() {
     const group = this.props.group;
+    const {isNewestCheck} = this.props;
     return (
       <div className="group">
         <h2>{group.name}</h2>
-        {group.katas.map((kata) => <Kata kata={kata} key={kata.id} />)}
+        {group.katas.map((kata) => <Kata kata={kata} isNewest={isNewestCheck(kata)} key={kata.id} />)}
       </div>
     );
   }
@@ -50,8 +51,10 @@ class KataGroup extends React.Component {
 class Kata extends React.Component {
   render() {
     const {url, name, description, level} = this.props.kata;
+    const {isNewest} = this.props;
+    const isNewestMarker = isNewest ? <span className="notification-bubble">new</span> : '';
     return <div className="kata">
-      <a href={url} target="_blank">{name}</a>
+      {isNewestMarker}<a href={url} target="_blank">{name}</a>
       <span className="details">{description}<br/>Difficulty: {level.toLowerCase()}</span>
     </div>;
   }
