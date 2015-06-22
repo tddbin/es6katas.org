@@ -61,4 +61,24 @@ describe('create KataGroups from the metadata', function() {
       assert.equal(kataGroups[0].name, 'group a');
     });
   });
+
+  describe('find newest kata', function() {
+    let kataGroups;
+    beforeEach(function() {
+      const groupedMetadataJson = {
+        groups: {
+          'group with 1 kata': {items: [{id: 2}]},
+          'group with 2 katas': {items: [{id: 4}, {id: 3}]}
+        }
+      };
+    
+      kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
+    });
+
+    it('with ID=4', function() {
+      let kataDouble = {id: 4};
+      assert.equal(kataGroups.isNewest(kataDouble), true);
+    });
+    
+  });
 });

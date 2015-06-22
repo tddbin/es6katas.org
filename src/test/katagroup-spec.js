@@ -37,4 +37,27 @@ describe('kata group', function() {
     it('first value must be `2`', () => assert.equal(group.katas[1].id, 2));
     it('first value must be `3`', () => assert.equal(group.katas[2].id, 3));
   });
+
+  describe('get highest ID', function() {
+    it('for 1 kata return it`s ID', function() {
+      const katas = [
+        Kata.fromRawItem({id: 1})  
+      ];
+      let group = KataGroup.withKatas('', katas);
+      
+      assert.equal(group.highestId, 1);
+    });
+    
+    it('for multiple katas return the highest', function() {
+      const katas = [
+        Kata.fromRawItem({id: 2}),  
+        Kata.fromRawItem({id: 3}),  
+        Kata.fromRawItem({id: 1})  
+      ];
+      let group = KataGroup.withKatas('', katas);
+      
+      assert.equal(group.highestId, 3);
+    });
+  });
+  
 });

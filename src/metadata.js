@@ -29,6 +29,15 @@ class KataGroups extends Array {
     });
   }
   
+  isNewest(kata) {
+    const highestId = this
+      .map(group => group.highestId)
+      .sort()
+      .reverse()
+      [0];
+    return kata.id === highestId;
+  }
+  
 }
 
 function fromMetadataJsonToKataGroups(groupedMetadataJson) {

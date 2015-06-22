@@ -11,9 +11,10 @@ export default class KataGroup {
   }
   
   sortByName() {
-    this.katas.sort(function(link, link1) {
-      return link.id < link1.id ? -1 : 1;
-    });
+    this.katas.sort((kata1, kata2) => kata1.id < kata2.id ? -1 : 1);
   }
-  
+
+  get highestId() {
+    return this.katas[this.katas.length - 1].id;
+  }
 }
