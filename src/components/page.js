@@ -52,9 +52,11 @@ class Kata extends React.Component {
   render() {
     const {url, name, description, level} = this.props.kata;
     const {isNewest} = this.props;
-    const isNewestMarker = isNewest ? <span className="notification-bubble">new</span> : '';
+    const marker = 
+      isNewest ? <span className="notification-bubble new">new</span> : 
+        (level==='BEGINNER' ? <span className="notification-bubble easy">easy</span> : '');
     return <div className="kata">
-      {isNewestMarker}<a href={url} target="_blank">{name}</a>
+      {marker}<a href={url} target="_blank">{name}</a>
       <span className="details">{description}<br/>Difficulty: {level.toLowerCase()}</span>
     </div>;
   }
