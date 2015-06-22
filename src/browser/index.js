@@ -9,7 +9,7 @@ function _renderInBrowser(err, metadataJson) {
   if (err) {
     console.log(err);
   } else {
-    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)}/>, document.querySelector('body'));
+    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)}/>, document.body);
   }
 }
 
