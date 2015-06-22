@@ -17,6 +17,7 @@ export default class Page extends React.Component {
           {numKatas} katas --- 
           follow <a href="https://twitter.com/es6katas">@es6katas</a>
         </footer>
+        <WorkshopBanner />
         <script src="./index.min.js" type="application/javascript"></script>
         <Analytics />
       </body>
@@ -72,5 +73,15 @@ class Analytics extends React.Component {
           ga('send', 'pageview');
     `;
     return <script dangerouslySetInnerHTML={{__html: jsCode}}></script>
+  }
+}
+
+class WorkshopBanner extends React.Component {
+  render() {
+    const imageUrl = './workshopbanner.png';
+    const workshopUrl = 'http://www.uxebu.com/all-workshops/es6-and-react-js/';
+    return <div className="workshop-banner">
+      <a href={workshopUrl}><img src={imageUrl} width="70%" /></a>
+    </div>
   }
 }

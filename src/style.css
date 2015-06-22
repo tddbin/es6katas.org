@@ -66,3 +66,13 @@ footer {
     color: white;
     margin-left: -2.8em;
   }
+
+  
+.workshop-banner {
+  /*display: none;*/
+  position: fixed;
+  bottom: 10em;
+  right: 1em;
+  transform: translateY(200px);
+  transition: 3s linear;
+}
