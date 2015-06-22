@@ -53,9 +53,16 @@ footer {
   position: absolute;
   margin-left: -2.6em;
   padding: 0 0.3em;
-  background-color: red;
-  color: white;
-  font-size: 0.9em;
+  font-size: 0.6em;
   border-radius: 5px;
+  font-family: sans-serif;
 }
-  
+  .notification-bubble.new {
+    background-color: red;
+    color: white;
+  }
+  .notification-bubble.easy {
+    background-color: green;
+    color: white;
+    margin-left: -2.8em;
+  }
