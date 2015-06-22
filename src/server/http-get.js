@@ -10,11 +10,7 @@ export const loadViaNode = (fileUrl, onLoaded) => {
     res.on('data', function(chunk) {data += chunk;});
     res.on('end', function() {
       const parsed = JSON.parse(data);
-      if (!parsed.items) {
-        onLoaded(null, JSON.parse(fs.readFileSync('../for-offline/grouped-metadata.json')));
-      } else {
-        onLoaded(null, parsed);
-      }
+      onLoaded(null, parsed);
     })
   });
   request.on('error', function(e) { onLoaded(e); });
