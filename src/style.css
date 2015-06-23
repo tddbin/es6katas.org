@@ -76,7 +76,19 @@ footer {
   transform: translateY(200px);
   transition: 2s linear;
 }
-.workshop-banner.fade-in {
-  opacity: 1;
-  bottom: 10em;
-}
+  .workshop-banner.fade-in {
+    opacity: 1;
+    bottom: 10em;
+  }
+  .workshop-banner.small {
+    opacity: 1;
+    bottom: 2.5em;
+  }
+  .workshop-banner button.close {
+    border: 0;
+    background-color: transparent;
+    color: white;
+  }
+  .workshop-banner .close-button-container {
+    text-align: right;
+  }
