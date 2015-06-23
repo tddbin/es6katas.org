@@ -69,13 +69,14 @@ footer {
 
   
 .workshop-banner {
-  /*display: none;*/
+  opacity: 0;
   position: fixed;
   bottom: 0;
-  right: 1em;
+  right: 0;
   transform: translateY(200px);
-  transition: 3s linear;
+  transition: 2s linear;
 }
 .workshop-banner.fade-in {
+  opacity: 1;
   bottom: 10em;
 }

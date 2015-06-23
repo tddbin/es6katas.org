@@ -5,12 +5,17 @@ import Page from '../components/page.js';
 import Metadata from '../metadata.js';
 import {METADATA_URL} from '../config.js';
 
-function _renderInBrowser(err, metadataJson) {
+function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
   if (err) {
     console.log(err);
   } else {
-    const showWorkshopBanner = navigator.language == 'de';
-    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={showWorkshopBanner}/>, document.body);
+    if (navigator.language == 'de') {
+      setTimeout(() => {
+        _renderInBrowser(null, metadataJson, true);
+      }, 1000);
+    }
+    const targetNode = document.getElementById('app');
+    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={showWorkshopBanner}/>, targetNode);
   }
 }
 

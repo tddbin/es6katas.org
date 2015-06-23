@@ -72,7 +72,7 @@ class WorkshopBanner extends React.Component {
       'fade-in': this.props.showWorkshopBanner
     });
     return <div className={classes}>
-      <a href={workshopUrl}><img src={imageUrl} width="70%" /></a>
+      <a href={workshopUrl}><img src={imageUrl} width="50%" /></a>
     </div>
   }
 }
