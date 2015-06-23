@@ -9,7 +9,8 @@ function _renderInBrowser(err, metadataJson) {
   if (err) {
     console.log(err);
   } else {
-    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)}/>, document.body);
+    const showWorkshopBanner = navigator.language == 'de';
+    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={showWorkshopBanner}/>, document.body);
   }
 }
 

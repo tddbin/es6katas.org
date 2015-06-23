@@ -8,7 +8,7 @@ function _renderOnServer(err, metadataJson) {
   if (err) {
     console.log(err);
   } else {
-    const preRendered = React.renderToString(<Page kataGroups={Metadata.toKataGroups(metadataJson)}/>);
+    const preRendered = React.renderToString(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={false}/>);
     console.log(preRendered);
   }
 }

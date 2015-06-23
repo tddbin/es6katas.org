@@ -1,10 +1,12 @@
 import React from 'react';
+import classNames from 'classnames';
 
 export default class Page extends React.Component {
 
   render() {
     let {kataGroups} = this.props;
     const numKatas = kataGroups.reduce((old, {katas: {length}}) => old + length, 0);
+    const {showWorkshopBanner} = this.props;
     return (
       <body>
         <h1>ES6 Katas</h1>
@@ -17,7 +19,7 @@ export default class Page extends React.Component {
           {numKatas} katas --- 
           follow <a href="https://twitter.com/es6katas">@es6katas</a>
         </footer>
-        <WorkshopBanner />
+        <WorkshopBanner showWorkshopBanner={showWorkshopBanner} />
         <script src="./index.min.js" type="application/javascript"></script>
         <Analytics />
       </body>
@@ -80,7 +82,11 @@ class WorkshopBanner extends React.Component {
   render() {
     const imageUrl = './workshopbanner.png';
     const workshopUrl = 'http://www.uxebu.com/all-workshops/es6-and-react-js/';
-    return <div className="workshop-banner">
+    var classes = classNames({
+      'workshop-banner': true,
+      'fade-in': this.props.showWorkshopBanner
+    });
+    return <div className={classes}>
       <a href={workshopUrl}><img src={imageUrl} width="70%" /></a>
     </div>
   }
