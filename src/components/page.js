@@ -8,7 +8,7 @@ export default class Page extends React.Component {
     const numKatas = kataGroups.reduce((old, {katas: {length}}) => old + length, 0);
     const {showWorkshopBanner} = this.props;
     return (
-      <body>
+      <div>
         <h1>ES6 Katas</h1>
         <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
         <KataGroups groups={kataGroups} />
@@ -20,9 +20,7 @@ export default class Page extends React.Component {
           follow <a href="https://twitter.com/es6katas">@es6katas</a>
         </footer>
         <WorkshopBanner showWorkshopBanner={showWorkshopBanner} />
-        <script src="./index.min.js" type="application/javascript"></script>
-        <Analytics />
-      </body>
+      </div>
     );
   }
 }
@@ -62,19 +60,6 @@ class Kata extends React.Component {
       {marker}<a href={url} target="_blank">{name}</a>
       <span className="details">{description}<br/>Difficulty: {level.toLowerCase()}</span>
     </div>;
-  }
-}
-
-class Analytics extends React.Component {
-  render() {
-    const jsCode = `(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-          ga('create', 'UA-62726232-1', 'es6katas.org');
-          ga('send', 'pageview');
-    `;
-    return <script dangerouslySetInnerHTML={{__html: jsCode}}></script>
   }
 }
 
