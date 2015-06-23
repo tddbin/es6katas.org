@@ -6,10 +6,9 @@ import {METADATA_URL} from '../config.js';
 
 function _renderOnServer(err, metadataJson) {
   if (err) {
-    console.log(err);
+    throw new Error(err);
   } else {
-    const preRendered = React.renderToString(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={false}/>);
-    console.log(preRendered);
+    return React.renderToString(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={false}/>);
   }
 }
 
@@ -18,5 +17,10 @@ function _renderOnServer(err, metadataJson) {
 //  onLoaded(null, data);
 //}
 
-loadViaNode(METADATA_URL, _renderOnServer);
+export function render(onDone) {
+  //loadViaNode(METADATA_URL, (...args) => {onDone(_renderOnServer(...args))});
+  loadViaNode(METADATA_URL, function(...args) {
+    onDone(_renderOnServer(...args));
+  });
+}
 //loadFromFile(_renderOnServer);
