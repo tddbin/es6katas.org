@@ -78,7 +78,7 @@ class WorkshopBanner extends React.Component {
     });
     return <div className={classes}>
       <div className="close-button-container"><button className="close" onClick={this.minimizeBanner.bind(this)}>[x]</button></div>
-      <a href={workshopUrl} onMouseOver={this.maximizeBanner.bind(this)}>
+      <a href={workshopUrl} target="_blank" onMouseOver={this.maximizeBanner.bind(this)}>
         <img src={imageUrl} alt="ES6+reactjs workshop" width="125" height="195" />
       </a>
     </div>

@@ -67,7 +67,6 @@ footer {
     margin-left: -2.8em;
   }
 
-  
 .workshop-banner {
   opacity: 0;
   position: fixed;
@@ -83,6 +82,7 @@ footer {
   .workshop-banner.small {
     opacity: 1;
     bottom: 2.5em;
+    transition: 0.2s linear;
   }
   .workshop-banner button.close {
     border: 0;
