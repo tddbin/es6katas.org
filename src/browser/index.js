@@ -12,7 +12,7 @@ function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
     if (navigator.language == 'de') {
       setTimeout(() => {
         _renderInBrowser(null, metadataJson, true);
-      }, 3000);
+      }, 1000);
     }
     const targetNode = document.getElementById('app');
     React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={showWorkshopBanner}/>, targetNode);
