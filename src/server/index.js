@@ -2,7 +2,7 @@ import React from 'react';
 import {loadViaNode} from './http-get.js';
 import Page from '../components/page.js';
 import Metadata from '../metadata.js';
-import {METADATA_URL} from '../config.js';
+import {GROUPED_METADATA_URL} from '../config.js';
 
 function _renderOnServer(err, metadataJson) {
   if (err) {
@@ -18,8 +18,8 @@ function _renderOnServer(err, metadataJson) {
 //}
 
 export function render(onDone) {
-  //loadViaNode(METADATA_URL, (...args) => {onDone(_renderOnServer(...args))});
-  loadViaNode(METADATA_URL, function(...args) {
+  //loadViaNode(GROUPED_METADATA_URL, (...args) => {onDone(_renderOnServer(...args))});
+  loadViaNode(GROUPED_METADATA_URL, function(...args) {
     onDone(_renderOnServer(...args));
   });
 }

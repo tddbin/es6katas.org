@@ -3,7 +3,7 @@ import React from 'react';
 import {loadViaAjax} from './ajax.js';
 import Page from '../components/page.js';
 import Metadata from '../metadata.js';
-import {METADATA_URL} from '../config.js';
+import {GROUPED_METADATA_URL} from '../config.js';
 
 function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
   if (err) {
@@ -24,5 +24,5 @@ function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
 //  onLoaded(null, data);
 //}
 
-loadViaAjax(METADATA_URL, _renderInBrowser);
+loadViaAjax(GROUPED_METADATA_URL, _renderInBrowser);
 //loadFromFile(_renderInBrowser);
