@@ -47,6 +47,7 @@ footer {
 }
   .group .kata:hover .details {
     display: block;
+    z-index: 1;
   }
 
 .notification-bubble {
@@ -92,3 +93,4 @@ footer {
   .workshop-banner .close-button-container {
     text-align: right;
   }
+  
