@@ -17,7 +17,8 @@ export default class Page extends React.Component {
           using <a href="http://tddbin.com">tddbin</a> ---  
           on <a href="http://github.com/tddbin/es6katas.org">github</a> ---  
           {numKatas} katas --- 
-          follow <a href="https://twitter.com/es6katas">@es6katas</a>
+          follow <a href="https://twitter.com/es6katas">@es6katas</a> ---  
+          <a type="application/rss+xml" href="./rss/MostRecent.xml">subscribe to RSS</a>
         </footer>
         <WorkshopBanner showWorkshopBanner={showWorkshopBanner} />
       </div>
