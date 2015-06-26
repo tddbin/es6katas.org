@@ -6,9 +6,9 @@
     <description><![CDATA[Learn ECMAScript6 by doing it]]></description>
     <language>en-US</language>
     <atom:link href="http://es6katas.org/rss/MostRecent.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 26 Jun 2015 20:20:54 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2015 20:27:26 GMT</lastBuildDate>
     <item>
-      <title><![CDATA[basics]]></title>
+      <title><![CDATA[Template strings - basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/template-strings/basics</link>
       <pubDate/>
       <description><![CDATA[A template string, is wrapped in backticks.]]></description>
@@ -16,7 +16,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[multiline]]></title>
+      <title><![CDATA[Template strings - multiline]]></title>
       <link>http://tddbin.com/#?kata=es6/language/template-strings/multiline</link>
       <pubDate/>
       <description><![CDATA[Template strings, can be multiline.]]></description>
@@ -24,7 +24,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[tagged]]></title>
+      <title><![CDATA[Template strings - tagged]]></title>
       <link>http://tddbin.com/#?kata=es6/language/template-strings/tagged</link>
       <pubDate/>
       <description><![CDATA[Tagged template strings are preceeded by an expression.]]></description>
@@ -32,7 +32,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`raw` property]]></title>
+      <title><![CDATA[Template strings - `raw` property]]></title>
       <link>http://tddbin.com/#?kata=es6/language/template-strings/raw</link>
       <pubDate/>
       <description><![CDATA[The `raw` property accesses the string as it was entered.]]></description>
@@ -40,7 +40,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[basics]]></title>
+      <title><![CDATA[Arrow functions - basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/arrow-functions/basics</link>
       <pubDate/>
       <description><![CDATA[Arrow functions are a more convinient and shorter way to write a function.]]></description>
@@ -48,7 +48,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[function binding]]></title>
+      <title><![CDATA[Arrow functions - function binding]]></title>
       <link>http://tddbin.com/#?kata=es6/language/arrow-functions/binding</link>
       <pubDate/>
       <description><![CDATA[Arrow functions have lexical `this`, no dynamic `this`.]]></description>
@@ -56,7 +56,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`let` declaration]]></title>
+      <title><![CDATA[Block scope - `let` declaration]]></title>
       <link>http://tddbin.com/#?kata=es6/language/block-scoping/let</link>
       <pubDate/>
       <description><![CDATA[`let` restricts the scope of the variable to the current block.]]></description>
@@ -64,7 +64,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`const` declaration]]></title>
+      <title><![CDATA[Block scope - `const` declaration]]></title>
       <link>http://tddbin.com/#?kata=es6/language/block-scoping/const</link>
       <pubDate/>
       <description><![CDATA[`const` is like `let` plus read-only.]]></description>
@@ -72,7 +72,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[basics]]></title>
+      <title><![CDATA[Object literal - basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/object-literal/basics</link>
       <pubDate/>
       <description><![CDATA[ES6 has new shorthands for objects.]]></description>
@@ -80,7 +80,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[array]]></title>
+      <title><![CDATA[Destructuring - array]]></title>
       <link>http://tddbin.com/#?kata=es6/language/destructuring/array</link>
       <pubDate/>
       <description><![CDATA[Destructuring arrays allows for more concise.]]></description>
@@ -88,7 +88,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[string]]></title>
+      <title><![CDATA[Destructuring - string]]></title>
       <link>http://tddbin.com/#?kata=es6/language/destructuring/string</link>
       <pubDate/>
       <description><![CDATA[Destructuring can also be done on strings.]]></description>
@@ -96,7 +96,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[object]]></title>
+      <title><![CDATA[Destructuring - object]]></title>
       <link>http://tddbin.com/#?kata=es6/language/destructuring/object</link>
       <pubDate/>
       <description><![CDATA[Destructuring objects is a core concepts for modules and more.]]></description>
@@ -104,7 +104,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[defaults]]></title>
+      <title><![CDATA[Destructuring - defaults]]></title>
       <link>http://tddbin.com/#?kata=es6/language/destructuring/defaults</link>
       <pubDate/>
       <description><![CDATA[When destructuring you can also use default values.]]></description>
@@ -112,7 +112,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[parameters]]></title>
+      <title><![CDATA[Destructuring - parameters]]></title>
       <link>http://tddbin.com/#?kata=es6/language/destructuring/parameters</link>
       <pubDate/>
       <description><![CDATA[Destructuring function parameters.]]></description>
@@ -120,7 +120,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[rename]]></title>
+      <title><![CDATA[Destructuring - rename]]></title>
       <link>http://tddbin.com/#?kata=es6/language/destructuring/rename</link>
       <pubDate/>
       <description><![CDATA[Rename variables while destructuring.]]></description>
@@ -128,7 +128,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[computed properties]]></title>
+      <title><![CDATA[Object literal - computed properties]]></title>
       <link>http://tddbin.com/#?kata=es6/language/object-literal/computed-properties</link>
       <pubDate/>
       <description><![CDATA[Object literal properties may be computed values.]]></description>
@@ -136,7 +136,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[in strings]]></title>
+      <title><![CDATA[Unicode - in strings]]></title>
       <link>http://tddbin.com/#?kata=es6/language/unicode/in-strings</link>
       <pubDate/>
       <description><![CDATA[How to use unicode in strings.]]></description>
@@ -144,7 +144,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[as parameter]]></title>
+      <title><![CDATA[Rest operator - as parameter]]></title>
       <link>http://tddbin.com/#?kata=es6/language/rest/as-parameter</link>
       <pubDate/>
       <description><![CDATA[Use the rest operator as parameter.]]></description>
@@ -152,7 +152,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[with destructuring]]></title>
+      <title><![CDATA[Rest operator - with destructuring]]></title>
       <link>http://tddbin.com/#?kata=es6/language/rest/with-destructuring</link>
       <pubDate/>
       <description><![CDATA[Use the rest operator with destructuring.]]></description>
@@ -160,7 +160,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[with arrays]]></title>
+      <title><![CDATA[Spread operator - with arrays]]></title>
       <link>http://tddbin.com/#?kata=es6/language/spread/with-arrays</link>
       <pubDate/>
       <description><![CDATA[Spread operator in use with arrays.]]></description>
@@ -168,7 +168,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[with strings]]></title>
+      <title><![CDATA[Spread operator - with strings]]></title>
       <link>http://tddbin.com/#?kata=es6/language/spread/with-strings</link>
       <pubDate/>
       <description><![CDATA[Apply spread operator on strings.]]></description>
@@ -176,7 +176,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[creation]]></title>
+      <title><![CDATA[Class - creation]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/creation</link>
       <pubDate/>
       <description><![CDATA[Create a class.]]></description>
@@ -184,7 +184,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[accessors]]></title>
+      <title><![CDATA[Class - accessors]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/accessors</link>
       <pubDate/>
       <description><![CDATA[Getter+setters as class properties.]]></description>
@@ -192,7 +192,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[static]]></title>
+      <title><![CDATA[Class - static]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/static</link>
       <pubDate/>
       <description><![CDATA[Use of the static keyword inside a class.]]></description>
@@ -200,7 +200,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[extends]]></title>
+      <title><![CDATA[Class - extends]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/extends</link>
       <pubDate/>
       <description><![CDATA[How to do inheritance, using `extends`.]]></description>
@@ -208,7 +208,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[more extends]]></title>
+      <title><![CDATA[Class - more extends]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/more-extends</link>
       <pubDate/>
       <description><![CDATA[More in depth `extends` stuff]]></description>
@@ -216,7 +216,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[super in method]]></title>
+      <title><![CDATA[Class - super in method]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/super-in-method</link>
       <pubDate/>
       <description><![CDATA[Use of `super` inside a method.]]></description>
@@ -224,7 +224,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[super in constructor]]></title>
+      <title><![CDATA[Class - super in constructor]]></title>
       <link>http://tddbin.com/#?kata=es6/language/class/super-in-constructor</link>
       <pubDate/>
       <description><![CDATA[Use of `super` inside the constructor.]]></description>
@@ -232,7 +232,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`Array.from()`]]></title>
+      <title><![CDATA[Array API - `Array.from()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/from</link>
       <pubDate/>
       <description><![CDATA[Convert a not-array into an array.]]></description>
@@ -240,7 +240,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`Array.of()`]]></title>
+      <title><![CDATA[Array API - `Array.of()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/of</link>
       <pubDate/>
       <description><![CDATA[`Array.of` creates an array with the given arguments as elements.]]></description>
@@ -248,7 +248,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`[].fill()`]]></title>
+      <title><![CDATA[Array API - `[].fill()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/fill</link>
       <pubDate/>
       <description><![CDATA[`[].fill` can fill up an array with one value.]]></description>
@@ -256,7 +256,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`[].find()`]]></title>
+      <title><![CDATA[Array API - `[].find()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/find</link>
       <pubDate/>
       <description><![CDATA[`[].find` makes finding items in arrays easier.]]></description>
@@ -264,7 +264,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`[].findIndex()`]]></title>
+      <title><![CDATA[Array API - `[].findIndex()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/findIndex</link>
       <pubDate/>
       <description><![CDATA[`[].findIndex` makes finding items in arrays easier.]]></description>
@@ -272,7 +272,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[basics]]></title>
+      <title><![CDATA[Symbol - basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/symbol/basics</link>
       <pubDate/>
       <description><![CDATA[Symbol basics.]]></description>
@@ -280,7 +280,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`Symbol.for()`]]></title>
+      <title><![CDATA[Symbol - `Symbol.for()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/symbol/for</link>
       <pubDate/>
       <description><![CDATA[`Symbol.for()` for registering Symbols globally.]]></description>
@@ -288,7 +288,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`Symbol.keyFor()`]]></title>
+      <title><![CDATA[Symbol - `Symbol.keyFor()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/symbol/keyFor</link>
       <pubDate/>
       <description><![CDATA[`Symbol.keyFor()` gets the symbol key for a given symbol.]]></description>
@@ -296,7 +296,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[array]]></title>
+      <title><![CDATA[Iterator - array]]></title>
       <link>http://tddbin.com/#?kata=es6/language/iterator/array</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -304,7 +304,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[string]]></title>
+      <title><![CDATA[Iterator - string]]></title>
       <link>http://tddbin.com/#?kata=es6/language/iterator/string</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -312,7 +312,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[protocol]]></title>
+      <title><![CDATA[Iterator - protocol]]></title>
       <link>http://tddbin.com/#?kata=es6/language/iterator/protocol</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -320,7 +320,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[usage]]></title>
+      <title><![CDATA[Iterator - usage]]></title>
       <link>http://tddbin.com/#?kata=es6/language/iterator/usages</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -328,7 +328,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`[].entries()`]]></title>
+      <title><![CDATA[Array API - `[].entries()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/entries</link>
       <pubDate/>
       <description><![CDATA[`[].entries()` returns an iterator object with all entries.]]></description>
@@ -336,7 +336,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`[].keys()`]]></title>
+      <title><![CDATA[Array API - `[].keys()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/keys</link>
       <pubDate/>
       <description><![CDATA[`[].keys()` returns an iterator for all keys in the array.]]></description>
@@ -344,7 +344,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`[].values()`]]></title>
+      <title><![CDATA[Array API - `[].values()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/array-api/values</link>
       <pubDate/>
       <description><![CDATA[`[].values()` returns an iterator for all values in the array]]></description>
@@ -352,7 +352,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[Basics]]></title>
+      <title><![CDATA[Map - Basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/map/basics</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -360,7 +360,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`map.get()`]]></title>
+      <title><![CDATA[Map - `map.get()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/map/get</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -368,7 +368,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`map.set()`]]></title>
+      <title><![CDATA[Map - `map.set()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/map/set</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -376,7 +376,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[basics]]></title>
+      <title><![CDATA[Set - basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/set/basics</link>
       <pubDate/>
       <description><![CDATA[]]></description>
@@ -384,7 +384,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`set.add()`]]></title>
+      <title><![CDATA[Set - `set.add()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/set/add</link>
       <pubDate/>
       <description><![CDATA[Appends a new element to the end of a Set object.]]></description>
@@ -392,7 +392,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[creation]]></title>
+      <title><![CDATA[Generator - creation]]></title>
       <link>http://tddbin.com/#?kata=es6/language/generator/creation</link>
       <pubDate/>
       <description><![CDATA[There are many ways to create a generator]]></description>
@@ -400,7 +400,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[iterator]]></title>
+      <title><![CDATA[Generator - iterator]]></title>
       <link>http://tddbin.com/#?kata=es6/language/generator/iterator</link>
       <pubDate/>
       <description><![CDATA[Generators return iterable objects]]></description>
@@ -408,7 +408,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[yield expressions]]></title>
+      <title><![CDATA[Generator - yield expressions]]></title>
       <link>http://tddbin.com/#?kata=es6/language/generator/yield</link>
       <pubDate/>
       <description><![CDATA[The yield keyword is used to pause and resume a generator function]]></description>
@@ -416,7 +416,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[send value to a generator]]></title>
+      <title><![CDATA[Generator - send value to a generator]]></title>
       <link>http://tddbin.com/#?kata=es6/language/generator/send-value</link>
       <pubDate/>
       <description><![CDATA[By calling next() with a parameter, you can pass a value to a generator.]]></description>
@@ -424,7 +424,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[initialize]]></title>
+      <title><![CDATA[Map - initialize]]></title>
       <link>http://tddbin.com/#?kata=es6/language/map/initialize</link>
       <pubDate/>
       <description><![CDATA[Initializing a map with values.]]></description>
@@ -432,7 +432,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`Object.is()`]]></title>
+      <title><![CDATA[Object API - `Object.is()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/object-api/is</link>
       <pubDate/>
       <description><![CDATA[`Object.is()` compares if two values are the same.]]></description>
@@ -440,7 +440,7 @@
       <author>uxebu</author>
     </item>
     <item>
-      <title><![CDATA[`Number.isInteger()`]]></title>
+      <title><![CDATA[Number - `Number.isInteger()`]]></title>
       <link>http://tddbin.com/#?kata=es6/language/number-api/isinteger</link>
       <pubDate/>
       <description><![CDATA[`Number.isInteger()` determines if a value is an integer.]]></description>
