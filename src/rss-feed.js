@@ -29,7 +29,7 @@ const options = {}; //{'CustomTag': 'This is a custom tag under the channel tag!
 function createRss(metadata) {
   let feed = rss.createNewFeed(title, link, description, author, feedLink, options);
   metadata.forEach((kata) => {
-    const itemTitle = kata.name;
+    const itemTitle = `${kata.groupName} - ${kata.name}`;
     const itemLink = `http://tddbin.com/#?kata=es6/language/${kata.path}`;
     const pubDate = null;
     const description2 = kata.description;
