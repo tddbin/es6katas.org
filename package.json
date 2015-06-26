@@ -11,6 +11,7 @@
     "dev-build-app": "browserify src/browser/index.js --outfile=dist/index.min.js --transform=babelify",
     "build": "./scripts/build/build.sh",
     "build:app": "browserify src/browser/index.js --outfile=dist/index.js --transform=babelify",
+    "build:rss": "mkdir -p dist/rss && babel-node src/rss-feed.js > dist/rss/MostRecent.xml",
     "build-css": "myth --compress src/components/style.css dist/style.css && cp -r src/components/img dist",
     "postbuild:app": "uglifyjs dist/index.js -m -c > dist/index.min.js && rm dist/index.js",
     "build:media": "./scripts/build/copy-media-files.sh",
@@ -46,6 +47,7 @@
     "watch": "^0.16.0",
     "parallelshell": "^1.1.1",
     "react": "^0.13.3",
-    "classnames": "^2.1.2"
+    "classnames": "^2.1.2",
+    "node-rss": "^1.0.4"
   }
 }
