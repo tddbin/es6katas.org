@@ -6,7 +6,7 @@
     <description><![CDATA[Learn ECMAScript6 by doing it]]></description>
     <language>en-US</language>
     <atom:link href="http://es6katas.org/rss/MostRecent.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 30 Jun 2015 06:56:26 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2015 08:23:50 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Template strings - basics]]></title>
       <link>http://tddbin.com/#?kata=es6/language/template-strings/basics</link>
@@ -461,6 +461,14 @@
       <pubDate/>
       <description><![CDATA[Default parameters make function parameters more flexible.]]></description>
       <guid>http://tddbin.com/#?kata=es6/language/default-parameters/basics</guid>
+      <author>uxebu</author>
+    </item>
+    <item>
+      <title><![CDATA[Reflect API - Basics]]></title>
+      <link>http://tddbin.com/#?kata=es6/language/reflect/basics</link>
+      <pubDate/>
+      <description><![CDATA[]]></description>
+      <guid>http://tddbin.com/#?kata=es6/language/reflect/basics</guid>
       <author>uxebu</author>
     </item>
   </channel>
