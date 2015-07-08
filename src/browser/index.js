@@ -9,11 +9,6 @@ function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
   if (err) {
     console.log(err);
   } else {
-    if (navigator.language.startsWith('de')) {
-      setTimeout(() => {
-        _renderInBrowser(null, metadataJson, true);
-      }, 1000);
-    }
     const targetNode = document.getElementById('app');
     React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={showWorkshopBanner}/>, targetNode);
   }
