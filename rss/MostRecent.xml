@@ -6,493 +6,509 @@
     <description><![CDATA[Learn ECMAScript6 by doing it]]></description>
     <language>en-US</language>
     <atom:link href="http://es6katas.org/rss/MostRecent.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 09 Jul 2015 08:49:23 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2015 14:03:31 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Template strings - basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/template-strings/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/basics</link>
       <pubDate/>
       <description><![CDATA[A template string, is wrapped in backticks.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/template-strings/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Template strings - multiline]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/template-strings/multiline</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/multiline</link>
       <pubDate/>
       <description><![CDATA[Template strings, can be multiline.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/template-strings/multiline</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/multiline</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Template strings - tagged]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/template-strings/tagged</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/tagged</link>
       <pubDate/>
       <description><![CDATA[Tagged template strings are preceeded by an expression.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/template-strings/tagged</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/tagged</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Template strings - `raw` property]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/template-strings/raw</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/raw</link>
       <pubDate/>
       <description><![CDATA[The `raw` property accesses the string as it was entered.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/template-strings/raw</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/raw</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Arrow functions - basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/arrow-functions/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/basics</link>
       <pubDate/>
       <description><![CDATA[Arrow functions are a more convinient and shorter way to write a function.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/arrow-functions/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Arrow functions - function binding]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/arrow-functions/binding</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/binding</link>
       <pubDate/>
       <description><![CDATA[Arrow functions have lexical `this`, no dynamic `this`.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/arrow-functions/binding</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/binding</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Block scope - `let` declaration]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/block-scoping/let</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/let</link>
       <pubDate/>
       <description><![CDATA[`let` restricts the scope of the variable to the current block.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/block-scoping/let</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/let</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Block scope - `const` declaration]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/block-scoping/const</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/const</link>
       <pubDate/>
       <description><![CDATA[`const` is like `let` plus read-only.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/block-scoping/const</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/const</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Object literal - basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/object-literal/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/basics</link>
       <pubDate/>
       <description><![CDATA[ES6 has new shorthands for objects.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/object-literal/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Destructuring - array]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/destructuring/array</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/array</link>
       <pubDate/>
       <description><![CDATA[Destructuring arrays allows for more concise.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/destructuring/array</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/array</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Destructuring - string]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/destructuring/string</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/string</link>
       <pubDate/>
       <description><![CDATA[Destructuring can also be done on strings.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/destructuring/string</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/string</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Destructuring - object]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/destructuring/object</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/object</link>
       <pubDate/>
       <description><![CDATA[Destructuring objects is a core concepts for modules and more.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/destructuring/object</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/object</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Destructuring - defaults]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/destructuring/defaults</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/defaults</link>
       <pubDate/>
       <description><![CDATA[When destructuring you can also use default values.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/destructuring/defaults</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/defaults</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Destructuring - parameters]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/destructuring/parameters</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/parameters</link>
       <pubDate/>
       <description><![CDATA[Destructuring function parameters.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/destructuring/parameters</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/parameters</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Destructuring - rename]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/destructuring/rename</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/rename</link>
       <pubDate/>
       <description><![CDATA[Rename variables while destructuring.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/destructuring/rename</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/rename</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Object literal - computed properties]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/object-literal/computed-properties</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/computed-properties</link>
       <pubDate/>
       <description><![CDATA[Object literal properties may be computed values.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/object-literal/computed-properties</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/computed-properties</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Unicode - in strings]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/unicode/in-strings</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/unicode/in-strings</link>
       <pubDate/>
       <description><![CDATA[How to use unicode in strings.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/unicode/in-strings</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/unicode/in-strings</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Rest operator - as parameter]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/rest/as-parameter</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/as-parameter</link>
       <pubDate/>
       <description><![CDATA[Use the rest operator as parameter.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/rest/as-parameter</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/as-parameter</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Rest operator - with destructuring]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/rest/with-destructuring</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/with-destructuring</link>
       <pubDate/>
       <description><![CDATA[Use the rest operator with destructuring.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/rest/with-destructuring</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/with-destructuring</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Spread operator - with arrays]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/spread/with-arrays</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-arrays</link>
       <pubDate/>
       <description><![CDATA[Spread operator in use with arrays.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/spread/with-arrays</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-arrays</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Spread operator - with strings]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/spread/with-strings</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-strings</link>
       <pubDate/>
       <description><![CDATA[Apply spread operator on strings.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/spread/with-strings</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-strings</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - creation]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/creation</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/creation</link>
       <pubDate/>
       <description><![CDATA[Create a class.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/creation</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/creation</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - accessors]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/accessors</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/accessors</link>
       <pubDate/>
       <description><![CDATA[Getter+setters as class properties.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/accessors</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/accessors</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - static]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/static</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/static</link>
       <pubDate/>
       <description><![CDATA[Use of the static keyword inside a class.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/static</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/static</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - extends]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/extends</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/extends</link>
       <pubDate/>
       <description><![CDATA[How to do inheritance, using `extends`.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/extends</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/extends</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - more extends]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/more-extends</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/more-extends</link>
       <pubDate/>
       <description><![CDATA[More in depth `extends` stuff]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/more-extends</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/more-extends</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - super in method]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/super-in-method</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-method</link>
       <pubDate/>
       <description><![CDATA[Use of `super` inside a method.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/super-in-method</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-method</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Class - super in constructor]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/class/super-in-constructor</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-constructor</link>
       <pubDate/>
       <description><![CDATA[Use of `super` inside the constructor.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/class/super-in-constructor</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-constructor</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `Array.from()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/from</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/from</link>
       <pubDate/>
       <description><![CDATA[Convert a not-array into an array.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/from</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/from</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `Array.of()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/of</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/of</link>
       <pubDate/>
       <description><![CDATA[`Array.of` creates an array with the given arguments as elements.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/of</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/of</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `[].fill()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/fill</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/fill</link>
       <pubDate/>
       <description><![CDATA[`[].fill` can fill up an array with one value.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/fill</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/fill</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `[].find()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/find</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/find</link>
       <pubDate/>
       <description><![CDATA[`[].find` makes finding items in arrays easier.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/find</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/find</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `[].findIndex()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/findIndex</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/findIndex</link>
       <pubDate/>
       <description><![CDATA[`[].findIndex` makes finding items in arrays easier.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/findIndex</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/findIndex</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Symbol - basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/symbol/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/basics</link>
       <pubDate/>
       <description><![CDATA[Symbol basics.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/symbol/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Symbol - `Symbol.for()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/symbol/for</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/for</link>
       <pubDate/>
       <description><![CDATA[`Symbol.for()` for registering Symbols globally.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/symbol/for</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/for</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Symbol - `Symbol.keyFor()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/symbol/keyFor</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/keyFor</link>
       <pubDate/>
       <description><![CDATA[`Symbol.keyFor()` gets the symbol key for a given symbol.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/symbol/keyFor</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/keyFor</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Iterator - array]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/iterator/array</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/array</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/iterator/array</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/array</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Iterator - string]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/iterator/string</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/string</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/iterator/string</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/string</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Iterator - protocol]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/iterator/protocol</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/protocol</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/iterator/protocol</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/protocol</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Iterator - usage]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/iterator/usages</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/usages</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/iterator/usages</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/usages</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `[].entries()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/entries</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/entries</link>
       <pubDate/>
       <description><![CDATA[`[].entries()` returns an iterator object with all entries.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/entries</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/entries</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `[].keys()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/keys</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/keys</link>
       <pubDate/>
       <description><![CDATA[`[].keys()` returns an iterator for all keys in the array.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/keys</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/keys</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Array API - `[].values()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/array-api/values</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/values</link>
       <pubDate/>
       <description><![CDATA[`[].values()` returns an iterator for all values in the array]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/array-api/values</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/values</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Map - Basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/map/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/basics</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/map/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Map - `map.get()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/map/get</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/get</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/map/get</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/get</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Map - `map.set()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/map/set</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/set</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/map/set</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/set</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Set - basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/set/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/basics</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/set/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Set - `set.add()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/set/add</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/add</link>
       <pubDate/>
       <description><![CDATA[Appends a new element to the end of a Set object.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/set/add</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/add</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Generator - creation]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/generator/creation</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/creation</link>
       <pubDate/>
       <description><![CDATA[There are many ways to create a generator]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/generator/creation</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/creation</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Generator - iterator]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/generator/iterator</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/iterator</link>
       <pubDate/>
       <description><![CDATA[Generators return iterable objects]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/generator/iterator</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/iterator</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Generator - yield expressions]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/generator/yield</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/yield</link>
       <pubDate/>
       <description><![CDATA[The yield keyword is used to pause and resume a generator function]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/generator/yield</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/yield</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Generator - send value to a generator]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/generator/send-value</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-value</link>
       <pubDate/>
       <description><![CDATA[By calling next() with a parameter, you can pass a value to a generator.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/generator/send-value</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-value</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Map - initialize]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/map/initialize</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/initialize</link>
       <pubDate/>
       <description><![CDATA[Initializing a map with values.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/map/initialize</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/initialize</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Object API - `Object.is()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/object-api/is</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-api/is</link>
       <pubDate/>
       <description><![CDATA[`Object.is()` compares if two values are the same.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/object-api/is</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-api/is</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Number - `Number.isInteger()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/number-api/isinteger</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/number-api/isinteger</link>
       <pubDate/>
       <description><![CDATA[`Number.isInteger()` determines if a value is an integer.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/number-api/isinteger</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/number-api/isinteger</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Generator - send function to a generator]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/generator/send-function</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-function</link>
       <pubDate/>
       <description><![CDATA[By calling next() with a function, you can pass it to the generator.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/generator/send-function</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-function</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Default parameters - Basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/default-parameters/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/default-parameters/basics</link>
       <pubDate/>
       <description><![CDATA[Default parameters make function parameters more flexible.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/default-parameters/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/default-parameters/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Reflect API - Basics]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/reflect/basics</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/basics</link>
       <pubDate/>
       <description><![CDATA[]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/reflect/basics</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/basics</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Reflect API - `Reflect.apply()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/reflect/apply</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/apply</link>
       <pubDate/>
       <description><![CDATA[Calls a target function with given scope and arguments.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/reflect/apply</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/apply</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Reflect API - `Reflect.getPrototypeOf()`]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/reflect/getprototypeof</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/getprototypeof</link>
       <pubDate/>
       <description><![CDATA[It returns the prototype of the given object.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/reflect/getprototypeof</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/getprototypeof</guid>
       <author>uxebu</author>
     </item>
     <item>
       <title><![CDATA[Modules - `import` statement]]></title>
-      <link>http://tddbin.com/#?kata=es6/language/modules/import</link>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/modules/import</link>
       <pubDate/>
       <description><![CDATA[Use `import` to import functions that have been exported somewhere else.]]></description>
-      <guid>http://tddbin.com/#?kata=es6/language/modules/import</guid>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/modules/import</guid>
+      <author>uxebu</author>
+    </item>
+    <item>
+      <title><![CDATA[Map - `map.has()`]]></title>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/has</link>
+      <pubDate/>
+      <description><![CDATA[Indicates whether an element with a key exists.]]></description>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/has</guid>
+      <author>uxebu</author>
+    </item>
+    <item>
+      <title><![CDATA[String API - `string.includes()`]]></title>
+      <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/string-api/includes</link>
+      <pubDate/>
+      <description><![CDATA[Finds string within another string.]]></description>
+      <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/string-api/includes</guid>
       <author>uxebu</author>
     </item>
   </channel>
