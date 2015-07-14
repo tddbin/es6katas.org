@@ -30,7 +30,8 @@ function createRss(metadata) {
   let feed = rss.createNewFeed(title, link, description, author, feedLink, options);
   metadata.forEach((kata) => {
     const itemTitle = `${kata.groupName} - ${kata.name}`;
-    const itemLink = `http://tddbin.com/#?kata=es6/language/${kata.path}`;
+    const analyticsLink = '?utm_source=RSS%20Feed&utm_medium=RSS&utm_campaign=RSS_Syndication';
+    const itemLink = `http://tddbin.com/${analyticsLink}#?kata=es6/language/${kata.path}`;
     const pubDate = null;
     const description2 = kata.description;
     feed.addNewItem(itemTitle, itemLink, pubDate, description2, {});
