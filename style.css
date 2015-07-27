@@ -1,0 +1,96 @@
+body {
+  font-family: 'Josefin Slab', serif;
+  font-size: large;
+  background-color: #020202;
+  color: #fac93e;
+  margin: 0;
+}
+
+a {
+  color: #E88551;
+  text-decoration: none;
+}
+.group a {
+  display: block;
+}
+a:visited {
+  color: #DAA91E;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.group {
+  float: left;
+  margin: 0 1em 1em 1em;
+  border: 1px solid grey;
+  padding: 0 1em 1em 1em;
+}
+
+footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #333;
+  padding: 0.2em;
+}
+
+.group .kata .details {
+  display: none;
+  position: absolute;
+  background-color: black;
+  border: 1px solid grey;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+  .group .kata:hover .details {
+    display: block;
+    z-index: 1;
+  }
+
+.notification-bubble {
+  position: absolute;
+  margin-left: -2.6em;
+  padding: 0 0.3em;
+  font-size: 0.6em;
+  border-radius: 5px;
+  font-family: sans-serif;
+}
+  .notification-bubble.new {
+    background-color: red;
+    color: white;
+  }
+  .notification-bubble.easy {
+    background-color: green;
+    color: white;
+    margin-left: -2.8em;
+  }
+
+.workshop-banner {
+  opacity: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: translateY(200px);
+  transition: 2s linear;
+}
+  .workshop-banner.fade-in {
+    opacity: 1;
+    bottom: 10em;
+  }
+  .workshop-banner.small {
+    opacity: 1;
+    bottom: 2.5em;
+    transition: 0.2s linear;
+  }
+  .workshop-banner button.close {
+    border: 0;
+    background-color: transparent;
+    color: white;
+  }
+  .workshop-banner .close-button-container {
+    text-align: right;
+  }
+  
