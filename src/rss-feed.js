@@ -32,7 +32,7 @@ function createRss(metadata) {
     const itemTitle = `${kata.groupName} - ${kata.name}`;
     const analyticsLink = '?utm_source=RSS%20Feed&utm_medium=RSS&utm_campaign=RSS_Syndication';
     const itemLink = `http://tddbin.com/${analyticsLink}#?kata=es6/language/${kata.path}`;
-    const pubDate = null;
+    const pubDate = kata.publishDateRfc822;
     const description2 = kata.description;
     feed.addNewItem(itemTitle, itemLink, pubDate, description2, {});
     });
