@@ -6,11 +6,11 @@
     <description><![CDATA[Learn ECMAScript6 by doing it]]></description>
     <language>en-US</language>
     <atom:link href="http://es6katas.org/rss/MostRecent.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 27 Jul 2015 08:39:41 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2015 10:41:12 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Template strings - basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/basics</link>
-      <pubDate/>
+      <pubDate>Fri, 13 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[A template string, is wrapped in backticks.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/basics</guid>
       <author>uxebu</author>
@@ -18,7 +18,7 @@
     <item>
       <title><![CDATA[Template strings - multiline]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/multiline</link>
-      <pubDate/>
+      <pubDate>Mon, 16 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Template strings, can be multiline.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/multiline</guid>
       <author>uxebu</author>
@@ -26,7 +26,7 @@
     <item>
       <title><![CDATA[Template strings - tagged]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/tagged</link>
-      <pubDate/>
+      <pubDate>Tue, 17 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Tagged template strings are preceeded by an expression.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/tagged</guid>
       <author>uxebu</author>
@@ -34,7 +34,7 @@
     <item>
       <title><![CDATA[Template strings - `raw` property]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/raw</link>
-      <pubDate/>
+      <pubDate>Wed, 18 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[The `raw` property accesses the string as it was entered.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/template-strings/raw</guid>
       <author>uxebu</author>
@@ -42,7 +42,7 @@
     <item>
       <title><![CDATA[Arrow functions - basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/basics</link>
-      <pubDate/>
+      <pubDate>Thu, 19 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Arrow functions are a more convinient and shorter way to write a function.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/basics</guid>
       <author>uxebu</author>
@@ -50,7 +50,7 @@
     <item>
       <title><![CDATA[Arrow functions - function binding]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/binding</link>
-      <pubDate/>
+      <pubDate>Fri, 20 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Arrow functions have lexical `this`, no dynamic `this`.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/arrow-functions/binding</guid>
       <author>uxebu</author>
@@ -58,7 +58,7 @@
     <item>
       <title><![CDATA[Block scope - `let` declaration]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/let</link>
-      <pubDate/>
+      <pubDate>Mon, 23 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`let` restricts the scope of the variable to the current block.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/let</guid>
       <author>uxebu</author>
@@ -66,7 +66,7 @@
     <item>
       <title><![CDATA[Block scope - `const` declaration]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/const</link>
-      <pubDate/>
+      <pubDate>Tue, 24 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`const` is like `let` plus read-only.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/block-scoping/const</guid>
       <author>uxebu</author>
@@ -74,7 +74,7 @@
     <item>
       <title><![CDATA[Object literal - basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/basics</link>
-      <pubDate/>
+      <pubDate>Wed, 25 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[ES6 has new shorthands for objects.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/basics</guid>
       <author>uxebu</author>
@@ -82,7 +82,7 @@
     <item>
       <title><![CDATA[Destructuring - array]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/array</link>
-      <pubDate/>
+      <pubDate>Thu, 26 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Destructuring arrays allows for more concise.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/array</guid>
       <author>uxebu</author>
@@ -90,7 +90,7 @@
     <item>
       <title><![CDATA[Destructuring - string]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/string</link>
-      <pubDate/>
+      <pubDate>Fri, 27 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Destructuring can also be done on strings.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/string</guid>
       <author>uxebu</author>
@@ -98,7 +98,7 @@
     <item>
       <title><![CDATA[Destructuring - object]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/object</link>
-      <pubDate/>
+      <pubDate>Mon, 30 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Destructuring objects is a core concepts for modules and more.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/object</guid>
       <author>uxebu</author>
@@ -106,7 +106,7 @@
     <item>
       <title><![CDATA[Destructuring - defaults]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/defaults</link>
-      <pubDate/>
+      <pubDate>Tue, 31 Mar 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[When destructuring you can also use default values.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/defaults</guid>
       <author>uxebu</author>
@@ -114,7 +114,7 @@
     <item>
       <title><![CDATA[Destructuring - parameters]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/parameters</link>
-      <pubDate/>
+      <pubDate>Wed, 01 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Destructuring function parameters.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/parameters</guid>
       <author>uxebu</author>
@@ -122,7 +122,7 @@
     <item>
       <title><![CDATA[Destructuring - rename]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/rename</link>
-      <pubDate/>
+      <pubDate>Thu, 02 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Rename variables while destructuring.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/destructuring/rename</guid>
       <author>uxebu</author>
@@ -130,7 +130,7 @@
     <item>
       <title><![CDATA[Object literal - computed properties]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/computed-properties</link>
-      <pubDate/>
+      <pubDate>Fri, 03 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Object literal properties may be computed values.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/computed-properties</guid>
       <author>uxebu</author>
@@ -138,7 +138,7 @@
     <item>
       <title><![CDATA[Unicode - in strings]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/unicode/in-strings</link>
-      <pubDate/>
+      <pubDate>Mon, 06 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[How to use unicode in strings.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/unicode/in-strings</guid>
       <author>uxebu</author>
@@ -146,7 +146,7 @@
     <item>
       <title><![CDATA[Rest operator - as parameter]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/as-parameter</link>
-      <pubDate/>
+      <pubDate>Tue, 07 Apr 2015 08:15:00 GMT</pubDate>
       <description><![CDATA[Use the rest operator as parameter.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/as-parameter</guid>
       <author>uxebu</author>
@@ -154,7 +154,7 @@
     <item>
       <title><![CDATA[Rest operator - with destructuring]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/with-destructuring</link>
-      <pubDate/>
+      <pubDate>Wed, 08 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Use the rest operator with destructuring.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/rest/with-destructuring</guid>
       <author>uxebu</author>
@@ -162,7 +162,7 @@
     <item>
       <title><![CDATA[Spread operator - with arrays]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-arrays</link>
-      <pubDate/>
+      <pubDate>Fri, 10 Apr 2015 08:18:00 GMT</pubDate>
       <description><![CDATA[Spread operator in use with arrays.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-arrays</guid>
       <author>uxebu</author>
@@ -170,7 +170,7 @@
     <item>
       <title><![CDATA[Spread operator - with strings]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-strings</link>
-      <pubDate/>
+      <pubDate>Mon, 13 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Apply spread operator on strings.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/spread/with-strings</guid>
       <author>uxebu</author>
@@ -178,7 +178,7 @@
     <item>
       <title><![CDATA[Class - creation]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/creation</link>
-      <pubDate/>
+      <pubDate>Tue, 14 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Create a class.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/creation</guid>
       <author>uxebu</author>
@@ -186,7 +186,7 @@
     <item>
       <title><![CDATA[Class - accessors]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/accessors</link>
-      <pubDate/>
+      <pubDate>Wed, 15 Apr 2015 07:56:00 GMT</pubDate>
       <description><![CDATA[Getter+setters as class properties.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/accessors</guid>
       <author>uxebu</author>
@@ -194,7 +194,7 @@
     <item>
       <title><![CDATA[Class - static]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/static</link>
-      <pubDate/>
+      <pubDate>Thu, 16 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Use of the static keyword inside a class.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/static</guid>
       <author>uxebu</author>
@@ -202,7 +202,7 @@
     <item>
       <title><![CDATA[Class - extends]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/extends</link>
-      <pubDate/>
+      <pubDate>Fri, 17 Apr 2015 08:25:00 GMT</pubDate>
       <description><![CDATA[How to do inheritance, using `extends`.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/extends</guid>
       <author>uxebu</author>
@@ -210,7 +210,7 @@
     <item>
       <title><![CDATA[Class - more extends]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/more-extends</link>
-      <pubDate/>
+      <pubDate>Mon, 20 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[More in depth `extends` stuff]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/more-extends</guid>
       <author>uxebu</author>
@@ -218,7 +218,7 @@
     <item>
       <title><![CDATA[Class - super in method]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-method</link>
-      <pubDate/>
+      <pubDate>Tue, 21 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Use of `super` inside a method.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-method</guid>
       <author>uxebu</author>
@@ -226,7 +226,7 @@
     <item>
       <title><![CDATA[Class - super in constructor]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-constructor</link>
-      <pubDate/>
+      <pubDate>Wed, 22 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Use of `super` inside the constructor.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/class/super-in-constructor</guid>
       <author>uxebu</author>
@@ -234,7 +234,7 @@
     <item>
       <title><![CDATA[Array - `Array.from()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/from</link>
-      <pubDate/>
+      <pubDate>Thu, 23 Apr 2015 08:32:00 GMT</pubDate>
       <description><![CDATA[Convert a not-array into an array.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/from</guid>
       <author>uxebu</author>
@@ -242,7 +242,7 @@
     <item>
       <title><![CDATA[Array - `Array.of()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/of</link>
-      <pubDate/>
+      <pubDate>Mon, 27 Apr 2015 08:09:00 GMT</pubDate>
       <description><![CDATA[`Array.of` creates an array with the given arguments as elements.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/of</guid>
       <author>uxebu</author>
@@ -250,7 +250,7 @@
     <item>
       <title><![CDATA[Array - `[].fill()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/fill</link>
-      <pubDate/>
+      <pubDate>Tue, 28 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`[].fill` can fill up an array with one value.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/fill</guid>
       <author>uxebu</author>
@@ -258,7 +258,7 @@
     <item>
       <title><![CDATA[Array - `[].find()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/find</link>
-      <pubDate/>
+      <pubDate>Wed, 29 Apr 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`[].find` makes finding items in arrays easier.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/find</guid>
       <author>uxebu</author>
@@ -266,7 +266,7 @@
     <item>
       <title><![CDATA[Array - `[].findIndex()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/findIndex</link>
-      <pubDate/>
+      <pubDate>Mon, 04 May 2015 08:01:00 GMT</pubDate>
       <description><![CDATA[`[].findIndex` makes finding items in arrays easier.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/findIndex</guid>
       <author>uxebu</author>
@@ -274,7 +274,7 @@
     <item>
       <title><![CDATA[Symbol - basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/basics</link>
-      <pubDate/>
+      <pubDate>Tue, 05 May 2015 11:21:00 GMT</pubDate>
       <description><![CDATA[Symbol basics.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/basics</guid>
       <author>uxebu</author>
@@ -282,7 +282,7 @@
     <item>
       <title><![CDATA[Symbol - `Symbol.for()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/for</link>
-      <pubDate/>
+      <pubDate>Wed, 06 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`Symbol.for()` for registering Symbols globally.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/for</guid>
       <author>uxebu</author>
@@ -290,7 +290,7 @@
     <item>
       <title><![CDATA[Symbol - `Symbol.keyFor()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/keyFor</link>
-      <pubDate/>
+      <pubDate>Thu, 07 May 2015 08:09:00 GMT</pubDate>
       <description><![CDATA[`Symbol.keyFor()` gets the symbol key for a given symbol.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/symbol/keyFor</guid>
       <author>uxebu</author>
@@ -298,7 +298,7 @@
     <item>
       <title><![CDATA[Iterator - array]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/array</link>
-      <pubDate/>
+      <pubDate>Fri, 08 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/array</guid>
       <author>uxebu</author>
@@ -306,7 +306,7 @@
     <item>
       <title><![CDATA[Iterator - string]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/string</link>
-      <pubDate/>
+      <pubDate>Mon, 11 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/string</guid>
       <author>uxebu</author>
@@ -314,7 +314,7 @@
     <item>
       <title><![CDATA[Iterator - protocol]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/protocol</link>
-      <pubDate/>
+      <pubDate>Tue, 12 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/protocol</guid>
       <author>uxebu</author>
@@ -322,7 +322,7 @@
     <item>
       <title><![CDATA[Iterator - usage]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/usages</link>
-      <pubDate/>
+      <pubDate>Wed, 13 May 2015 08:17:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/iterator/usages</guid>
       <author>uxebu</author>
@@ -330,7 +330,7 @@
     <item>
       <title><![CDATA[Array - `[].entries()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/entries</link>
-      <pubDate/>
+      <pubDate>Mon, 18 May 2015 08:06:00 GMT</pubDate>
       <description><![CDATA[`[].entries()` returns an iterator object with all entries.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/entries</guid>
       <author>uxebu</author>
@@ -338,7 +338,7 @@
     <item>
       <title><![CDATA[Array - `[].keys()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/keys</link>
-      <pubDate/>
+      <pubDate>Tue, 19 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`[].keys()` returns an iterator for all keys in the array.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/keys</guid>
       <author>uxebu</author>
@@ -346,7 +346,7 @@
     <item>
       <title><![CDATA[Array - `[].values()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/values</link>
-      <pubDate/>
+      <pubDate>Wed, 20 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`[].values()` returns an iterator for all values in the array]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/array-api/values</guid>
       <author>uxebu</author>
@@ -354,7 +354,7 @@
     <item>
       <title><![CDATA[Map - Basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/basics</link>
-      <pubDate/>
+      <pubDate>Thu, 21 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/basics</guid>
       <author>uxebu</author>
@@ -362,7 +362,7 @@
     <item>
       <title><![CDATA[Map - `map.get()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/get</link>
-      <pubDate/>
+      <pubDate>Fri, 22 May 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/get</guid>
       <author>uxebu</author>
@@ -370,7 +370,7 @@
     <item>
       <title><![CDATA[Map - `map.set()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/set</link>
-      <pubDate/>
+      <pubDate>Tue, 26 May 2015 08:03:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/set</guid>
       <author>uxebu</author>
@@ -378,7 +378,7 @@
     <item>
       <title><![CDATA[Set - basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/basics</link>
-      <pubDate/>
+      <pubDate>Wed, 27 May 2015 10:12:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/basics</guid>
       <author>uxebu</author>
@@ -386,7 +386,7 @@
     <item>
       <title><![CDATA[Set - `set.add()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/add</link>
-      <pubDate/>
+      <pubDate>Fri, 29 May 2015 06:55:00 GMT</pubDate>
       <description><![CDATA[Appends a new element to the end of a Set object.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/add</guid>
       <author>uxebu</author>
@@ -394,7 +394,7 @@
     <item>
       <title><![CDATA[Generator - creation]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/creation</link>
-      <pubDate/>
+      <pubDate>Mon, 01 Jun 2015 08:39:00 GMT</pubDate>
       <description><![CDATA[There are many ways to create a generator]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/creation</guid>
       <author>uxebu</author>
@@ -402,7 +402,7 @@
     <item>
       <title><![CDATA[Generator - iterator]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/iterator</link>
-      <pubDate/>
+      <pubDate>Wed, 03 Jun 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Generators return iterable objects]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/iterator</guid>
       <author>uxebu</author>
@@ -410,7 +410,7 @@
     <item>
       <title><![CDATA[Generator - yield expressions]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/yield</link>
-      <pubDate/>
+      <pubDate>Fri, 05 Jun 2015 08:25:00 GMT</pubDate>
       <description><![CDATA[The yield keyword is used to pause and resume a generator function]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/yield</guid>
       <author>uxebu</author>
@@ -418,7 +418,7 @@
     <item>
       <title><![CDATA[Generator - send value to a generator]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-value</link>
-      <pubDate/>
+      <pubDate>Thu, 18 Jun 2015 12:07:00 GMT</pubDate>
       <description><![CDATA[By calling next() with a parameter, you can pass a value to a generator.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-value</guid>
       <author>uxebu</author>
@@ -426,7 +426,7 @@
     <item>
       <title><![CDATA[Map - initialize]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/initialize</link>
-      <pubDate/>
+      <pubDate>Mon, 22 Jun 2015 11:56:00 GMT</pubDate>
       <description><![CDATA[Initializing a map with values.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/initialize</guid>
       <author>uxebu</author>
@@ -434,7 +434,7 @@
     <item>
       <title><![CDATA[Object - `Object.is()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-api/is</link>
-      <pubDate/>
+      <pubDate>Wed, 24 Jun 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`Object.is()` compares if two values are the same.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-api/is</guid>
       <author>uxebu</author>
@@ -442,7 +442,7 @@
     <item>
       <title><![CDATA[Number - `Number.isInteger()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/number-api/isinteger</link>
-      <pubDate/>
+      <pubDate>Thu, 25 Jun 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[`Number.isInteger()` determines if a value is an integer.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/number-api/isinteger</guid>
       <author>uxebu</author>
@@ -450,7 +450,7 @@
     <item>
       <title><![CDATA[Generator - send function to a generator]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-function</link>
-      <pubDate/>
+      <pubDate>Mon, 29 Jun 2015 11:49:00 GMT</pubDate>
       <description><![CDATA[By calling next() with a function, you can pass it to the generator.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/generator/send-function</guid>
       <author>uxebu</author>
@@ -458,7 +458,7 @@
     <item>
       <title><![CDATA[Default parameters - Basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/default-parameters/basics</link>
-      <pubDate/>
+      <pubDate>Tue, 30 Jun 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Default parameters make function parameters more flexible.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/default-parameters/basics</guid>
       <author>uxebu</author>
@@ -466,7 +466,7 @@
     <item>
       <title><![CDATA[Reflect - Basics]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/basics</link>
-      <pubDate/>
+      <pubDate>Thu, 02 Jul 2015 08:23:00 GMT</pubDate>
       <description><![CDATA[]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/basics</guid>
       <author>uxebu</author>
@@ -474,7 +474,7 @@
     <item>
       <title><![CDATA[Reflect - `Reflect.apply()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/apply</link>
-      <pubDate/>
+      <pubDate>Fri, 03 Jul 2015 07:55:00 GMT</pubDate>
       <description><![CDATA[Calls a target function with given scope and arguments.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/apply</guid>
       <author>uxebu</author>
@@ -482,7 +482,7 @@
     <item>
       <title><![CDATA[Reflect - `Reflect.getPrototypeOf()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/getprototypeof</link>
-      <pubDate/>
+      <pubDate>Wed, 08 Jul 2015 08:14:00 GMT</pubDate>
       <description><![CDATA[It returns the prototype of the given object.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/reflect/getprototypeof</guid>
       <author>uxebu</author>
@@ -490,7 +490,7 @@
     <item>
       <title><![CDATA[Modules - `import` statement]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/modules/import</link>
-      <pubDate/>
+      <pubDate>Thu, 09 Jul 2015 08:46:00 GMT</pubDate>
       <description><![CDATA[Use `import` to import functions that have been exported somewhere else.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/modules/import</guid>
       <author>uxebu</author>
@@ -498,7 +498,7 @@
     <item>
       <title><![CDATA[Map - `map.has()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/has</link>
-      <pubDate/>
+      <pubDate>Fri, 10 Jul 2015 08:09:00 GMT</pubDate>
       <description><![CDATA[Indicates whether an element with a key exists.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/map/has</guid>
       <author>uxebu</author>
@@ -506,7 +506,7 @@
     <item>
       <title><![CDATA[String - `string.includes()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/string-api/includes</link>
-      <pubDate/>
+      <pubDate>Tue, 14 Jul 2015 09:29:00 GMT</pubDate>
       <description><![CDATA[Finds string within another string.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/string-api/includes</guid>
       <author>uxebu</author>
@@ -514,7 +514,7 @@
     <item>
       <title><![CDATA[Set - `set.delete()`]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/delete</link>
-      <pubDate/>
+      <pubDate>Wed, 15 Jul 2015 16:12:00 GMT</pubDate>
       <description><![CDATA[Removes an element from a set.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/delete</guid>
       <author>uxebu</author>
@@ -522,7 +522,7 @@
     <item>
       <title><![CDATA[Set - the API]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/api</link>
-      <pubDate/>
+      <pubDate>Thu, 16 Jul 2015 08:24:00 GMT</pubDate>
       <description><![CDATA[`Set` API overview.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/set/api</guid>
       <author>uxebu</author>
@@ -530,7 +530,7 @@
     <item>
       <title><![CDATA[Object literal - getter]]></title>
       <link>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/getter</link>
-      <pubDate/>
+      <pubDate>Mon, 27 Jul 2015 08:05:00 GMT</pubDate>
       <description><![CDATA[A getter binds an object property to a function that will be called when that property is looked up.]]></description>
       <guid>http://tddbin.com/?utm_source=RSS%20Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication#?kata=es6/language/object-literal/getter</guid>
       <author>uxebu</author>
