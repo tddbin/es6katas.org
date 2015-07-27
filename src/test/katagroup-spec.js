@@ -27,15 +27,15 @@ describe('kata group', function() {
     let group;
     beforeEach(function() {
       const katas = [
-        Kata.fromRawItem({id: 2}),  
-        Kata.fromRawItem({id: 3}),  
-        Kata.fromRawItem({id: 1})  
+        Kata.fromRawItem({id: '11'}),
+        Kata.fromRawItem({id: '3'}),
+        Kata.fromRawItem({id: '1'})
       ];
       group = KataGroup.withKatas('', katas);
     });
-    it('first value must be `1`', () => assert.equal(group.katas[0].id, 1));
-    it('first value must be `2`', () => assert.equal(group.katas[1].id, 2));
-    it('first value must be `3`', () => assert.equal(group.katas[2].id, 3));
+    it('1st value must be `1`', () => assert.equal(group.katas[0].id, 1));
+    it('2nd value must be `3`', () => assert.equal(group.katas[1].id, 3));
+    it('3rd value must be `11`', () => assert.equal(group.katas[2].id, 11));
   });
 
   describe('get highest ID', function() {
@@ -50,13 +50,13 @@ describe('kata group', function() {
     
     it('for multiple katas return the highest', function() {
       const katas = [
-        Kata.fromRawItem({id: 2}),  
-        Kata.fromRawItem({id: 3}),  
-        Kata.fromRawItem({id: 1})  
+        Kata.fromRawItem({id: '11'}),  
+        Kata.fromRawItem({id: '3'}),  
+        Kata.fromRawItem({id: '1'})  
       ];
       let group = KataGroup.withKatas('', katas);
       
-      assert.equal(group.highestId, 3);
+      assert.equal(group.highestId, 11);
     });
   });
   
