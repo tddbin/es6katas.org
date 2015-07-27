@@ -7,7 +7,7 @@
     "react": "./src/shim/react.js"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register src/**/**/*spec.js",
+    "test": "mocha --compilers js:babel/register src/**/**/*spec.js",
     "dev-build-app": "browserify src/browser/index.js --outfile=dist/index.min.js --transform=babelify",
     "build": "./scripts/build/build.sh",
     "build:app": "browserify src/browser/index.js --outfile=dist/index.js --transform=babelify",
