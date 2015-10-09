@@ -15,6 +15,7 @@ class KataGroups extends Array {
       groups.push(obj[key]);
     }
     groups.sortByNumberOfLinks();
+    groups.makeNewestFirst();
     return groups;
   }
   
@@ -36,6 +37,20 @@ class KataGroups extends Array {
       .reverse()
       [0];
     return parseInt(kata.id) === highestId;
+  }
+  
+  makeNewestFirst() {
+    const groupWithNewestKata = this.reduce((prev, cur) => {
+      return +prev.highestId > +cur.highestId ? prev : cur;
+    }, {highestId:0});
+    this.moveToBeginning(groupWithNewestKata);
+  }
+  
+  moveToBeginning(itemToMove) {
+    const idx = this
+      .map((item, idx) => Object.is(item, itemToMove) ? idx : null)
+      .filter(id => id != null)[0];
+    this.unshift(this.splice(idx, 1)[0]);
   }
   
 }

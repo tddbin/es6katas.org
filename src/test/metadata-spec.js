@@ -35,25 +35,29 @@ describe('create KataGroups from the metadata', function() {
     beforeEach(function() {
       const groupedMetadataJson = {
         groups: {
-          'group with 1 kata': {items: [{}]},
-          'group with 2 katas': {items: [{}, {}]}
+          'group with 1 kata': {items: [{id:0}]},
+          'group with 2 katas': {items: [{id:1}, {id:'21'}]},
+          'group with newest kata': {items: [{id:'111'}]}
         }
       };
     
       kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
     });
-    it('first is the one with most katas', function() {
-      assert.equal(kataGroups[0].name, 'group with 2 katas');
+    it('first is the one with the newest kata inside', function() {
+      assert.equal(kataGroups[0].name, 'group with newest kata');
     });
-    it('second the one with less katas', function() {
-      assert.equal(kataGroups[1].name, 'group with 1 kata');
+    it('second is the one with most katas', function() {
+      assert.equal(kataGroups[1].name, 'group with 2 katas');
+    });
+    it('third is the one with less katas', function() {
+      assert.equal(kataGroups[2].name, 'group with 1 kata');
     });
   
     it('by name when number of files is the same', function() {
       const groupedMetadataJson = {
         groups: {
-          'group b': {items: [{}]},
-          'group a': {items: [{}]}
+          'group b': {items: [{id:0}]},
+          'group a': {items: [{id:1}]}
         }
       };
     
