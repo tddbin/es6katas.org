@@ -31,7 +31,7 @@ class KataGroups extends React.Component {
     const {groups} = this.props;
     return (
       <div>
-        {groups.map((group) => <KataGroup group={group} isNewestCheck={groups.isNewest.bind(groups)} key={group.name}/>)}
+        {groups.map((group) => <KataGroup group={group} isNewestCheck={groups.isNewestKata.bind(groups)} key={group.name}/>)}
       </div>
     );
   }

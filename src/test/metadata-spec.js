@@ -77,7 +77,7 @@ describe('create KataGroups from the metadata', function() {
 
     it('with the highest ID', function() {
       let kataDouble = {id: '93'};
-      assert.equal(kataGroups.isNewest(kataDouble), true);
+      assert.equal(kataGroups.isNewestKata(kataDouble), true);
     });
     
   });

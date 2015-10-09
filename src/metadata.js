@@ -29,7 +29,7 @@ class KataGroups extends Array {
     });
   }
   
-  isNewest(kata) {
+  isNewestKata(kata) {
     const highestId = this
       .map(group => parseInt(group.highestId, 10))
       .sort((one, two) => one < two ? -1 : 1)
