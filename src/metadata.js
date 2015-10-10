@@ -41,7 +41,7 @@ class KataGroups extends Array {
   
   makeNewestFirst() {
     const groupWithNewestKata = this.reduce((prev, cur) => {
-      return +prev.highestId > +cur.highestId ? prev : cur;
+      return prev.highestId > cur.highestId ? prev : cur;
     }, {highestId:0});
     this.moveToBeginning(groupWithNewestKata);
   }
