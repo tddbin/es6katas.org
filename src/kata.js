@@ -7,6 +7,7 @@ export default class Kata {
     let kata = new Kata();
     Object.keys(rawItem).forEach(key => kata[key] = rawItem[key]);
     kata.url = pathToLink(rawItem.path || '');
+    kata.id = parseInt(kata.id);
     return kata;
   }
 }

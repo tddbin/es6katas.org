@@ -6,12 +6,14 @@ describe('kata', function() {
     
     let name = 'moi';
     let desc = 'description';
+    let id = '123';
     let kata;
     beforeEach(function() {
-      kata = Kata.fromRawItem({name, desc});
+      kata = Kata.fromRawItem({name, desc, id});
     });
     it('property `name`', () => assert.equal(kata.name, name));
-    it('property `name`', () => assert.equal(kata.desc, desc));
+    it('property `desc`', () => assert.equal(kata.desc, desc));
+    it('ensures the `id` is an int', () => assert.strictEqual(kata.id, +id));
   });
 
   it('generate the kata link from a path', function() {
