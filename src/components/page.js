@@ -23,7 +23,7 @@ class Header extends React.Component {
     return (
       <header>
         <h1>ES6 Katas</h1>
-        <p>Learn ES6 by doing it, fix failing tests and keep the learnings.</p>
+        <p>Learn ES6 by doing it. Fix failing tests. Keep all learnings.</p>
       </header>
     );
   }
