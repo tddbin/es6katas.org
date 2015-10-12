@@ -14,10 +14,6 @@ a .code {
 .group a {
   display: block;
 }
-a:visited {
-}
-a:hover {
-}
 
 .group {
   display: inline-block;
@@ -27,32 +23,74 @@ a:hover {
   padding: 0 1em 1em 1em;
 }
 
+header,
 footer {
   background: black;
   color: white;
-  text-align: center;
   width: 100%;
-  padding: 0.2em;
+  padding: 1em;
+}
+
+/* 
+  header 
+*/
+header {
+  margin-bottom: 1em;
+}
+
+header h1, header p {
+  display: inline;
+}
+
+
+
+/* 
+  footer
+*/
+footer {
+  margin-top: 1em;
+  padding: 2em;
+  display: flex;
+  font-size: small;
 }
   footer a {
     color: lightgray;
   }
 
+  footer ul {
+    flex-flow: column;
+    flex: 1;
+  }
+  footer ul li {
+    list-style: none;
+    line-height: 2em;
+  }
+  footer .fa {
+    margin-right: 0.5em;
+  }
+  
+  
+  
+  
+  
+  
 .group .kata .details {
   display: none;
   position: absolute;
-  border: 1px solid grey;
-  border-width: 1px 0 1px 0;
   margin: 0.5em;
   padding: 0.5em;
 }
+  .kata:hover a {
+    background: #DDD;
+  }
+  
   .group .kata:hover .details {
     display: block;
     width: 100%;
     left: 0;
     margin: 0;
     z-index: 1;
-    background: white;
+    background: #DDD;
   }
 
 .notification-bubble {
