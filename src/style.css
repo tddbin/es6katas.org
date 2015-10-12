@@ -18,10 +18,13 @@ a .code {
 .group {
   display: inline-block;
   vertical-align: top;
-  margin: 0 1em 1em 1em;
+  margin: 0 0 1em 1em;
   border: 1px solid grey;
   padding: 0 1em 1em 1em;
 }
+  .group h2 {
+    margin: 0.2em 0;
+  }
 
 header,
 footer {
