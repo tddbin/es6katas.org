@@ -53,15 +53,28 @@ class KataGroup extends React.Component {
 
 class Kata extends React.Component {
   render() {
-    const {url, name, description, level} = this.props.kata;
-    const {isNewest} = this.props;
+    const {kata, isNewest} = this.props;
+    const {url, name, level} = kata;
     const marker =
       isNewest ? <span className="notification-bubble new">new</span> :
         (level === 'BEGINNER' ? <span className="notification-bubble easy">easy</span> : '');
     return <div className="kata">
       {marker}<a href={url} target="_blank">{name}</a>
-      <span className="details">{description}<br/>Difficulty: {level.toLowerCase()}</span>
+      <KataDetails kata={kata} />
     </div>;
+  }
+}
+
+class KataDetails extends React.Component {
+  render() {
+    const {kata} = this.props;
+    return (
+      <span className="details">
+        <h2>{kata.name}</h2>
+        {kata.description}<br/>
+        Difficulty: {kata.level.toLowerCase()}
+      </span>
+    );
   }
 }
 
