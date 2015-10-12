@@ -87,10 +87,8 @@ class Footer extends React.Component {
               <i className="fa fa-twitter"></i>ES6 Katas
             </a>
           </li>
-          <li>
-            <a type="application/rss+xml" href="./rss/MostRecent.xml">
-              <i className="fa fa-rss"></i>RSS
-            </a>
+          <li className="disabled">
+            <i className="fa fa-rss"></i>RSS
           </li>
         </ul>
       </footer>
