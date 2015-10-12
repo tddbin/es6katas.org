@@ -24,6 +24,7 @@ a .code {
 }
   .group h2 {
     margin: 0.2em 0;
+    font-size: 1.1em;
   }
 
 header,
@@ -68,8 +69,8 @@ footer {
     list-style: none;
     line-height: 2em;
   }
-  footer .fa {
-    margin-right: 0.5em;
+  footer a .fa {
+    width: 1.5em;
   }
   
   
