@@ -1,46 +1,40 @@
 body {
   font-family: 'Josefin Slab', serif;
   font-size: large;
-  background-color: #020202;
-  color: #fac93e;
   margin: 0;
 }
 
 a {
-  color: #E88551;
   text-decoration: none;
 }
 .group a {
   display: block;
 }
 a:visited {
-  color: #DAA91E;
 }
 a:hover {
   text-decoration: underline;
 }
 
 .group {
-  float: left;
+  display: inline-block;
+  vertical-align: top;
   margin: 0 1em 1em 1em;
   border: 1px solid grey;
   padding: 0 1em 1em 1em;
 }
 
 footer {
-  color: white;
   position: fixed;
   bottom: 0;
   text-align: center;
   width: 100%;
-  background-color: #333;
   padding: 0.2em;
 }
 
 .group .kata .details {
   display: none;
   position: absolute;
-  background-color: black;
   border: 1px solid grey;
   margin: 0.5em;
   padding: 0.5em;
@@ -51,6 +45,7 @@ footer {
   }
 
 .notification-bubble {
+  background: white;
   position: absolute;
   margin-left: -2.6em;
   padding: 0 0.3em;
@@ -59,13 +54,11 @@ footer {
   font-family: sans-serif;
 }
   .notification-bubble.new {
-    background-color: red;
-    color: white;
+    color: red;
   }
   .notification-bubble.easy {
-    background-color: green;
-    color: white;
     margin-left: -2.8em;
+    color: green;
   }
 
 .workshop-banner {
@@ -87,8 +80,6 @@ footer {
   }
   .workshop-banner button.close {
     border: 0;
-    background-color: transparent;
-    color: white;
   }
   .workshop-banner .close-button-container {
     text-align: right;
