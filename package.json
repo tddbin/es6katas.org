@@ -46,7 +46,6 @@
     "watch": "^0.16.0",
     "parallelshell": "^1.1.1",
     "react": "^0.13.3",
-    "classnames": "^2.1.2",
-    "node-rss": "^1.0.4"
+    "classnames": "^2.1.2"
   }
 }
