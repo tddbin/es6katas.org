@@ -1,56 +1,109 @@
 body {
-  font-family: 'Josefin Slab', serif;
+  font-family: sans-serif;
   font-size: large;
-  background-color: #020202;
-  color: #fac93e;
   margin: 0;
 }
 
 a {
-  color: #E88551;
   text-decoration: none;
+  color: #30544E;
+}
+a .code {
+  background: #EEE; /*little lighter than the normal bg color*/
+  font-family: monospace;
 }
 .group a {
   display: block;
 }
-a:visited {
-  color: #DAA91E;
-}
-a:hover {
-  text-decoration: underline;
-}
 
 .group {
-  float: left;
-  margin: 0 1em 1em 1em;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 1em 1em;
   border: 1px solid grey;
   padding: 0 1em 1em 1em;
 }
+  .group h2 {
+    margin: 0.2em 0;
+    font-size: 1.1em;
+  }
 
+header,
 footer {
+  background: #363738;
   color: white;
-  position: fixed;
-  bottom: 0;
-  text-align: center;
   width: 100%;
-  background-color: #333;
-  padding: 0.2em;
+  padding: 1em;
 }
 
+/* 
+  header 
+*/
+header {
+  margin-bottom: 1em;
+}
+  header h1, header p {
+    display: inline;
+  }
+  header p {
+    color: #D2D5D3;
+    margin-left: 2em;
+  }
+
+
+/* 
+  footer
+*/
+footer {
+  margin-top: 1em;
+  padding: 2em;
+  display: flex;
+  font-size: small;
+}
+  footer a {
+    color: #D2D5D3;
+  }
+  footer .highlight a {
+    color: #EE7F00;
+  }
+
+  footer ul {
+    flex-flow: column;
+    flex: 1;
+  }
+  footer ul li {
+    list-style: none;
+    line-height: 2em;
+  }
+  footer a .fa {
+    width: 1.5em;
+  }
+  
+  
+  
+  
+  
+  
 .group .kata .details {
   display: none;
   position: absolute;
-  background-color: black;
-  border: 1px solid grey;
   margin: 0.5em;
   padding: 0.5em;
 }
+  .kata:hover a {
+    background: #D2D5D3;
+  }
+  
   .group .kata:hover .details {
     display: block;
+    position: absolute;
+    margin: 0;
     z-index: 1;
+    background: #D2D5D3;
   }
 
 .notification-bubble {
+  background: white;
   position: absolute;
   margin-left: -2.6em;
   padding: 0 0.3em;
@@ -59,13 +112,11 @@ footer {
   font-family: sans-serif;
 }
   .notification-bubble.new {
-    background-color: red;
-    color: white;
+    color: #D95E00;
   }
   .notification-bubble.easy {
-    background-color: green;
-    color: white;
     margin-left: -2.8em;
+    color: #7AB75C;
   }
 
 .workshop-banner {
@@ -87,8 +138,6 @@ footer {
   }
   .workshop-banner button.close {
     border: 0;
-    background-color: transparent;
-    color: white;
   }
   .workshop-banner .close-button-container {
     text-align: right;
