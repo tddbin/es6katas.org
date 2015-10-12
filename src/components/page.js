@@ -35,7 +35,7 @@ class Footer extends React.Component {
     return (
       <footer>
         <ul>
-          <li>maintained by</li>
+          <li>by</li>
           <li>
             <a href="http://twitter.com/wolframkriesing">
               <i className="fa fa-twitter"></i>Wolfram Kriesing
@@ -48,7 +48,12 @@ class Footer extends React.Component {
           </li>
           <li>
             <a href="mailto:w+bookme-es6katas@kriesing.de">
-              <i className="fa fa-dollar"></i>Book me
+              <i className="fa fa-dollar"></i>Book me (training, coaching, clean-coding, ...)
+            </a>
+          </li>
+          <li>
+            <a href="/imprint">
+              <i className="fa fa-paragraph"></i>imprint
             </a>
           </li>
         </ul>
@@ -61,17 +66,17 @@ class Footer extends React.Component {
         <ul>
           <li>
             <a href="http://github.com/tddbin/es6katas.org">
-              <i className="fa fa-github"></i>source on github
+              <i className="fa fa-github"></i>source of this site
             </a>
           </li>
           <li>
             <a href="http://github.com/tddbin/katas">
-              <i className="fa fa-github"></i>all katas on github
+              <i className="fa fa-github"></i>all katas
             </a>
           </li>
           <li>
             <a href="https://twitter.com/es6katas">
-              <i className="fa fa-twitter"></i>@es6katas
+              <i className="fa fa-twitter"></i>ES6 Katas
             </a>
           </li>
           <li>
