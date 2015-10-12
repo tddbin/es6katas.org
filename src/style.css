@@ -6,6 +6,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #30544E;
 }
 a .code {
   background: #EEE; /*little lighter than the normal bg color*/
@@ -29,7 +30,7 @@ a .code {
 
 header,
 footer {
-  background: black;
+  background: #363738;
   color: white;
   width: 100%;
   padding: 1em;
@@ -58,10 +59,10 @@ footer {
   font-size: small;
 }
   footer a {
-    color: lightgray;
+    color: #D2D5D3;
   }
   footer .highlight a {
-    color: lightsalmon;
+    color: #EE7F00;
   }
 
   footer ul {
@@ -88,16 +89,15 @@ footer {
   padding: 0.5em;
 }
   .kata:hover a {
-    background: #DDD;
+    background: #D2D5D3;
   }
   
   .group .kata:hover .details {
     display: block;
-    width: 100%;
-    left: 0;
+    position: absolute;
     margin: 0;
     z-index: 1;
-    background: #DDD;
+    background: #D2D5D3;
   }
 
 .notification-bubble {
@@ -110,11 +110,11 @@ footer {
   font-family: sans-serif;
 }
   .notification-bubble.new {
-    color: red;
+    color: #D95E00;
   }
   .notification-bubble.easy {
     margin-left: -2.8em;
-    color: green;
+    color: #7AB75C;
   }
 
 .workshop-banner {
