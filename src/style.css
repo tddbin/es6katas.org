@@ -13,7 +13,6 @@ a {
 a:visited {
 }
 a:hover {
-  text-decoration: underline;
 }
 
 .group {
@@ -36,6 +35,7 @@ footer {
   display: none;
   position: absolute;
   border: 1px solid grey;
+  border-width: 1px 0 1px 0;
   margin: 0.5em;
   padding: 0.5em;
 }
