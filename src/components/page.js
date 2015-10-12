@@ -5,23 +5,60 @@ export default class Page extends React.Component {
 
   render() {
     let {kataGroups} = this.props;
-    const numKatas = kataGroups.reduce((old, {katas: {length}}) => old + length, 0);
+    const katasCount = kataGroups.reduce((old, {katas: {length}}) => old + length, 0);
     const {showWorkshopBanner} = this.props;
     return (
       <div>
-        <h1>ES6 Katas</h1>
-        <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
+        <Header />
         <KataGroups groups={kataGroups}/>
-        <footer>
-          by <a href="http://uxebu.com">uxebu</a> ---
-          using <a href="http://tddbin.com">tddbin</a> ---
-          on <a href="http://github.com/tddbin/es6katas.org">github</a> ---
-          {numKatas} katas ---
-          follow <a href="https://twitter.com/es6katas">@es6katas</a> ---
-          <a type="application/rss+xml" href="./rss/MostRecent.xml">subscribe to RSS</a>
-        </footer>
+        <Footer katasCount={katasCount} />
         <WorkshopBanner showWorkshopBanner={showWorkshopBanner}/>
       </div>
+    );
+  }
+}
+
+class Header extends React.Component {
+  render() {
+    return (
+      <header>
+        <h1>ES6 Katas</h1>
+        <p>Just learn a bit of ES6 daily, take one kata a day and fix it away.</p>
+      </header>
+    );
+  }
+}
+
+class Footer extends React.Component {
+  render() {
+    const {katasCount} = this.props;
+    return (
+      <footer>
+        <ul>
+          <li>maintained by <a href="http://twitter.com/wolframkriesing">Wolfram Kriesing</a></li>
+        </ul>
+        <ul>
+          <li>using <a href="http://tddbin.com">tddbin</a></li>
+          <li>{katasCount} katas</li>
+        </ul>
+        <ul>
+          <li>
+            <a href="http://github.com/tddbin/es6katas.org">
+              <i className="fa fa-github"></i>source on github
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/es6katas">
+              <i className="fa fa-twitter"></i>@es6katas
+            </a>
+          </li>
+          <li>
+            <a type="application/rss+xml" href="./rss/MostRecent.xml">
+              <i className="fa fa-rss"></i>RSS
+            </a>
+          </li>
+        </ul>
+      </footer>
     );
   }
 }
