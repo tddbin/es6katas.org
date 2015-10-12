@@ -46,9 +46,10 @@ class Footer extends React.Component {
               <i className="fa fa-envelope"></i>Email me
             </a>
           </li>
-          <li>
+          <li className="highlight">
             <a href="mailto:w+bookme-es6katas@kriesing.de">
-              <i className="fa fa-dollar"></i>Book me (training, coaching, clean-coding, ...)
+              <i className="fa fa-dollar"></i>Book me for<br/>
+              training, coaching, clean-coding
             </a>
           </li>
           <li>
@@ -57,12 +58,19 @@ class Footer extends React.Component {
             </a>
           </li>
         </ul>
+        
         <ul>
+          <li className="highlight">
+            <a href="https://www.youtube.com/watch?v=71aX1z0SzZU">
+              <i className="fa fa-youtube"/>Making of a kata
+            </a>
+          </li>
           <li>
             <a href="http://tddbin.com">uses TDDbin</a>
           </li>
           <li>{katasCount} katas</li>
         </ul>
+        
         <ul>
           <li>
             <a href="http://github.com/tddbin/es6katas.org">

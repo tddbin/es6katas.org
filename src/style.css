@@ -60,6 +60,9 @@ footer {
   footer a {
     color: lightgray;
   }
+  footer .highlight a {
+    color: lightsalmon;
+  }
 
   footer ul {
     flex-flow: column;
