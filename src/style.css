@@ -42,11 +42,13 @@ footer {
 header {
   margin-bottom: 1em;
 }
-
-header h1, header p {
-  display: inline;
-}
-
+  header h1, header p {
+    display: inline;
+  }
+  header p {
+    color: #D2D5D3;
+    margin-left: 2em;
+  }
 
 
 /* 
