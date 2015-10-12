@@ -117,7 +117,7 @@ class KataGroup extends React.Component {
     return (
       <div className="group">
         <h2>{group.name}</h2>
-        {group.katas.map((kata) => <Kata kata={kata} group={group} isNewest={isNewestKataCheck(kata)} key={kata.id}/>)}
+        {group.katas.map((kata) => <Kata kata={kata} isNewest={isNewestKataCheck(kata)} key={kata.id}/>)}
       </div>
     );
   }
@@ -125,14 +125,14 @@ class KataGroup extends React.Component {
 
 class Kata extends React.Component {
   render() {
-    const {kata, isNewest, group} = this.props;
+    const {kata, isNewest} = this.props;
     const {url, name, level} = kata;
     const marker =
       isNewest ? <span className="notification-bubble new">new</span> :
         (level === 'BEGINNER' ? <span className="notification-bubble easy">easy</span> : '');
     return <div className="kata">
       {marker}<a href={url} target="_blank"><KataName name={name} /></a>
-      <KataDetails kata={kata} group={group} />
+      <KataDetails kata={kata} />
     </div>;
   }
 }
@@ -159,10 +159,10 @@ class KataName extends React.Component {
 
 class KataDetails extends React.Component {
   render() {
-    const {kata, group} = this.props;
+    const {kata} = this.props;
     return (
       <span className="details">
-        <h2>#{kata.id} {group.name}: {kata.name}</h2>
+        <h2>{kata.name} (#{kata.id})</h2>
         <p>{kata.description}</p>
         Difficulty: {kata.level.toLowerCase()}<br/>
         <KataLinks links={kata.links} />
