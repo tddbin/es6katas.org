@@ -35,7 +35,22 @@ class Footer extends React.Component {
     return (
       <footer>
         <ul>
-          <li>maintained by <a href="http://twitter.com/wolframkriesing">Wolfram Kriesing</a></li>
+          <li>maintained by</li>
+          <li>
+            <a href="http://twitter.com/wolframkriesing">
+              <i className="fa fa-twitter"></i>Wolfram Kriesing
+            </a>
+          </li>
+          <li>
+            <a href="mailto:w+from-es6katas@kriesing.de">
+              <i className="fa fa-envelope"></i>Email me
+            </a>
+          </li>
+          <li>
+            <a href="mailto:w+bookme-es6katas@kriesing.de">
+              <i className="fa fa-dollar"></i>Book me
+            </a>
+          </li>
         </ul>
         <ul>
           <li>using <a href="http://tddbin.com">tddbin</a></li>
