@@ -165,7 +165,27 @@ class KataDetails extends React.Component {
         <h2>#{kata.id} {group.name}: {kata.name}</h2>
         <p>{kata.description}</p>
         Difficulty: {kata.level.toLowerCase()}<br/>
+        <KataLinks links={kata.links} />
       </span>
+    );
+  }
+}
+
+class KataLinks extends React.Component {
+  render() {
+    const {links=[]} = this.props;
+    if (links.length === 0) {
+      return null;
+    }
+    return (
+      <p>
+        <h3>Links for futher reading</h3>
+        <ul>
+          {links.map(link => <li>
+            <a href={link.url}>{link.comment}</a>
+          </li>)}
+        </ul>
+      </p>
     );
   }
 }
