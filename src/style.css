@@ -42,6 +42,7 @@ footer {
   .group .kata:hover .details {
     display: block;
     z-index: 1;
+    background: white;
   }
 
 .notification-bubble {
