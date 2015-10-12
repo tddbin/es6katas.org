@@ -53,13 +53,20 @@ class Footer extends React.Component {
           </li>
         </ul>
         <ul>
-          <li>using <a href="http://tddbin.com">tddbin</a></li>
+          <li>
+            <a href="http://tddbin.com">uses TDDbin</a>
+          </li>
           <li>{katasCount} katas</li>
         </ul>
         <ul>
           <li>
             <a href="http://github.com/tddbin/es6katas.org">
               <i className="fa fa-github"></i>source on github
+            </a>
+          </li>
+          <li>
+            <a href="http://github.com/tddbin/katas">
+              <i className="fa fa-github"></i>all katas on github
             </a>
           </li>
           <li>
