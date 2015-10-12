@@ -59,9 +59,29 @@ class Kata extends React.Component {
       isNewest ? <span className="notification-bubble new">new</span> :
         (level === 'BEGINNER' ? <span className="notification-bubble easy">easy</span> : '');
     return <div className="kata">
-      {marker}<a href={url} target="_blank">{name}</a>
+      {marker}<a href={url} target="_blank"><KataName name={name} /></a>
       <KataDetails kata={kata} group={group} />
     </div>;
+  }
+}
+
+class KataName extends React.Component {
+  render() {
+    const classNames = [];
+    
+    function renderWithName(name) {
+      return <span className={classNames}>
+        {name}
+      </span>
+    }
+    
+    const {name} = this.props;
+    if (name.startsWith('`') && name.endsWith('`')) {
+      classNames.push('code');
+      const sourceCode = name.substr(1, name.length-2);
+      return renderWithName(sourceCode);
+    }
+    return renderWithName(name);
   }
 }
 

@@ -7,6 +7,10 @@ body {
 a {
   text-decoration: none;
 }
+a .code {
+  background: #EEE; /*little lighter than the normal bg color*/
+  font-family: monospace;
+}
 .group a {
   display: block;
 }
