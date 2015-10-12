@@ -49,7 +49,7 @@ class Footer extends React.Component {
           <li className="highlight">
             <a href="mailto:w+bookme-es6katas@kriesing.de">
               <i className="fa fa-dollar"></i>Book me for<br/>
-              training, coaching, clean-coding
+              <i className="fa"></i>training, coaching, clean-coding
             </a>
           </li>
           <li>
