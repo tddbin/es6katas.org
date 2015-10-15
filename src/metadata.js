@@ -11,12 +11,15 @@ class KataGroups extends Array {
 
   static fromObject(obj) {
     const groups = new KataGroups();
-    for (let key in obj) {
-      groups.push(obj[key]);
-    }
+    groups.initializePropertiesFromRawObject(obj);
     groups.sortByNumberOfLinks();
     groups.makeNewestFirst();
     return groups;
+  }
+
+  initializePropertiesFromRawObject(obj) {
+    const allKeys = Object.keys(obj);
+    allKeys.forEach(key => this.push(obj[key]));
   }
   
   sortByNumberOfLinks() {
