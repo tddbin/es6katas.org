@@ -11,7 +11,7 @@ export default class KataGroup {
   }
 
   createKatas(rawKataItems) {
-    this.katas = rawKataItems.map(item => Kata.fromRawItem(item));
+    this.katas = rawKataItems.map(Kata.fromRawItem);
   }
   
   sortByName() {
