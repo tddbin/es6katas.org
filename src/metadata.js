@@ -23,13 +23,13 @@ class KataGroups extends Array {
   }
   
   sortByNumberOfLinks() {
-    this.sort(function(group, group1) {
-      var l = group.katas.length;
-      var l1 = group1.katas.length;
-      if (l === l1) {
-        return group1.name < group.name ? 1 : -1;
+    this.sort(function(group, anotherGroup) {
+      var katasCount = group.katas.length;
+      var anotherKatasCount = anotherGroup.katas.length;
+      if (katasCount === anotherKatasCount) {
+        return anotherGroup.name < group.name ? 1 : -1;
       }
-      return l1 - l;
+      return anotherKatasCount - katasCount;
     });
   }
   
