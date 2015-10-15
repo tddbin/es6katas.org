@@ -13,11 +13,8 @@ export default class Kata {
   }
   
   initializePropertiesFromRawItem(rawItem) {
-    this.allKeysFromRawItem(rawItem).forEach(key => this[key] = rawItem[key]);
+    const allRawKeys = Object.keys(rawItem);
+    allRawKeys.forEach(key => this[key] = rawItem[key]);
   }
 
-  allKeysFromRawItem(rawItem) {
-    return Object.keys(rawItem);
-  }
-  
 }
