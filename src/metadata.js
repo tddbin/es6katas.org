@@ -7,8 +7,16 @@ export default class Metadata {
   }
 }
 
-class KataGroups extends Array {
+class KataGroups {
+  
+  constructor() {
+    this.groups = [];
+  }
 
+  all() {
+    return this.groups;
+  }
+  
   static fromObject(obj) {
     const groups = new KataGroups();
     groups.initializePropertiesFromRawObject(obj);
@@ -19,11 +27,11 @@ class KataGroups extends Array {
 
   initializePropertiesFromRawObject(obj) {
     const allKeys = Object.keys(obj);
-    allKeys.forEach(key => this.push(obj[key]));
+    allKeys.forEach(key => this.groups.push(obj[key]));
   }
   
   sortByNumberOfLinks() {
-    this.sort(function(group, anotherGroup) {
+    this.groups.sort(function(group, anotherGroup) {
       var katasCount = group.katas.length;
       var anotherKatasCount = anotherGroup.katas.length;
       if (katasCount === anotherKatasCount) {
@@ -34,7 +42,7 @@ class KataGroups extends Array {
   }
   
   isNewestKata(kata) {
-    const highestId = this
+    const highestId = this.groups
       .map(group => parseInt(group.highestId, 10))
       .sort((one, two) => one < two ? -1 : 1)
       .reverse()
@@ -43,17 +51,17 @@ class KataGroups extends Array {
   }
   
   moveNewestToBeginning() {
-    const groupWithNewestKata = this.reduce((prev, cur) => {
+    const groupWithNewestKata = this.groups.reduce((prev, cur) => {
       return prev.highestId > cur.highestId ? prev : cur;
     }, {highestId:0});
     this.moveToBeginning(groupWithNewestKata);
   }
   
   moveToBeginning(itemToMove) {
-    const idx = this
+    const idx = this.groups
       .map((item, idx) => Object.is(item, itemToMove) ? idx : null)
       .filter(id => id != null)[0];
-    this.unshift(this.splice(idx, 1)[0]);
+    this.groups.unshift(this.groups.splice(idx, 1)[0]);
   }
   
 }

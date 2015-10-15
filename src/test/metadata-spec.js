@@ -2,7 +2,7 @@ import assert from 'assert';
 import Metadata from '../metadata.js';
 
 const fromMetadataJsonToKataGroups = (metadataJson) => {
-  return Metadata.toKataGroups(metadataJson);
+  return Metadata.toKataGroups(metadataJson).all();
 };
 
 describe('create KataGroups from the metadata', function() {
@@ -68,20 +68,17 @@ describe('create KataGroups from the metadata', function() {
   });
 
   describe('find newest kata', function() {
-    let kataGroups;
-    beforeEach(function() {
+
+    it('with the highest ID', function() {
       const groupedMetadataJson = {
         groups: {
           'group with 1 kata': {items: [{id: '2'}]},
           'group with 2 katas': {items: [{id: '4'}, {id: '93'}]}
         }
       };
-    
-      kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
-    });
-
-    it('with the highest ID', function() {
+      const kataGroups = Metadata.toKataGroups(groupedMetadataJson);
       let kataDouble = {id: '93'};
+      
       assert.equal(kataGroups.isNewestKata(kataDouble), true);
     });
     
