@@ -19,9 +19,6 @@ export default class KataGroup {
   }
 
   get highestId() {
-    if (this.katas.length === 0) {
-      return 0;
-    }
     return this.katas[this.katas.length - 1].id;
   }
 }

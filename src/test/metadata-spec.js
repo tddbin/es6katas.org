@@ -7,11 +7,12 @@ const fromMetadataJsonToKataGroups = (metadataJson) => {
 
 describe('create KataGroups from the metadata', function() {
 
+  const group = {items: [{id: 1}]};
+  const anotherGroup = {items: [{id: 2}]};
+  
   it('for one group only one KataGroup is created', function() {
     const groupedMetadataJson = {
-      groups: {
-        'group name': {items: []}
-      }
+      groups: {'group name': group}
     };
     
     var kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
@@ -21,8 +22,8 @@ describe('create KataGroups from the metadata', function() {
   it('two groups two KataGroups are created', function() {
     const groupedMetadataJson = {
       groups: {
-        'group name': {items: []},
-        'group name1': {items: []}
+        'group name': group,
+        'group name1': anotherGroup
       }
     };
 
