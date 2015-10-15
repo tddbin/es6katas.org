@@ -5,7 +5,7 @@ export default class Page extends React.Component {
 
   render() {
     let {kataGroups} = this.props;
-    const katasCount = kataGroups.reduce((old, {katas: {length}}) => old + length, 0);
+    const katasCount = kataGroups.all().reduce((old, {katas: {length}}) => old + length, 0);
     const {showWorkshopBanner} = this.props;
     return (
       <div>
@@ -101,7 +101,7 @@ class KataGroups extends React.Component {
     const {groups} = this.props;
     return (
       <div>
-        {groups.map((group) => <KataGroup group={group} isNewestKataCheck={groups.isNewestKata.bind(groups)}
+        {groups.all().map(group => <KataGroup group={group} isNewestKataCheck={groups.isNewestKata.bind(groups)}
                                           key={group.name}/>)}
       </div>
     );

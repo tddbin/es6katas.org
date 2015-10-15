@@ -10,7 +10,8 @@ function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
     console.log(err);
   } else {
     const targetNode = document.getElementById('app');
-    React.render(<Page kataGroups={Metadata.toKataGroups(metadataJson)} showWorkshopBanner={showWorkshopBanner}/>, targetNode);
+    const allKataGroups = Metadata.toKataGroups(metadataJson).all();
+    React.render(<Page kataGroups={allKataGroups} showWorkshopBanner={showWorkshopBanner}/>, targetNode);
   }
 }
 
