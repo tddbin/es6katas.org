@@ -98,10 +98,10 @@ class Footer extends React.Component {
 
 class KataGroups extends React.Component {
   render() {
-    const {groups} = this.props;
+    const {groups:kataGroups} = this.props;
     return (
       <div>
-        {groups.all().map(group => <KataGroup group={group} isNewestKataCheck={groups.isNewestKata.bind(groups)}
+        {kataGroups.all().map(group => <KataGroup group={group} isNewestKataCheck={kataGroups.isNewestKata.bind(kataGroups)}
                                           key={group.name}/>)}
       </div>
     );
