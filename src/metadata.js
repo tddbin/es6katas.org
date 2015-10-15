@@ -13,7 +13,7 @@ class KataGroups extends Array {
     const groups = new KataGroups();
     groups.initializePropertiesFromRawObject(obj);
     groups.sortByNumberOfLinks();
-    groups.makeNewestFirst();
+    groups.moveNewestToBeginning();
     return groups;
   }
 
@@ -42,7 +42,7 @@ class KataGroups extends Array {
     return parseInt(kata.id) === highestId;
   }
   
-  makeNewestFirst() {
+  moveNewestToBeginning() {
     const groupWithNewestKata = this.reduce((prev, cur) => {
       return prev.highestId > cur.highestId ? prev : cur;
     }, {highestId:0});
