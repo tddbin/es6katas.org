@@ -8,6 +8,9 @@ a {
   text-decoration: none;
   color: #30544E;
 }
+a:visited {
+  color: #9A9A9A;
+}
 a .code {
   background: #EEE; /*little lighter than the normal bg color*/
   font-family: monospace;
