@@ -5,7 +5,7 @@ import Kata from '../kata.js';
 describe('kata group', function() {
   it('provides the `name` given to it', function() {
     const name = 'name';
-    const group = KataGroup.withKatas(name);
+    const group = KataGroup.withKatas(name, []);
     
     assert.equal(group.name, name);
   });
