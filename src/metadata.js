@@ -17,6 +17,10 @@ class KataGroups {
     return this.groups;
   }
   
+  get length() {
+    return this.all().length;
+  }
+  
   static fromObject(obj) {
     const groups = new KataGroups();
     groups.initializePropertiesFromRawObject(obj);
