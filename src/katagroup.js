@@ -19,6 +19,12 @@ export default class KataGroup {
   }
 
   get highestId() {
+    // Since katas are ALWAYS added to the end, which means the last is the 
+    // one with the highest ID, we just get the last one.
+    return this.lastId;
+  }
+
+  get lastId() {
     return this.katas[this.katas.length - 1].id;
   }
 }
