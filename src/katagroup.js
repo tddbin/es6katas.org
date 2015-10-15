@@ -5,9 +5,13 @@ export default class KataGroup {
   static withKatas(groupName, rawKataItems) {
     var group = new KataGroup();
     group.name = groupName;
-    group.katas = rawKataItems.map(item => Kata.fromRawItem(item));
+    group.createKatas(rawKataItems);
     group.sortByName();
     return group;
+  }
+
+  createKatas(rawKataItems) {
+    this.katas = rawKataItems.map(item => Kata.fromRawItem(item));
   }
   
   sortByName() {
