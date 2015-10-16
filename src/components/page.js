@@ -176,14 +176,12 @@ class KataLinks extends React.Component {
       return null;
     }
     return (
-      <p>
+      <section>
         <h3>Links for futher reading</h3>
         <ul>
-          {links.map(link => <li>
-            <a href={link.url}>{link.comment}</a>
-          </li>)}
+          {links.map(link => <li><a href={link.url}>{link.comment}</a></li>)}
         </ul>
-      </p>
+      </section>
     );
   }
 }
