@@ -57,11 +57,13 @@ class KataGroups {
     return Number.parseInt(id) === this.highestKataId();
   }
   
+  groupWithNewestKata() {
+    const groupWithHighestId = (prev, cur) => prev.highestId > cur.highestId ? prev : cur;
+    return this.groups.reduce(groupWithHighestId, {highestId:0})
+  }
+  
   moveNewestToBeginning() {
-    const groupWithNewestKata = this.groups.reduce((prev, cur) => {
-      return prev.highestId > cur.highestId ? prev : cur;
-    }, {highestId:0});
-    this.moveToBeginning(groupWithNewestKata);
+    this.moveToBeginning(this.groupWithNewestKata());
   }
   
   moveToBeginning(itemToMove) {
