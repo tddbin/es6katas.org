@@ -8,7 +8,7 @@ export default class Kata {
     let kata = new Kata();
     kata.initializePropertiesFromRawItem(rawItem);
     kata.url = rawPathToEs6KataLink(rawItem.path);
-    kata.id = parseInt(kata.id);
+    kata.id = Number.parseInt(kata.id);
     return kata;
   }
   
