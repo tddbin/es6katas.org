@@ -45,13 +45,16 @@ class KataGroups {
     });
   }
   
-  isNewestKata(kata) {
-    const highestId = this.groups
-      .map(group => parseInt(group.highestId, 10))
-      .sort((one, two) => one < two ? -1 : 1)
-      .reverse()
-      [0];
-    return parseInt(kata.id) === highestId;
+  eachGroupsHighestKataId() {
+    return this.groups.map(group => group.highestId);
+  }
+  
+  highestKataId() {
+    return this.eachGroupsHighestKataId().sort().reverse()[0];
+  }
+  
+  isNewestKata({id}) {
+    return Number.parseInt(id) === this.highestKataId();
   }
   
   moveNewestToBeginning() {
