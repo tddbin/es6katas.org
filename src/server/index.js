@@ -13,15 +13,8 @@ function _renderOnServer(err, metadataJson) {
   }
 }
 
-//import data from '../for-offline/grouped-metadata.json';
-//function loadFromFile(onLoaded) {
-//  onLoaded(null, data);
-//}
-
 export function render(onDone) {
-  //loadViaNode(GROUPED_METADATA_URL, (...args) => {onDone(_renderOnServer(...args))});
   loadViaNode(GROUPED_METADATA_URL, function(...args) {
     onDone(_renderOnServer(...args));
   });
 }
-//loadFromFile(_renderOnServer);

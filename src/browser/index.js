@@ -15,10 +15,4 @@ function _renderInBrowser(err, metadataJson, showWorkshopBanner=false) {
   }
 }
 
-//import data from '../for-offline/data.json';
-//function loadFromFile(onLoaded) {
-//  onLoaded(null, data);
-//}
-
 loadViaAjax(GROUPED_METADATA_URL, _renderInBrowser);
-//loadFromFile(_renderInBrowser);
