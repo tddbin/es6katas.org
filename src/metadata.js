@@ -67,13 +67,12 @@ class KataGroups {
   }
   
   moveToBeginning(itemToMove) {
-    const idx = this.groups
-      .map((item, idx) => Object.is(item, itemToMove) ? idx : null)
-      .filter(id => id != null)[0];
-    this.groups.unshift(this.groups.splice(idx, 1)[0]);
+    const isNotItemToMove = item => !Object.is(item, itemToMove);
+    this.groups = [itemToMove, ...this.groups.filter(isNotItemToMove)];
   }
   
 }
+
 
 function fromMetadataJsonToKataGroups(groupedMetadataJson) {
   const groups = groupedMetadataJson.groups;
