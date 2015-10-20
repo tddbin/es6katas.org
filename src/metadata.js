@@ -25,7 +25,7 @@ class KataGroups {
     const groups = new KataGroups();
     groups.initializePropertiesFromRawObject(obj);
     groups.sortByNumberOfLinks();
-    groups.moveNewestKataToBeginning();
+    groups.moveGroupWithNewestKataToBeginning();
     return groups;
   }
 
@@ -62,7 +62,7 @@ class KataGroups {
     return this.groups.reduce(groupWithHighestId, {highestId:0})
   }
   
-  moveNewestKataToBeginning() {
+  moveGroupWithNewestKataToBeginning() {
     this.moveToBeginning(this.groupWithNewestKata());
   }
   
