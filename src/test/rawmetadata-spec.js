@@ -1,7 +1,7 @@
 import assert from 'assert';
 import RawMetadata from '../rawmetadata.js';
 
-const fromMetadataJsonToKataGroups = (metadataJson) => {
+const rawMetadataToKataGroups = (metadataJson) => {
   return RawMetadata.toKataGroups(metadataJson);
 };
 
@@ -21,7 +21,7 @@ describe('create KataGroups from the raw metadata', function() {
       groups: {'group name': group}
     };
     
-    var kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
+    var kataGroups = rawMetadataToKataGroups(groupedMetadataJson);
     assert.equal(kataGroups.length, 1);
   });
   
@@ -33,7 +33,7 @@ describe('create KataGroups from the raw metadata', function() {
       }
     };
 
-    var kataGroups = fromMetadataJsonToKataGroups(groupedMetadataJson);
+    var kataGroups = rawMetadataToKataGroups(groupedMetadataJson);
     assert.equal(kataGroups.length, 2);
   });
 });
