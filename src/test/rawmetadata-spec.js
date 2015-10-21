@@ -5,10 +5,16 @@ const fromMetadataJsonToKataGroups = (metadataJson) => {
   return RawMetadata.toKataGroups(metadataJson);
 };
 
+class Kata {
+  static withId(id) {
+    return {id};
+  }
+}
+
 describe('create KataGroups from the raw metadata', function() {
 
-  const group = {items: [{id: 1}]};
-  const anotherGroup = {items: [{id: 2}]};
+  const group = {items: [Kata.withId(1)]};
+  const anotherGroup = {items: [Kata.withId(2)]};
   
   it('for one group only one KataGroup is created', function() {
     const groupedMetadataJson = {
