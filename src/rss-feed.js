@@ -1,5 +1,5 @@
 import {loadViaNode} from './server/http-get.js';
-import Metadata from './metadata.js';
+import Metadata from './rawmetadata.js';
 import {FLAT_METADATA_URL} from './config.js';
 
 function _renderOnServer(err, {items: metadata}) {

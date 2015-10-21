@@ -1,5 +1,5 @@
 import assert from 'assert';
-import Metadata from '../metadata.js';
+import Metadata from '../rawmetadata.js';
 
 const fromMetadataJsonToKataGroups = (metadataJson) => {
   return Metadata.toKataGroups(metadataJson);

@@ -1,11 +1,11 @@
 import assert from 'assert';
-import Metadata from '../metadata.js';
+import Metadata from '../rawmetadata.js';
 
 const fromMetadataJsonToKataGroups = (metadataJson) => {
   return Metadata.toKataGroups(metadataJson);
 };
 
-describe('create KataGroups from the metadata', function() {
+describe('create KataGroups from the raw metadata', function() {
 
   const group = {items: [{id: 1}]};
   const anotherGroup = {items: [{id: 2}]};
