@@ -19,6 +19,8 @@ export default class KataGroups {
     groups.moveGroupWithNewestKataToBeginning();
     return groups;
   }
+  
+  // private
 
   initializePropertiesFromRawObject(obj) {
     const allKeys = Object.keys(obj);
@@ -26,14 +28,15 @@ export default class KataGroups {
   }
   
   sortByNumberOfLinks() {
-    this.groups.sort(function(group, anotherGroup) {
-      var katasCount = group.katas.length;
-      var anotherKatasCount = anotherGroup.katas.length;
+    function sortFunction(group, anotherGroup) {
+      const katasCount = group.katas.length;
+      const anotherKatasCount = anotherGroup.katas.length;
       if (katasCount === anotherKatasCount) {
         return anotherGroup.name < group.name ? 1 : -1;
       }
       return anotherKatasCount - katasCount;
-    });
+    }
+    this.groups.sort(sortFunction);
   }
   
   eachGroupsHighestKataId() {
