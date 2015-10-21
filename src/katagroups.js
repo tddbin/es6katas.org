@@ -20,8 +20,8 @@ export default class KataGroups {
     return groups;
   }
   
-  isNewestKata({id}) {
-    return Number.parseInt(id) === this.highestKataId();
+  isNewestKata(kata) {
+    return Number.parseInt(kata.id) === this.highestKataId();
   }
   
   // private
