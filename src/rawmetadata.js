@@ -1,7 +1,7 @@
 import KataGroup from './katagroup.js';
 import KataGroups from './katagroups.js';
 
-export default class Metadata {
+export default class RawMetadata {
   
   static toKataGroups(groupedMetadataJson) {
     return KataGroups.fromObject(fromMetadataJsonToKataGroups(groupedMetadataJson));
