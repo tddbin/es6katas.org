@@ -24,11 +24,15 @@ export default class KataGroups {
     return Number.parseInt(kata.id) === this.highestKataId();
   }
   
+  addGroup(kataGroup) {
+    this.groups.push(kataGroup);
+  }
+  
   // private
 
   initializePropertiesFromRawObject(obj) {
     const allKeys = Object.keys(obj);
-    allKeys.forEach(key => this.groups.push(obj[key]));
+    allKeys.forEach(key => this.addGroup(obj[key]));
   }
   
   sortByNumberOfLinks() {
