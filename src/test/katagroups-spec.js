@@ -46,12 +46,12 @@ describe('find newest kata', function() {
   it('with the highest ID', function() {
     const groupedMetadataJson = {
       groups: {
-        'group with 1 kata': {items: [{id: '2'}]},
-        'group with 2 katas': {items: [{id: '4'}, {id: '93'}]}
+        'group with 1 kata': {items: [{id: 2}]},
+        'group with 2 katas': {items: [{id: 4}, {id: 13}]}
       }
     };
     const kataGroups = RawMetadata.toKataGroups(groupedMetadataJson);
-    let kataDouble = {id: '93'};
+    let kataDouble = {id: 13};
     
     assert.equal(kataGroups.isNewestKata(kataDouble), true);
   });

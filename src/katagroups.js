@@ -44,7 +44,8 @@ export default class KataGroups {
   }
   
   highestKataId() {
-    return this.eachGroupsHighestKataId().sort().reverse()[0];
+    const sortReverseNumerically = (a, b) => b - a;
+    return this.eachGroupsHighestKataId().sort(sortReverseNumerically)[0];
   }
   
   eachGroupsHighestKataId() {
