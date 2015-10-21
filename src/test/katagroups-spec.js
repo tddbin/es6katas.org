@@ -42,7 +42,7 @@ describe('sort kata groups', function() {
 
 describe('find newest kata', function() {
 
-  it('with the highest ID', function() {
+  it('the newest kata is the one with the highest ID', function() {
     const kataGroups = new KataGroups();
     kataGroups.addGroup(KataGroup.withKatas('group with 1 kata', [Kata.withId(2)]));
     kataGroups.addGroup(KataGroup.withKatas('group with 2 katas', [Kata.withId(4), Kata.withId(13)]));
