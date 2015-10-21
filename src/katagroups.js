@@ -20,6 +20,10 @@ export default class KataGroups {
     return groups;
   }
   
+  isNewestKata({id}) {
+    return Number.parseInt(id) === this.highestKataId();
+  }
+  
   // private
 
   initializePropertiesFromRawObject(obj) {
@@ -39,16 +43,12 @@ export default class KataGroups {
     this.groups.sort(sortFunction);
   }
   
-  eachGroupsHighestKataId() {
-    return this.groups.map(group => group.highestId);
-  }
-  
   highestKataId() {
     return this.eachGroupsHighestKataId().sort().reverse()[0];
   }
   
-  isNewestKata({id}) {
-    return Number.parseInt(id) === this.highestKataId();
+  eachGroupsHighestKataId() {
+    return this.groups.map(group => group.highestId);
   }
   
   groupWithNewestKata() {
