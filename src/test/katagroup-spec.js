@@ -31,14 +31,20 @@ describe('kata group', function() {
   });
   it('provides the `katas`', function() {
     const rawKataItems = [];
-    const group = KataGroup.withKatas('', rawKataItems);
+    const group = new KataGroupBuilder()
+      .withName('')
+      .withRawKatas(rawKataItems)
+      .get();
     
     assert.deepEqual(group.katas, rawKataItems);
   });
 
   it('each kata is a Kata instance', function() {
     const rawKataItems = [{}];
-    const group = KataGroup.withKatas('', rawKataItems);
+    const group = new KataGroupBuilder()
+      .withName('')
+      .withRawKatas(rawKataItems)
+      .get();
     
     assert.deepEqual(group.katas[0] instanceof Kata, true);
   });
