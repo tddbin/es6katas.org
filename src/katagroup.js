@@ -6,7 +6,7 @@ export default class KataGroup {
     var group = new KataGroup();
     group.name = groupName;
     group.createKatas(rawKataItems);
-    group.sortByName();
+    group.sort();
     return group;
   }
 
@@ -14,7 +14,7 @@ export default class KataGroup {
     this.katas = rawKataItems.map(Kata.fromRawItem);
   }
   
-  sortByName() {
+  sort() {
     this.katas.sort(byId);
   }
 
