@@ -73,7 +73,10 @@ describe('kata group', function() {
       const katas = [
         Kata.fromRawItem({id: 1})  
       ];
-      let group = KataGroup.withKatas('', katas);
+      let group = new KataGroupBuilder()
+        .withName('')
+        .withRawKatas(katas)
+        .get();
       
       assert.equal(group.highestId, 1);
     });
