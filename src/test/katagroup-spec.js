@@ -2,10 +2,30 @@ import assert from 'assert';
 import KataGroup from '../katagroup.js';
 import Kata from '../kata.js';
 
+class KataGroupBuilder {
+  constructor() {
+    this.kataGroup = new KataGroup();
+  }
+  withName(name) {
+    this.kataGroup.name = name;
+    return this;
+  }
+  withRawKatas(rawKatas) {
+    this.kataGroup.createKatas(rawKatas);
+    return this;
+  }
+  get() {
+    return this.kataGroup;
+  }
+}
+
 describe('kata group', function() {
   it('provides the `name` given to it', function() {
     const name = 'name';
-    const group = KataGroup.withKatas(name, []);
+    const group = new KataGroupBuilder()
+      .withName(name)
+      .withRawKatas([])
+      .get();
     
     assert.equal(group.name, name);
   });
