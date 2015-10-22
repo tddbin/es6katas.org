@@ -69,28 +69,26 @@ describe('kata group', function() {
   });
 
   describe('get newest kata', function() {
-    it('for 1 kata return this one', function() {
-      const katas = [
-        Kata.fromRawItem({id: 1})  
-      ];
-      let group = new KataGroupBuilder()
+    function buildKataGroup(katas) {
+      return new KataGroupBuilder()
         .withName('')
         .withRawKatas(katas)
         .get();
+    }
+    it('for 1 kata return this one', function() {
+      const group = buildKataGroup([
+        Kata.fromRawItem({id: 1})  
+      ]);
       
       assert.equal(group.newestKata.id, 1);
     });
     
     it('for multiple katas return the newest', function() {
-      const katas = [
+      const group = buildKataGroup([
         Kata.fromRawItem({id: '11'}),  
         Kata.fromRawItem({id: '3'}),  
         Kata.fromRawItem({id: '1'})  
-      ];
-      let group = new KataGroupBuilder()
-        .withName('')
-        .withRawKatas(katas)
-        .get();
+      ]);
       
       assert.equal(group.newestKata.id, 11);
     });
