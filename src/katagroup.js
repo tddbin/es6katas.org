@@ -19,8 +19,8 @@ export default class KataGroup {
   }
   
   get newestKata() {
-    const reverseById = (kata1, kata2) => kata1.id < kata2.id;
-    return this.katas.sort(reverseById)[0];
+    const findNewerKata = (kata, anotherKata) => kata && kata.isNewerKata(anotherKata) ? anotherKata : kata;
+    return this.katas.reduce(findNewerKata);
   }
 
   get highestId() {

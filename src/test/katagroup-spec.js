@@ -92,6 +92,18 @@ describe('kata group', function() {
       
       assert.equal(group.newestKata.id, 11);
     });
+
+    it('should keep the katas in original order (`sort()` would break it)', function() {
+      const group = buildKataGroup([
+        Kata.fromRawItem({id: 3}),  
+        Kata.fromRawItem({id: 1}), 
+        Kata.fromRawItem({id: 21})  
+      ]);
+      const unusedJustForUsingTheGetter = group.newestKata;
+      
+      const kataIds = group.katas.map(kata => kata.id);
+      assert.deepEqual(kataIds, [3, 1, 21]);
+    });
   });
   
 });

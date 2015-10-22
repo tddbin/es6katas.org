@@ -17,4 +17,8 @@ export default class Kata {
     allRawKeys.forEach(key => this[key] = rawItem[key]);
   }
 
+  isNewerKata(otherKata) {
+    return otherKata.id > this.id;  
+  }
+  
 }
