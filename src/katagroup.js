@@ -17,6 +17,11 @@ export default class KataGroup {
   sort() {
     this.katas.sort(byId);
   }
+  
+  get newestKata() {
+    const reverseById = (kata1, kata2) => kata1.id < kata2.id;
+    return this.katas.sort(reverseById)[0];
+  }
 
   get highestId() {
     // Since katas are ALWAYS added to the end, which means the last is the 
