@@ -9,15 +9,21 @@ class Kata {
 }
 
 describe('sort kata groups', function() {
+
+  function sortedKataGroups(...groups) {
+    const kataGroups = new KataGroups();
+    groups.forEach(kataGroups.addGroup.bind(kataGroups));
+    kataGroups.sort();
+    return kataGroups.all();
+  }
+  
   let allKataGroups;
   beforeEach(function() {
-    const kataGroups = new KataGroups();
-    kataGroups.addGroup(KataGroup.withKatas('group with 1 kata', [Kata.withId(0)]));
-    kataGroups.addGroup(KataGroup.withKatas('group with 2 katas', [Kata.withId(1), Kata.withId('21')]));
-    kataGroups.addGroup(KataGroup.withKatas('group with newest kata', [Kata.withId('111')]));
-    kataGroups.sortByNumberOfLinks();
-    kataGroups.moveGroupWithNewestKataToBeginning();
-    allKataGroups = kataGroups.all();
+    allKataGroups = sortedKataGroups(
+      KataGroup.withKatas('group with 1 kata', [Kata.withId(0)]),
+      KataGroup.withKatas('group with 2 katas', [Kata.withId(1), Kata.withId('21')]),
+      KataGroup.withKatas('group with newest kata', [Kata.withId('111')])
+    );
   });
   it('first is the one with the newest kata inside', function() {
     assert.equal(allKataGroups[0].name, 'group with newest kata');
@@ -30,13 +36,12 @@ describe('sort kata groups', function() {
   });
 
   it('by name when number of files is the same', function() {
-    const kataGroups = new KataGroups();
-    kataGroups.addGroup(KataGroup.withKatas('group b', [Kata.withId(0)]));
-    kataGroups.addGroup(KataGroup.withKatas('group a', [Kata.withId(1)]));
-    kataGroups.sortByNumberOfLinks();
-    kataGroups.moveGroupWithNewestKataToBeginning();
+    allKataGroups = sortedKataGroups(
+      KataGroup.withKatas('group b', [Kata.withId(0)]),
+      KataGroup.withKatas('group a', [Kata.withId(1)])
+    );
   
-    assert.equal(kataGroups.all()[0].name, 'group a');
+    assert.equal(allKataGroups[0].name, 'group a');
   });
 });
 

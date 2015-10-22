@@ -9,6 +9,7 @@ export default class Page extends React.Component {
 
   render() {
     let {kataGroups} = this.props;
+    kataGroups.sort();
     const katasCount = kataGroups.all().reduce((old, {katas: {length}}) => old + length, 0);
     const {showWorkshopBanner} = this.props;
     return (

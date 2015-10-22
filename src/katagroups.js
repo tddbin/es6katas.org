@@ -15,8 +15,6 @@ export default class KataGroups {
   static fromObject(obj) {
     const groups = new KataGroups();
     groups.initializePropertiesFromRawObject(obj);
-    groups.sortByNumberOfLinks();
-    groups.moveGroupWithNewestKataToBeginning();
     return groups;
   }
   
@@ -26,6 +24,11 @@ export default class KataGroups {
   
   addGroup(kataGroup) {
     this.groups.push(kataGroup);
+  }
+  
+  sort() {
+    this.sortByNumberOfLinks();
+    this.moveGroupWithNewestKataToBeginning();
   }
   
   // private
