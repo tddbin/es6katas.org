@@ -57,7 +57,11 @@ describe('kata group', function() {
         Kata.fromRawItem({id: '3'}),
         Kata.fromRawItem({id: '1'})
       ];
-      group = KataGroup.withKatas('', katas);
+      group = new KataGroupBuilder()
+        .withName('')
+        .withRawKatas(katas)
+        .get();
+      group.sort();
     });
     it('1st value must be `1`', () => assert.equal(group.katas[0].id, 1));
     it('2nd value must be `3`', () => assert.equal(group.katas[1].id, 3));
