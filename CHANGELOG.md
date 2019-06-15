@@ -11,7 +11,8 @@
 - [x] use fetch instead of atomic
 - [ ] move to kavun as test runner, faster, simpler, smaller
 - [x] remove workshop banner
-- [ ] classnames seems to be used rarely
+- [x] classnames seems to be used rarely
 - [ ] update react, maybe preact works fine?
 - [ ] make it run on https
 - [ ] move to https://plausible.io/ instead of GA
+- [ ] show all ESX katas on the page
