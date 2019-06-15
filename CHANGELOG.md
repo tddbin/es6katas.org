@@ -14,5 +14,6 @@
 - [x] classnames seems to be used rarely
 - [ ] update react, maybe preact works fine?
 - [ ] make it run on https
-- [ ] move to https://plausible.io/ instead of GA
+- [ ] simplify the deploy, travis has push to gh-pages built in
+- [x] move to https://plausible.io/ instead of GA
 - [ ] show all ESX katas on the page
