@@ -1,22 +1,18 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import HeaderComponent from './header';
 import FooterComponent from './footer';
-import WorkshopBannerComponent from './workshopbanner';
 
 export default class Page extends React.Component {
 
   render() {
     let {kataGroups} = this.props;
     const katasCount = kataGroups.all().reduce((old, {katas: {length}}) => old + length, 0);
-    const {showWorkshopBanner} = this.props;
     return (
       <div>
         <HeaderComponent />
         <KataGroups groups={kataGroups}/>
         <FooterComponent katasCount={katasCount} />
-        <WorkshopBannerComponent showWorkshopBanner={showWorkshopBanner}/>
       </div>
     );
   }

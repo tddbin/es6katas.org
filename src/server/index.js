@@ -9,7 +9,7 @@ function _renderOnServer(err, metadataJson) {
   if (err) {
     throw new Error(err);
   } else {
-    return ReactDOMServer.renderToString(<Page kataGroups={RawMetadata.toKataGroups(metadataJson)} showWorkshopBanner={false}/>);
+    return ReactDOMServer.renderToString(<Page kataGroups={RawMetadata.toKataGroups(metadataJson)}/>);
   }
 }
 

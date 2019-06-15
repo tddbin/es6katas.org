@@ -10,7 +10,7 @@
 
 - [x] use fetch instead of atomic
 - [ ] move to kavun as test runner, faster, simpler, smaller
-- [ ] remove workshop banner
+- [x] remove workshop banner
 - [ ] classnames seems to be used rarely
 - [ ] update react, maybe preact works fine?
 - [ ] make it run on https
