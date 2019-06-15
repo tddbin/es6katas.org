@@ -5,3 +5,13 @@
 - separate server- and client-side rendering better, improve code
 - add analytics to the page
 - open tddbin in a new tab
+
+# Version 1
+
+- [ ] use fetch instead of atomic
+- [ ] move to kavun as test runner, faster, simpler, smaller
+- [ ] remove workshop banner
+- [ ] classnames seems to be used rarely
+- [ ] update react, maybe preact works fine?
+- [ ] make it run on https
+- [ ] move to https://plausible.io/ instead of GA
