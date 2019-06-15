@@ -1,3 +1,4 @@
+import {describe, it} from 'kavun';
 import assert from 'assert';
 import KataGroups from '../katagroups';
 import KataGroup from '../katagroup';

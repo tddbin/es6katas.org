@@ -1,3 +1,4 @@
+import {describe, it} from 'kavun';
 import assert from 'assert';
 import RawMetadata from '../rawmetadata.js';
 
