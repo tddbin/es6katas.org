@@ -15,7 +15,7 @@
     "build-css": "myth --compress src/components/style.css dist/style.css && cp -r src/components/img dist",
     "postbuild:app": "uglifyjs dist/index.js -m -c > dist/index.min.js && rm dist/index.js",
     "build:media": "./scripts/build/copy-media-files.sh",
-    "start": "parallelshell 'npm run watch:app' 'npm run watch:media'",
+    "start": "concurrently 'npm run watch:app' 'npm run watch:media' 'ws --cors.origin=* --port 9779 --directory dist'",
     "render-on-server": "./scripts/render-html.sh",
     "watch:app": "watch 'npm run dev-build-app' src --wait=1",
     "watch:media": "watch 'npm run build:media' src --wait=1"
@@ -28,23 +28,23 @@
     "kata",
     "es6"
   ],
-  "author": "uxebu",
+  "author": "Wolfram Kriesing",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tddbin/es6katas.org/issues"
   },
   "homepage": "https://github.com/tddbin/es6katas.org",
   "devDependencies": {
-    "atomic": "git+https://github.com/toddmotto/atomic.git",
     "babel": "^5.8.9",
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
     "classnames": "^2.1.2",
+    "concurrently": "^4.1.0",
     "disc": "^1.3.2",
     "mocha": "^2.2.4",
-    "parallelshell": "^1.1.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "to-do-list-checker": "^4.0.0",
     "uglify-js": "^2.4.20",
     "watch": "^0.16.0",
     "watchify": "^3.0.0"
