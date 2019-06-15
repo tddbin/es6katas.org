@@ -9,7 +9,7 @@ MEDIA_DIST_ROOT="$DIST_ROOT";
 
 # find all media files, under `src`
 cd "$MEDIA_FILES_ORIGIN_DIR";
-MEDIA_FILES=`find . \( -name '*.css' -o -name '*.png' -o -name '*.svg' -o -name '*.gif' \)`
+MEDIA_FILES=`find . \( -name '*.css' -o -name '*.png' -o -name '*.svg' -o -name '*.gif' -o -name '*.ico' \)`
 cd ..;
 
 # create all dirs where media files will land inside `dist/media`
