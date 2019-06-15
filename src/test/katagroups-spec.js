@@ -10,24 +10,21 @@ class Kata {
 }
 
 describe('sort kata groups', function() {
-  let allKataGroups;
-  beforeEach(function() {
-    const kataGroups = new KataGroups();
-    kataGroups.addGroup(KataGroup.withKatas('group with 1 kata', [Kata.withId(0)]));
-    kataGroups.addGroup(KataGroup.withKatas('group with 2 katas', [Kata.withId(1), Kata.withId('21')]));
-    kataGroups.addGroup(KataGroup.withKatas('group with newest kata', [Kata.withId('111')]));
-    kataGroups.sortByNumberOfLinks();
-    kataGroups.moveGroupWithNewestKataToBeginning();
-    allKataGroups = kataGroups.all();
-  });
+  const kataGroups = new KataGroups();
+  kataGroups.addGroup(KataGroup.withKatas('group with 1 kata', [Kata.withId(0)]));
+  kataGroups.addGroup(KataGroup.withKatas('group with 2 katas', [Kata.withId(1), Kata.withId('21')]));
+  kataGroups.addGroup(KataGroup.withKatas('group with newest kata', [Kata.withId('111')]));
+  kataGroups.sortByNumberOfLinks();
+  kataGroups.moveGroupWithNewestKataToBeginning();
+  const allKataGroups = () => kataGroups.all();
   it('first is the one with the newest kata inside', function() {
-    assert.equal(allKataGroups[0].name, 'group with newest kata');
+    assert.equal(allKataGroups()[0].name, 'group with newest kata');
   });
   it('second is the one with most katas', function() {
-    assert.equal(allKataGroups[1].name, 'group with 2 katas');
+    assert.equal(allKataGroups()[1].name, 'group with 2 katas');
   });
   it('third is the one with less katas', function() {
-    assert.equal(allKataGroups[2].name, 'group with 1 kata');
+    assert.equal(allKataGroups()[2].name, 'group with 1 kata');
   });
 
   it('by name when number of files is the same', function() {

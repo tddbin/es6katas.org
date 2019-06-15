@@ -25,18 +25,15 @@ describe('kata group', function() {
   });
   
   describe('sort the katas by id, so the difficulty goes up', function() {
-    let group;
-    beforeEach(function() {
-      const katas = [
-        Kata.fromRawItem({id: '11'}),
-        Kata.fromRawItem({id: '3'}),
-        Kata.fromRawItem({id: '1'})
-      ];
-      group = KataGroup.withKatas('', katas);
-    });
-    it('1st value must be `1`', () => assert.equal(group.katas[0].id, 1));
-    it('2nd value must be `3`', () => assert.equal(group.katas[1].id, 3));
-    it('3rd value must be `11`', () => assert.equal(group.katas[2].id, 11));
+    const katas = [
+      Kata.fromRawItem({id: '11'}),
+      Kata.fromRawItem({id: '3'}),
+      Kata.fromRawItem({id: '1'})
+    ];
+    const group = () => KataGroup.withKatas('', katas);
+    it('1st value must be `1`', () => assert.equal(group().katas[0].id, 1));
+    it('2nd value must be `3`', () => assert.equal(group().katas[1].id, 3));
+    it('3rd value must be `11`', () => assert.equal(group().katas[2].id, 11));
   });
 
   describe('get highest ID', function() {

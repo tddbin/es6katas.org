@@ -9,7 +9,7 @@
 # Version 1
 
 - [x] use fetch instead of atomic
-- [ ] move to kavun as test runner, faster, simpler, smaller
+- [x] move to kavun as test runner, faster, simpler, smaller
 - [x] remove workshop banner
 - [x] classnames seems to be used rarely
 - [ ] update react, maybe preact works fine?
