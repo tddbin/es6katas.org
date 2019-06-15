@@ -127,27 +127,3 @@ footer {
     color: #7AB75C;
   }
 
-.workshop-banner {
-  opacity: 0;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  transform: translateY(200px);
-  transition: 2s linear;
-}
-  .workshop-banner.fade-in {
-    opacity: 1;
-    bottom: 10em;
-  }
-  .workshop-banner.small {
-    opacity: 1;
-    bottom: 2.5em;
-    transition: 0.2s linear;
-  }
-  .workshop-banner button.close {
-    border: 0;
-  }
-  .workshop-banner .close-button-container {
-    text-align: right;
-  }
-  
