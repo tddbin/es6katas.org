@@ -13,17 +13,6 @@ export default class FooterComponent extends React.Component {
             </a>
           </li>
           <li>
-            <a href="mailto:w+from-es6katas@kriesing.de">
-              <i className="fa fa-envelope"></i>Email me
-            </a>
-          </li>
-          <li className="highlight">
-            <a href="mailto:w+bookme-es6katas@kriesing.de">
-              <i className="fa fa-dollar"></i>Book me for<br/>
-              <i className="fa"></i>training, coaching, clean-coding
-            </a>
-          </li>
-          <li>
             <a href="/imprint">
               <i className="fa fa-paragraph"></i>imprint
             </a>
@@ -31,11 +20,6 @@ export default class FooterComponent extends React.Component {
         </ul>
         
         <ul>
-          <li className="highlight">
-            <a href="https://www.youtube.com/watch?v=71aX1z0SzZU">
-              <i className="fa fa-youtube"/>Making of a kata
-            </a>
-          </li>
           <li>
             <a href="http://tddbin.com">uses TDDbin</a>
           </li>
