@@ -1,3 +1,8 @@
+EVERTHING HAS MOVED TO https://jskatas.org and the repo https://github.com/wolframkriesing/jskatas.org
+
+This repo only contains a redirect and might be removed eventually.
+
+
 # es6katas.org
 
 [ES6Katas.org] is a simple website that lists various katas (small tasks) for learning ECMAScript 6 by doing it.
