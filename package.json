@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "es6katas.org site",
   "scripts": {
-    "build": "mkdir -p dist; cp src/* dist/"
+    "build": "mkdir -p dist; cp CNAME dist/; cp src/* dist/"
   },
   "repository": {
     "type": "git",
